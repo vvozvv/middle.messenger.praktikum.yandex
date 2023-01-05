@@ -1,5 +1,5 @@
-import Page from "./pages/home";
-import ChatsPage from "./pages/chats";
+import Page from "./src/pages/home";
+import ChatsPage from "./src/pages/chats";
 const app = document.getElementById('root');
 const getPage = () => window.location.pathname.split('/')[1];
 

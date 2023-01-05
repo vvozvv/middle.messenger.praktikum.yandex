@@ -3,7 +3,6 @@
   "engines": {
     "node": ">=12"
   },
-  "main": "./src/app.js",
   "scripts": {
     "start": "parcel -p 3000 ./index.hbs",
     "build": "parcel build ./index.hbs"
