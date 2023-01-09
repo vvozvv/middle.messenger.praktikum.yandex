@@ -12,6 +12,7 @@
     "parcel": "^2.8.2"
   },
   "dependencies": {
-    "@parcel/transformer-sass": "^2.8.2"
+    "@parcel/transformer-sass": "^2.8.2",
+    "handlebars": "^4.7.7"
   }
 }
