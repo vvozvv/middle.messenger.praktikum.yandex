@@ -1,15 +1,21 @@
 import Page from "./src/pages/home";
 import ChatsPage from "./src/pages/chats";
 import Error404 from './src/pages/404';
+import Authorization from "./src/pages/authorization";
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
 
 const app = document.getElementById('root');
 
 const getContentPage = (url) => {
+    console.log(url)
     switch (url) {
         case 'main-page':
-            return Page()
+            return Page();
+        case 'single-chat':
+            return ChatsPage();
+        case 'authorization':
+            return Authorization();
         default:
             console.log('this')
             return Error404();

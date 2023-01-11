@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import './error.style.scss';
 
 export const notFoundPageTemplate = `
-<main class="error-page">
+    <main class="error-page">
   <div class="error-page__content">
     <h1 class="error-page__title title">
       Ошибка 404
