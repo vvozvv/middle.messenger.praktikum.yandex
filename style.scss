@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
+$primary-color: #3369F3;
+$gray-color: #D9DBDD;
+
 * {
   padding: 0;
   margin: 0;
@@ -13,3 +16,37 @@ body {
 a {
   text-decoration: none;
 }
+
+input {
+  height: 45px;
+  padding: 10px;
+  border: 1px solid $gray-color;
+  width: 100%;
+  border-radius: 5px;
+  &:active,
+  &:focus {
+    border: 1px solid $primary-color;
+  }
+}
+
+.link {
+  color: $primary-color;
+  display: block;
+  &--center {
+    text-align: center;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.input-box {
+  margin-bottom: 10px;
+  &__title {
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+@import "./src/utils/styles/button";
