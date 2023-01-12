@@ -6,8 +6,8 @@ const HomedPageTemplate = `
         </h1>
          <div class="home__container">
             <a href="authorization" class="home__box">Авторизация</a>
-            <a href="main-page" class="home__box">Регистрация</a>
-            <a href="main-page" class="home__box">Чаты</a>
+            <a href="registration" class="home__box">Регистрация</a>
+            <a href="chat" class="home__box">Чаты</a>
             <a href="main-page" class="home__box">Профиль</a>
             <a href="404" class="home__box">404</a>
             <a href="main-page" class="home__box">500</a>
