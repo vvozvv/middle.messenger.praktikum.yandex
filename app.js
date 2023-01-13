@@ -3,13 +3,14 @@ import ChatsPage from "./src/pages/chats";
 import Error404 from './src/pages/404';
 import Authorization from "./src/pages/authorization";
 import Registration from "./src/pages/registration";
+import ProfilePage from "./src/pages/profile";
+import Error500 from "./src/pages/500";
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
 
 const app = document.getElementById('root');
 
 const getContentPage = (url) => {
-    console.log(url)
     switch (url) {
         case 'main-page':
             return Page();
@@ -21,8 +22,13 @@ const getContentPage = (url) => {
             return Registration();
         case 'chat':
             return ChatsPage();
+        case 'profile':
+            return ProfilePage();
+        case '404':
+            return Error404();
+        case '500':
+            return Error500();
         default:
-            console.log('this')
             return Error404();
     }
 }

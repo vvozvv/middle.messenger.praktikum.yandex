@@ -4,10 +4,10 @@ export const notFoundPageTemplate = `
     <main class="error-page">
       <div class="error-page__content">
         <h1 class="error-page__title title">
-          Ошибка 404
+          Ошибка 500
         </h1>
         <div class="error-page__text base-text">
-          Страница не найдена
+          Ошибка на сервере
         </div>
         <div class="error-page__action">
         </div>
@@ -16,9 +16,9 @@ export const notFoundPageTemplate = `
 `;
 
 
-const Error404 = () => {
+const Error500 = () => {
     const template = Handlebars.compile(notFoundPageTemplate);
     return template({});
 };
 
-export default Error404;
+export default Error500;

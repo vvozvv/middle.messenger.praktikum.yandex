@@ -37,6 +37,7 @@
 }
 
 .chat-content {
+  $self: &;
   padding: 20px;
   display: grid;
   grid-template-rows: 1fr 50px;
@@ -55,6 +56,54 @@
   &__input {
     background: transparent;
     border: none;
+    font-size: 16px;
+  }
+  &__date {
+    text-align: center;
+    margin: 10px 0;
+    color: var(--gray-text-color);
+  }
+  &__scroll {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+  &__icon {
+    width: 40px;
+    height: 40px;
+  }
+  &__files {
+    display: flex;
+    justify-content: center;
+  }
+  &__send {
+    display: flex;
+    justify-content: center;
+  }
+  &__message-item {
+    margin-bottom: 10px;
+  }
+  &__message-date {
+    font-size: 14px;
+    color: var(--gray-text-color);
+  }
+  &__message {
+    padding: 20px;
+    background: var(--gray-hover-color);
+    max-width: 650px;
+    border-radius: 0 10px 10px 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    &--current {
+      background: var(--primary-color);
+      align-self: end;
+      border-radius: 10px 0 10px 10px;
+      color: #fff;
+      #{$self}__message-date {
+        color: #fff;
+      }
+
+    }
   }
 }
 
