@@ -1,3 +1,6 @@
+import myImage from '../../assets/image/icon/dot-menu-more.svg';
+
+
 const ChatPageTemplate = `
     <main class="chat">
     	<div class="chat__info">
@@ -18,7 +21,7 @@ const ChatPageTemplate = `
 							<div class="chat-item__header">
 								<p class="chat-item__date">12:00</p>
 								<div class="chat-item__setting-icon">
-									<img src="../../assets/image/icon/dot-menu-more.svg" alt="">
+									<img src="${myImage}" alt="" class="chat-item__setting-icon-image">
 								</div>
 							</div>
 							<div class="chat-item__active">
@@ -35,7 +38,9 @@ const ChatPageTemplate = `
 						<div class="chat-item__settings">
 							<div class="chat-item__header">
 								<p class="chat-item__date">12:00</p>
-								<div class="chat-item__setting-icon"></div>
+								<div class="chat-item__setting-icon">
+									<img src="${myImage}" alt="" class="chat-item__setting-icon-image">
+								</div>
 							</div>
 							<div class="chat-item__active">
 								<div class="chat-item__count-message">4</div>
