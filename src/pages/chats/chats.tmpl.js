@@ -1,5 +1,4 @@
-import myImage from '../../assets/image/icon/dot-menu-more.svg';
-
+import * as myImage from '../../assets/image/icon/dot-menu-more.svg';
 
 const ChatPageTemplate = `
     <main class="chat">
