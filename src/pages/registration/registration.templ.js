@@ -11,7 +11,7 @@ const RegistrationPageTemplate = `
                   type="text"
                   class="registration-form__input"
                   placeholder="Введите почту"
-                  name="login"
+                  name="email"
                   required=""
                >
             </div>
@@ -31,7 +31,7 @@ const RegistrationPageTemplate = `
                  type="text"
                  class="registration-form__input"
                  placeholder="Введите Имя"
-                 name="name"
+                 name="first_name"
                  required=""
                >
             </div>
@@ -41,7 +41,7 @@ const RegistrationPageTemplate = `
                  type="text"
                  class="registration-form__input"
                  placeholder="Введите Фамилию"
-                 name="surname"
+                 name="second_name"
                  required=""
                >
             </div>
