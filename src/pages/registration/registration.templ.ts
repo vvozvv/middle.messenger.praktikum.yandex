@@ -6,7 +6,7 @@ const RegistrationPageTemplate = `
         </h1>
         <form action="" class="registration-form">
             <div class="input-box">
-               <p class="input-box__title">Почта</p>
+               <label for="email" class="input-box__title">Почта</label>
                <input
                   type="text"
                   class="registration-form__input"
@@ -16,7 +16,7 @@ const RegistrationPageTemplate = `
                >
             </div>
             <div class="input-box">
-               <p class="input-box__title">Логин</p>
+               <label for="login" class="input-box__title">Логин</label>
                <input
                  type="text"
                  class="registration-form__input"
@@ -26,7 +26,7 @@ const RegistrationPageTemplate = `
                >
             </div>
             <div class="input-box">
-               <p class="input-box__title">Имя</p>
+               <label for="first_name" class="input-box__title">Имя</label>
                <input
                  type="text"
                  class="registration-form__input"
@@ -36,7 +36,7 @@ const RegistrationPageTemplate = `
                >
             </div>
             <div class="input-box">
-               <p class="input-box__title">Фамилия</p>
+               <label for="second_name" class="input-box__title">Фамилия</label>
                <input
                  type="text"
                  class="registration-form__input"
@@ -46,7 +46,7 @@ const RegistrationPageTemplate = `
                >
             </div>
             <div class="input-box">
-               <p class="input-box__title">Телефон</p>
+               <label for="phone" class="input-box__title">Телефон</label>
                <input
                  type="text"
                  class="registration-form__input"
@@ -56,7 +56,7 @@ const RegistrationPageTemplate = `
                >
             </div>
             <div class="input-box">
-               <p class="input-box__title">Пароль</p>
+               <label for="password" class="input-box__title">Пароль</label>
                <input
                  type="password"
                  class="input input--error registration-form__input"
@@ -67,7 +67,7 @@ const RegistrationPageTemplate = `
                <p class="input-box__error">Пароли не совпадают</p>
             </div>
             <div class="input-box">
-               <p class="input-box__title">Пароль (ещё раз)</p>
+               <label for="repeatPassword" class="input-box__title">Пароль (ещё раз)</label>
                <input
                  type="password"
                  class="input input--error registration-form__input"
@@ -79,7 +79,7 @@ const RegistrationPageTemplate = `
             </div>
             <button type="submit" class="button">Log in</button>
         </form>
-        <a href="#signup" class="link link--center registration__link">Sign up</a>
+        <a href="authorization" class="link link--center registration__link">Sign up</a>
       </div>
     </main>
 `;

@@ -22,7 +22,7 @@ const ChatPageTemplate = `
 							<div class="chat-item__header">
 								<p class="chat-item__date">12:00</p>
 								<div class="chat-item__setting-icon">
-									<img src="${SettingsIcon}" alt="" class="chat-item__setting-icon-image">
+									<img src="${SettingsIcon}" alt="Настройки" class="chat-item__setting-icon-image">
 								</div>
 							</div>
 							<div class="chat-item__active">
@@ -40,7 +40,7 @@ const ChatPageTemplate = `
 							<div class="chat-item__header">
 								<p class="chat-item__date">12:00</p>
 								<div class="chat-item__setting-icon">
-									<img src="${SettingsIcon}" alt="" class="chat-item__setting-icon-image">
+									<img src="${SettingsIcon}" alt="Настройки" class="chat-item__setting-icon-image">
 								</div>
 							</div>
 							<div class="chat-item__active">
@@ -58,7 +58,7 @@ const ChatPageTemplate = `
 						<p class="chat-header__username">Вадим</p>
     			</div>
     			<div class="chat-header__settings">
-    				<img src="${SettingsIcon}" alt="" class="chat-item__setting-icon-image">
+    				<img src="${SettingsIcon}" alt="Настройки" class="chat-item__setting-icon-image">
 					</div>
 				</div>
 				<div class="chat-content">
@@ -78,13 +78,13 @@ const ChatPageTemplate = `
 					<div class="chat-content__bottom">
 						<div class="chat-content__control">
 							<div class="chat-content__files">
-								<img src="${FileIcon}" alt="" class="chat-content__icon chat-content__file-icon">
+								<img src="${FileIcon}" alt="Добавить файл" class="chat-content__icon chat-content__file-icon">
 							</div>
 							<div class="chat-content__input-box">
 								<input type="text" name="chat-content-send" placeholder="Введите сообщение" class="chat-content__input">
 							</div>
 							<div class="chat-content__send">
-								<img src="${SendIcon}" alt="" class="chat-content__icon chat-content__send-icon">
+								<img src="${SendIcon}" alt="Отправить сообщение" class="chat-content__icon chat-content__send-icon">
 							</div>
 						</div>
 					</div>

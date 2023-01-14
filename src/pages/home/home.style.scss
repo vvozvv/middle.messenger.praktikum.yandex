@@ -11,11 +11,6 @@
     margin-bottom: 30px;
     text-align: center;
   }
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-  }
   &__box {
     border-radius: 5px;
     background: #ffffff;
@@ -31,5 +26,13 @@
     &:hover {
       opacity: .7;
     }
+  }
+  &__menu-item {
+    list-style-type: none;
+  }
+  &__menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
   }
 }

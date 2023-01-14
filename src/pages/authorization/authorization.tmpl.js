@@ -6,7 +6,7 @@ const AuthorizationPageTemplate = `
         </h1>
         <form action="" class="authorization-form">
             <div class="input-box">
-               <p class="input-box__title">Username</p>
+               <label for="login" class="input-box__title">Username</label>
                <input
                   type="text"
                   class="authorization-form__input"
@@ -16,7 +16,7 @@ const AuthorizationPageTemplate = `
                >
             </div>
             <div class="input-box">
-               <p class="input-box__title">Password</p>
+               <label for="password" class="input-box__title">Password</label>
                <input
                  type="password"
                  class="authorization-form__input"
@@ -27,7 +27,7 @@ const AuthorizationPageTemplate = `
             </div>
             <button type="submit" class="button">Log in</button>
         </form>
-        <a href="#signup" class="link link--center authorization__link">Sign up</a>
+        <a href="registration" class="link link--center authorization__link">Sign up</a>
       </div>
     </main>
 `;
