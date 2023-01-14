@@ -15,7 +15,9 @@ export const notFoundPageTemplate = `
     </main>
 `;
 
-
+/**
+ * Главная "Страница не найдена"
+ */
 const Error404 = () => {
     const template = Handlebars.compile(notFoundPageTemplate);
     return template({});

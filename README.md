@@ -1,8 +1,12 @@
-### middle.messenger.praktikum.yandex
+## middle.messenger.praktikum.yandex
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4d53d2d5-5bcb-4da6-bb21-2d625ed399b2/deploy-status)](https://app.netlify.com/sites/mellifluous-piroshki-f29470/deploys)
 
-Для корректной работы потребуется Node.js версии 14 и выше.
+> **Note**
+> Для корректной работы потребуется Node.js версии 14 и выше.
+
+# Команды
+Ссылка на проект – [chat-yandex-avazhov.netlify.app](https://chat-yandex-avazhov.netlify.app)
 
 # Команды
 

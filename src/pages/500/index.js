@@ -15,7 +15,9 @@ export const notFoundPageTemplate = `
     </main>
 `;
 
-
+/**
+ * Главная "Ошибка сервера"
+ */
 const Error500 = () => {
     const template = Handlebars.compile(notFoundPageTemplate);
     return template({});
