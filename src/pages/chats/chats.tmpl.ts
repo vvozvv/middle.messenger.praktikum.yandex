@@ -9,7 +9,7 @@ const ChatPageTemplate = `
     			<p class="chat__profile">В профиль</p>
 				</div>
 				<div class="chat__search">
-					<input type="text" class="chat__search-input" placeholder="Поиск">
+					<input type="text" class="input chat__search-input" placeholder="Поиск">
 				</div>
 				<div class="chat__chat-list">
 					<div class="chat-item">

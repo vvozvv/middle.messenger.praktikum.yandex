@@ -9,7 +9,7 @@ const AuthorizationPageTemplate = `
                <label for="login" class="input-box__title">Username</label>
                <input
                   type="text"
-                  class="authorization-form__input"
+                  class="input authorization-form__input"
                   placeholder="Enter username"
                   name="login"
                   required=""
@@ -19,7 +19,7 @@ const AuthorizationPageTemplate = `
                <label for="password" class="input-box__title">Password</label>
                <input
                  type="password"
-                 class="authorization-form__input"
+                 class="input authorization-form__input"
                  placeholder="Enter password"
                  name="password"
                  required=""

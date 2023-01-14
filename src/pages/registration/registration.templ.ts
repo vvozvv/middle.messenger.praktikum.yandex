@@ -9,7 +9,7 @@ const RegistrationPageTemplate = `
                <label for="email" class="input-box__title">Почта</label>
                <input
                   type="text"
-                  class="registration-form__input"
+                  class="input registration-form__input"
                   placeholder="Введите почту"
                   name="email"
                   required=""
@@ -19,7 +19,7 @@ const RegistrationPageTemplate = `
                <label for="login" class="input-box__title">Логин</label>
                <input
                  type="text"
-                 class="registration-form__input"
+                 class="input registration-form__input"
                  placeholder="Введите логин"
                  name="login"
                  required=""
@@ -29,7 +29,7 @@ const RegistrationPageTemplate = `
                <label for="first_name" class="input-box__title">Имя</label>
                <input
                  type="text"
-                 class="registration-form__input"
+                 class="input registration-form__input"
                  placeholder="Введите Имя"
                  name="first_name"
                  required=""
@@ -39,7 +39,7 @@ const RegistrationPageTemplate = `
                <label for="second_name" class="input-box__title">Фамилия</label>
                <input
                  type="text"
-                 class="registration-form__input"
+                 class="input registration-form__input"
                  placeholder="Введите Фамилию"
                  name="second_name"
                  required=""
@@ -49,7 +49,7 @@ const RegistrationPageTemplate = `
                <label for="phone" class="input-box__title">Телефон</label>
                <input
                  type="text"
-                 class="registration-form__input"
+                 class="input registration-form__input"
                  placeholder="Введите Телефон"
                  name="phone"
                  required=""
