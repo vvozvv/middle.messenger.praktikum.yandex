@@ -12,7 +12,7 @@ const app = document.getElementById('root');
 
 const getContentPage = (url) => {
     switch (url) {
-        case 'main-page':
+        case '':
             return Page();
         case 'single-chat':
             return ChatsPage();

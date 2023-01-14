@@ -1,0 +1,28 @@
+{
+  "exclude": ["node_modules"],
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.{ts,tsx}": ["@parcel/transformer-typescript-tsc"]
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "jsxImportSource": "preact",
+    "isolatedModules": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2021",
+    "strict": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "page/*": ["src/pages/*"],
+      "assets/*": ["src/assets/*"]
+    }
+  }
+}
