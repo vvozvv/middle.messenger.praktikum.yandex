@@ -4,7 +4,7 @@ const HomedPageTemplate = `
         <h1 class="home__title title">
           Главная страница
         </h1>
-         <hav class="home__container">
+         <nav class="home__container">
             <ul class="home__menu">
 							<li class="home__menu-item">
 								<a href="authorization" class="home__box">Авторизация</a>
@@ -25,7 +25,7 @@ const HomedPageTemplate = `
 								<a href="500" class="home__box">500</a>
 							</li>
 						</ul>
-          </hav>
+          </nav>
       </div>
     </main>
 `;
