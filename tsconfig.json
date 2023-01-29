@@ -1,0 +1,25 @@
+{
+  "noImplicitAny": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "sourceMap": true,
+  "strictNullChecks": true,
+  "removeComments": true,
+  "preserveConstEnums": true,
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "noImplicitReturns": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "strict": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "isolatedModules": true,
+    "paths": {
+      "components/*": ["./components/*"],
+    }
+  }
+}

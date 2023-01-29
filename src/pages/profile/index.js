@@ -1,13 +1,14 @@
 import Handlebars from "handlebars";
 import {ProfilePageTemplate} from "./profile.tmpl";
 import './profile.style.scss';
+import Block from '../../core/Block';
 
 /**
  * Страница "Профиль"
  */
-const ProfilePage = () => {
-	const template = Handlebars.compile(ProfilePageTemplate);
-	return template({});
+export default class ProfilePage extends Block {
+    render() {
+        const template = Handlebars.compile(ProfilePageTemplate);
+        return template({});
+    }
 }
-
-export default ProfilePage;

@@ -76,7 +76,7 @@ const ChatPageTemplate = `
 						</div>
 					</div>
 					<div class="chat-content__bottom">
-						<div class="chat-content__control">
+						<form class="chat-content__control">
 							<div class="chat-content__files">
 								<img src="${FileIcon}" alt="Добавить файл" class="chat-content__icon chat-content__file-icon">
 							</div>
@@ -84,9 +84,11 @@ const ChatPageTemplate = `
 								<input type="text" name="chat-content-send" placeholder="Введите сообщение" class="chat-content__input">
 							</div>
 							<div class="chat-content__send">
-								<img src="${SendIcon}" alt="Отправить сообщение" class="chat-content__icon chat-content__send-icon">
+								<button type='submit'>
+								  <img src="${SendIcon}" alt="Отправить сообщение" class="chat-content__icon chat-content__send-icon">
+                                </button>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>

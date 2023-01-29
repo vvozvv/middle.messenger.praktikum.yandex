@@ -1,5 +1,3 @@
-import Handlebars from "handlebars";
-
 export const notFoundPageTemplate = `
     <main class="error-page">
       <div class="error-page__content">
@@ -14,13 +12,3 @@ export const notFoundPageTemplate = `
       </div>
     </main>
 `;
-
-/**
- * Главная "Ошибка сервера"
- */
-const Error500 = () => {
-    const template = Handlebars.compile(notFoundPageTemplate);
-    return template({});
-};
-
-export default Error500;
