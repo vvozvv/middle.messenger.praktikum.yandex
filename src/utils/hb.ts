@@ -31,7 +31,7 @@ export default function registerComponent(Component: ComponentProps<any>) {
             children[component.id] = component;
 
             const contents = fn ? fn(this) : '';
-            return `<div data-id="id-${component.id}">${contents}</div>`;
+            return `<div data-id="${component.id}">${contents}</div>`;
         },
     );
 }

@@ -2,7 +2,7 @@ import * as SettingsIcon from '../../assets/image/icon/dot-menu-more.svg';
 import * as FileIcon from '../../assets/image/icon/file.svg';
 import * as SendIcon from '../../assets/image/icon/send.svg';
 
-const ChatPageTemplate = `
+const   ChatPageTemplate = `
     <main class="chat">
     	<div class="chat__info">
     		<div class="chat__info-header">
@@ -12,9 +12,8 @@ const ChatPageTemplate = `
 					<input type="text" class="input chat__search-input" placeholder="Поиск">
 				</div>
 				<div class="chat__chat-list">
-					{{#each chats}}
-					  {{{ChatItems time="{{this.time}}" text="text" count="4" name="name" }}}
-					{{/each}}
+					{{{chatOne}}}
+					{{{chatTwo}}}
 				</div>
 			</div>
     	
@@ -31,9 +30,8 @@ const ChatPageTemplate = `
 				<div class="chat-content">
 					<div class="chat-content__scroll">
 						<p class="chat-content__date">19 июня</p>
-						{{#each messages}}
-						  {{{Message text="dfdf"}}}
-						{{/each}}
+						{{{message}}}
+						{{{messageMore}}}
 					</div>
 					<div class="chat-content__bottom">
 						<form action='#' name="login" id='chat-message' class="form chat-content__control">

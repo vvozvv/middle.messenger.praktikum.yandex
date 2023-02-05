@@ -15,7 +15,9 @@ const template = `
           </div>
         </div>
         <div class="chat-item__active">
-          <div class="chat-item__count-message">{{count}}</div>
+          {{#if count}}
+            <div class="chat-item__count-message">{{count}}</div>
+          {{/if}}
         </div>
       </div>
   </div>

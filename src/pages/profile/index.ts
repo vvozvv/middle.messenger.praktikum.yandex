@@ -1,18 +1,9 @@
-import { compile } from "handlebars";
-import {ProfilePageTemplate} from "./profile.tmpl";
-import './profile.style.scss';
-import Block from '../../core/Block';
+import ProfilePage from './profile';
+import ProfileEditPage from './edit/profile.edit';
+import ProfileEditPasswordEditPage from './edit-password/profile-edit-password';
 
-/**
- * Страница "Профиль"
- */
-export default class ProfilePage extends Block {
-    constructor() {
-        super();
-    }
-
-    render() {
-        const template = compile(ProfilePageTemplate);
-        return this.compile(template, this.props);
-    }
+export {
+    ProfilePage,
+    ProfileEditPage,
+    ProfileEditPasswordEditPage
 }

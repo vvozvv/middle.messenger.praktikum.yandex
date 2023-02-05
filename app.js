@@ -1,16 +1,18 @@
 import HomePage from './src/pages/home/index';
 import Error404 from './src/pages/404/index';
 import Authorization from './src/pages/authorization';
-import ProfilePage from './src/pages/profile/index';
 import Error500 from './src/pages/500/index';
 import ChatsPage from './src/pages/chats/index';
 import Registration from './src/pages/registration';
 import registerComponent from './src/utils/hb';
 import ChatItems from './src/components/ChatItems/ChatItems';
 import Message from './src/components/Message/Message';
-import ProfileEditPage from './src/pages/profile/edit/profile.edit';
 import { PAGE } from './src/modules/router';
-import ProfileEditPasswordEditPage from './src/pages/profile/edit-password/profile-edit-password';
+import {
+    ProfileEditPasswordEditPage,
+    ProfileEditPage,
+    ProfilePage
+} from './src/pages/profile';
 
 registerComponent(ChatItems);
 registerComponent(Message);
