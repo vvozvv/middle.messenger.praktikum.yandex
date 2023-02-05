@@ -1,0 +1,28 @@
+{
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "module": "commonjs",
+    "target": "es5",
+    "skipLibCheck": true,
+    "noImplicitReturns": true,
+    "noEmit": true,
+    "strict": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./src",
+    "isolatedModules": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "preserveConstEnums": true,
+    "paths": {
+      "components/*": ["./components/*"]
+    }
+  }
+}

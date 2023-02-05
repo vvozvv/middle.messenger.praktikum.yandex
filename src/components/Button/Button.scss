@@ -1,0 +1,23 @@
+.button {
+  $self: &;
+
+  width: 100%;
+  color: #fff;
+  background: #3369f3;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+
+  &--ghost {
+    background: transparent;
+    border: none;
+    color: #3369f3;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

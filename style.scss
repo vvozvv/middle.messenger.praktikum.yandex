@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap";
 
-:root{
-  --primary-color: #3369F3;
-  --gray-color: #D9DBDD;
-  --gray--main-color: #EFEFEF;
-  --gray-text-color: #999999;
-  --gray-hover-color: #F2F3F7;
-  --error-color: #DA2F5A;
+:root {
+  --primary-color: #3369f3;
+  --gray-color: #d9dbdd;
+  --gray-main-color: #efefef;
+  --gray-text-color: #999;
+  --gray-hover-color: #f2f3f7;
+  --error-color: #da2f5a;
 }
 
 * {
@@ -16,16 +16,18 @@
 }
 
 .body {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 .link {
   text-decoration: none;
   color: var(--primary-color);
   display: block;
+
   &--center {
     text-align: center;
   }
+
   &:hover {
     text-decoration: underline;
   }
@@ -37,11 +39,13 @@
   border: 1px solid var(--gray-color);
   width: 100%;
   border-radius: 5px;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
+
   &:active,
   &:focus {
-    border: 1px solid var(--primary-color)
+    border: 1px solid var(--primary-color);
   }
+
   &--error {
     border: 1px solid var(--error-color);
   }
@@ -49,12 +53,14 @@
 
 .input-box {
   margin-bottom: 20px;
+
   &__title {
     margin-bottom: 10px;
     font-weight: 600;
     font-size: 14px;
     display: block;
   }
+
   &__error {
     color: var(--error-color);
     font-size: 12px;
@@ -66,5 +72,3 @@
 .error-page {
   padding: 40px;
 }
-
-@import "./src/utils/styles/button";

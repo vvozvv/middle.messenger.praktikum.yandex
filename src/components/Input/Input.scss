@@ -1,0 +1,41 @@
+.input {
+  height: 45px;
+  border: 1px solid var(--gray-color);
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: Inter, sans-serif;
+
+  &--error {
+    border: 1px solid var(--error-color);
+  }
+
+  &:active,
+  &:focus {
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.input-box {
+  margin-bottom: 20px;
+
+  &__title {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+  }
+
+  &__error {
+    color: var(--error-color);
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    display: none;
+  }
+
+  &__required {
+    font-size: 12px;
+    color: var(--error-color);
+  }
+}
