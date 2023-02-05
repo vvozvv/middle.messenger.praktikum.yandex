@@ -1,3 +1,5 @@
+import { PAGE } from '../../modules/router';
+
 const HomedPageTemplate = `
     <main class="home">
       <div class="home__content">
@@ -7,22 +9,22 @@ const HomedPageTemplate = `
          <nav class="home__container">
             <ul class="home__menu">
 							<li class="home__menu-item">
-								<a href="authorization" class="home__box">Авторизация</a>
+								<a href="${PAGE.LOGIN}" class="home__box">Авторизация</a>
 							</li>
 							<li class="home__menu-item">
-								<a href="registration" class="home__box">Регистрация</a>
+								<a href="${PAGE.REGISTRATION}" class="home__box">Регистрация</a>
 							</li>
 							<li class="home__menu-item">
-								<a href="chat" class="home__box">Чаты</a>
+								<a href="${PAGE.CHATS}" class="home__box">Чаты</a>
 							</li>
 							<li class="home__menu-item">
-								<a href="profile" class="home__box">Профиль</a>
+								<a href="${PAGE.PROFILE}" class="home__box">Профиль</a>
 							</li>
 							<li class="home__menu-item">
-								<a href="404" class="home__box">404</a>
+								<a href="${PAGE.NOT_FOUND}" class="home__box">404</a>
 							</li>
 							<li class="home__menu-item">
-								<a href="500" class="home__box">500</a>
+								<a href="${PAGE.ERROR}" class="home__box">500</a>
 							</li>
 						</ul>
           </nav>

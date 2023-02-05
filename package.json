@@ -16,7 +16,7 @@
     "dev": "parcel -p 3000 ./index.hbs ./server.js",
     "build": "parcel build ./index.hbs",
     "format": "eslint --fix --ext .js,.ts",
-    "stylelint": "stylelint \"src/**/*.scss\" --custom-syntax",
+    "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "npm run stylelint --fix"
   },
   "devDependencies": {

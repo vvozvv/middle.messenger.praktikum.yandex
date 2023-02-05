@@ -1,27 +1,31 @@
 .message {
-    $self: &;
-    padding: 20px;
-    background: var(--gray-hover-color);
-    max-width: 650px;
-    border-radius: 0 10px 10px 10px;
-    font-size: 18px;
-    margin-bottom: 20px;
-    width: fit-content;
-    &--current {
-        background: var(--primary-color);
-        align-self: end;
-        border-radius: 10px 0 10px 10px;
-        color: #fff;
+  $self: &;
 
-        #{$self}__date {
-            color: #fff;
-        }
+  padding: 20px;
+  background: var(--gray-hover-color);
+  max-width: 650px;
+  border-radius: 0 10px 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  width: fit-content;
+
+  &--current {
+    background: var(--primary-color);
+    align-self: end;
+    border-radius: 10px 0 10px 10px;
+    color: #fff;
+
+    #{$self}__date {
+      color: #fff;
     }
-    &__item {
-        margin-bottom: 10px;
-    }
-    &__date {
-            font-size: 14px;
-            color: var(--gray-text-color);
-    }
+  }
+
+  &__item {
+    margin-bottom: 10px;
+  }
+
+  &__date {
+    font-size: 14px;
+    color: var(--gray-text-color);
+  }
 }
