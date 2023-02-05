@@ -12,42 +12,9 @@ const ChatPageTemplate = `
 					<input type="text" class="input chat__search-input" placeholder="Поиск">
 				</div>
 				<div class="chat__chat-list">
-					<div class="chat-item">
-						<div class="chat-item__image"></div>
-						<div class="chat-item__content">
-							<p class="chat-item__name">Киноклуб</p>
-							<p class="chat-item__message">Друзья, у меня для вас особенный выпуск новостей!...</p>
-						</div>
-						<div class="chat-item__settings">
-							<div class="chat-item__header">
-								<p class="chat-item__date">12:00</p>
-								<div class="chat-item__setting-icon">
-									<img src="${SettingsIcon}" alt="Настройки" class="chat-item__setting-icon-image">
-								</div>
-							</div>
-							<div class="chat-item__active">
-								<div class="chat-item__count-message">4</div>
-							</div>
-						</div>
-					</div>
-					<div class="chat-item chat-item--active">
-						<div class="chat-item__image"></div>
-						<div class="chat-item__content">
-							<p class="chat-item__name">Киноклуб</p>
-							<p class="chat-item__message">Друзья, у меня для вас особенный выпуск новостей!...</p>
-						</div>
-						<div class="chat-item__settings">
-							<div class="chat-item__header">
-								<p class="chat-item__date">12:00</p>
-								<div class="chat-item__setting-icon">
-									<img src="${SettingsIcon}" alt="Настройки" class="chat-item__setting-icon-image">
-								</div>
-							</div>
-							<div class="chat-item__active">
-								<div class="chat-item__count-message">4</div>
-							</div>
-						</div>
-					</div>
+					{{#each chats}}
+					  {{{ChatItems time="{{this.time}}" text="text" count="4" name="name" }}}
+					{{/each}}
 				</div>
 			</div>
     	
@@ -64,24 +31,17 @@ const ChatPageTemplate = `
 				<div class="chat-content">
 					<div class="chat-content__scroll">
 						<p class="chat-content__date">19 июня</p>
-						<div class="chat-content__message">
-							<p class="chat-content__message-item">Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
-							<p class="chat-content__message-item">Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
-							<p class="chat-content__message-date">12:33</p>
-						</div>
-						<div class="chat-content__message chat-content__message--current">
-							<p class="chat-content__message-item">Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
-							<p class="chat-content__message-item">Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
-							<p class="chat-content__message-date">12:33</p>
-						</div>
+						{{#each messages}}
+						  {{{Message}}}
+						{{/each}}
 					</div>
 					<div class="chat-content__bottom">
-						<form class="chat-content__control">
+						<form action='#' name="login" id='chat-message' class="form chat-content__control">
 							<div class="chat-content__files">
 								<img src="${FileIcon}" alt="Добавить файл" class="chat-content__icon chat-content__file-icon">
 							</div>
 							<div class="chat-content__input-box">
-								<input type="text" name="chat-content-send" placeholder="Введите сообщение" class="chat-content__input">
+								<input type="text" name="message" placeholder="Введите сообщение" class="chat-content__input">
 							</div>
 							<div class="chat-content__send">
 								<button type='submit'>
@@ -95,4 +55,4 @@ const ChatPageTemplate = `
     </main>
 `;
 
-export { ChatPageTemplate };
+export default ChatPageTemplate;

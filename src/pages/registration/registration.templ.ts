@@ -4,7 +4,7 @@ const RegistrationPageTemplate = `
         <h1 class="registration__title">
           Регистрация
         </h1>
-        <form action="" class="registration-form">
+        <form action="" id='registration-form' class="registration-form">
             <div class="input-box">
                <label for="email" class="input-box__title">Почта</label>
                <input

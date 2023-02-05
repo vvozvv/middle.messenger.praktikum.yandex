@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import { compile } from 'handlebars';
 import { HomedPageTemplate } from './home.tmpl';
 import './home.style.scss';
 import Block from '../../core/Block';
@@ -11,7 +11,7 @@ export default class HomePage extends Block {
         super();
     }
   render() {
-      const template = Handlebars.compile(HomedPageTemplate, this.props);
-      return template({});
+      const template = compile(HomedPageTemplate, this.props);
+      return this.compile(template, this.props);
   }
 }

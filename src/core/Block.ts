@@ -11,15 +11,16 @@ export default class Block {
   };
 
   public id = makeUUID();
-  public children: {[id: string]: Block} = {};
+  public children: any = {};
   public refs: Record<string, Block> = {};
   public props: Record<string, any>;
   public events: { [key: string]: (a: Event) => void; } | undefined;
-  private _element: HTMLElement | null = null;
+  protected _element: HTMLElement | null = null;
   private _eventBus: () => EventBus;
 
-    constructor(props: object = {}) {
+  constructor(props: object = {}) {
     const eventBus = new EventBus();
+    this.children = this._getChildren(props);
     this.props = this._makePropsProxy(props);
     this._eventBus = () => eventBus;
     this._registerEvents(eventBus);
@@ -42,13 +43,29 @@ export default class Block {
     return true;
   }
 
+  _getChildren(propsAndChildren) {
+        const children = {};
+        const props = {};
+
+        Object.entries(propsAndChildren).forEach(([key, value]) => {
+            if (value instanceof Block) {
+                children[key] = value;
+            } else {
+                props[key] = value;
+            }
+        });
+      // console.log(children, props);
+        return { children, props };
+  }
+
   private _componentDidMount() {
     this.componentDidMount();
 
     Object.values(this.children).forEach((child) => {
-      child.dispatchComponentDidMount();
+      (child as any).dispatchComponentDidMount();
     });
   }
+
 
   protected dispatchComponentDidMount() {
     this._eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -95,29 +112,31 @@ export default class Block {
     this.addEvents();
   }
 
-  public compile(template: (context: any) => string, context: any) {
-    const html = template({ ...context, children: this.children, refs: this.refs });
-    const tempFragment = document.createElement('template');
+    public compile(template: (context: any) => string, context: Record<string, any>) {
+        const propsAndStubs = { ...context };
 
-    tempFragment.innerHTML = html;
+        Object.entries(this.children).forEach(([key, child]) => {
+            propsAndStubs[key] = `<div data-id="${(child as any).id}"></div>`
+        });
 
-    Object.entries(this.children).forEach(([_, component]) => {
-      const stub = tempFragment.content.querySelector(`[data-id="id-${component.id}"]`);
+        const fragment = document.createElement('template');
 
-      if (!stub) {
-        return;
-      }
+        fragment.innerHTML = template(propsAndStubs);
 
-      const content = component.getContent()!;
+        Object.entries(this.children).forEach(([_, component]) => {
+            const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
 
-      stub.replaceWith(content);
+            if (!stub) {
+                return;
+            }
 
-      if (stub.childNodes.length) {
-        content.append(...stub.childNodes);
-      }
-    });
-    return tempFragment.content;
-  }
+            const content = component.getContent()!;
+
+            stub.replaceWith(content);
+        });
+
+        return fragment.content;
+    }
 
   private get element(): HTMLElement | null {
     return this._element;
@@ -156,7 +175,9 @@ export default class Block {
   private removeEvents() {
     if (this.events) {
       Object.keys(this.events).forEach((eventName) => {
-        this._element?.removeEventListener(eventName, this.events[eventName]);
+        if (this.events) {
+          this._element?.removeEventListener(eventName, this.events[eventName]);
+        }
       });
 
       this.events = {};

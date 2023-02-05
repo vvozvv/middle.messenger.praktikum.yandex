@@ -8,6 +8,12 @@
   "preserveConstEnums": true,
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "module": "commonjs",
+    "target": "es5",
     "skipLibCheck": true,
     "noImplicitReturns": true,
     "noEmit": true,
@@ -19,7 +25,7 @@
     "baseUrl": "./src",
     "isolatedModules": true,
     "paths": {
-      "components/*": ["./components/*"],
+      "components/*": ["./components/*"]
     }
   }
 }
