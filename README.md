@@ -16,6 +16,11 @@ Dev запуск проекта
 Build проекта
 ```npm run build```
 
+
+
 # Макеты
 
 Макеты в [Figma](https://www.figma.com/proto/dTsFaXsd4ArMxY9AZ06OTz/Untitled?node-id=1%3A682&scaling=min-zoom&page-id=0%3A1)
+
+---
+Ссылка на PullRequest - [PR](https://github.com/vvozvv/middle.messenger.praktikum.yandex/pull/3)
