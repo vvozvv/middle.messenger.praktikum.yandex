@@ -125,7 +125,6 @@ export default class Block {
 
         Object.entries(this.children).forEach(([_, component]) => {
             const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
-            console.log(this.children);
 
             if (!stub) {
                 return;
