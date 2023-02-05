@@ -10,6 +10,7 @@ import ChatItems from './src/components/ChatItems/ChatItems';
 import Message from './src/components/Message/Message';
 import ProfileEditPage from './src/pages/profile/edit/profile.edit';
 import { PAGE } from './src/modules/router';
+import ProfileEditPasswordEditPage from './src/pages/profile/edit-password/profile-edit-password';
 
 registerComponent(ChatItems);
 registerComponent(Message);
@@ -32,6 +33,8 @@ const getContentPage = (url) => {
       return new ProfilePage();
     case PAGE.PROFILE_EDIT:
       return new ProfileEditPage();
+    case PAGE.PROFILE_PASSWORD_EDIT:
+      return new ProfileEditPasswordEditPage();
     case PAGE.NOT_FOUND:
       return new Error404();
     case PAGE.ERROR:

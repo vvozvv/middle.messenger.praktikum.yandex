@@ -17,7 +17,6 @@ export default class Message extends Block {
     }
 
     protected render(): any {
-        console.log(this.props);
         return this.compile(compile(template), this.props);
     }
 }

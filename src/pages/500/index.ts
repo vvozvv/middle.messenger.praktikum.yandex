@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import { compile } from 'handlebars';
 import Block from '../../core/Block';
 import { notFoundPageTemplate } from './500.tmpl';
 
@@ -7,7 +7,7 @@ import { notFoundPageTemplate } from './500.tmpl';
  */
 export default class Error500 extends Block {
     render() {
-        const template = Handlebars.compile(notFoundPageTemplate);
-        return template({});
+        const template = compile(notFoundPageTemplate);
+        return this.compile(template, this.props);
     }
 };

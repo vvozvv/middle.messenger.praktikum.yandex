@@ -1,5 +1,5 @@
 const template = `
-  <div class="message {{#if me}}message--current{{/if}}">
+  <div class="message {{#if me}}message--current{{/if}}">sds
     <p class="message__item">{{text}}</p>
     <p class="message__date">{{date}}</p>
   </div>

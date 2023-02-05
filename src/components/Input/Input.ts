@@ -13,20 +13,15 @@ export default class Input extends Block {
             ...props,
             touched: false,
             events: {
-                focus: (e: FocusEvent) => {
-                    this.changeInputValue(e?.target?.value ?? '')
-                },
-                input: (e: InputEvent) => {
-                    this.changeInputValue(e?.target?.value ?? '')
-                },
-                blur: (e: FocusEvent) => {
-                    this.changeInputValue(e?.target?.value ?? '')
-                },
+                focus: (e: FocusEvent) => this.changeInputValue(e),
+                input: (e: InputEvent) => this.changeInputValue(e),
+                blur: (e: FocusEvent) => this.changeInputValue(e),
             }
         });
     }
 
-    public changeInputValue(text): any {
+    public changeInputValue(e: Event): void {
+        const text = (e.target as HTMLTextAreaElement).value ?? '';
         const el = document.querySelector(`[data-input-id="${this.id}"]`)!
         const inputError = document.querySelector(`[data-input-error-id="${this.id}"]`)! as any;
 

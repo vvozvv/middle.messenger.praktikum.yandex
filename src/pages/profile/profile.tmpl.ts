@@ -39,7 +39,7 @@ const ProfilePageTemplate = `
 				
 				<div class="profile__bottom">
 					<a href="${PAGE.PROFILE_EDIT}" class="profile__link">Изменить данные</a>
-					<a href="" class="profile__link">Изменить пароль</a>
+					<a href="${PAGE.PROFILE_PASSWORD_EDIT}" class="profile__link">Изменить пароль</a>
 					<a href="" class="profile__link profile__link--danger">Выйти</a>
 				</div>
 			</div>

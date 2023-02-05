@@ -9,13 +9,11 @@ const ProfileEditPageTemplate = `
 					</div>
 					<div class="profile__name">Иван</div>
 				</div>
-				<form id='profile-edit-form' class="profile__table">
-				    {{{inputEmail}}}
-            {{{inputLogin}}}
-            {{{inputName}}}
-            {{{inputSurname}}}
-            {{{inputPhone}}}
-            {{{buttonSubmit}}}
+				<form id='profile-edit-password-form' class="profile__table">
+				    {{{inputOldPassword}}}
+                    {{{inputPassword}}}
+                    {{{inputPasswordSecond}}}
+                    {{{buttonSubmit}}}
 				</form>
 			</div>
     </main>

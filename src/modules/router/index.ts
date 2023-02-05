@@ -5,6 +5,7 @@ enum PAGE {
     CHATS = 'chat',
     PROFILE = 'profile',
     PROFILE_EDIT = 'profile-edit',
+    PROFILE_PASSWORD_EDIT = 'profile-edit-password',
     NOT_FOUND = '404',
     ERROR = '500',
 }

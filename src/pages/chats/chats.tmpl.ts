@@ -32,7 +32,7 @@ const ChatPageTemplate = `
 					<div class="chat-content__scroll">
 						<p class="chat-content__date">19 июня</p>
 						{{#each messages}}
-						  {{{Message}}}
+						  {{{Message text="dfdf"}}}
 						{{/each}}
 					</div>
 					<div class="chat-content__bottom">
