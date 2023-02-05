@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../core/Block';
 import templateButton from './Button.tmpl';
 import { compile } from 'handlebars';
 import { ButtonTypes } from './Button.types';
