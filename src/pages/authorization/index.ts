@@ -5,6 +5,7 @@ import Block from '../../core/Block';
 import { FormData } from '../../core/types/common';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
+import { formArrayToObjectRequest } from '../../utils/functions';
 
 /**
  * Главная "Авторизация"
@@ -27,11 +28,9 @@ export default class Authorization extends Block {
                         });
                     });
 
-                    (inputs ?? []).forEach(item => {
-                        return item
-                    })
+                    const objForm = formArrayToObjectRequest(formData);
 
-                    console.log(formData);
+                    console.log(objForm);
                 },
             },
         });
@@ -42,13 +41,21 @@ export default class Authorization extends Block {
             name: 'login',
             label: 'Логин',
             placeholder: 'Введите логин',
-            type: 'text'
+            type: 'text',
+            validation: {
+                required: true,
+            }
         });
         this.children.inputPassword = new Input({
             name: 'password',
             label: 'Пароль',
             placeholder: 'Введите пароль',
-            type: 'password'
+            type: 'password',
+            validation: {
+                required: true,
+                min: 6,
+                isPassword: true
+            }
         });
         this.children.button = new Button({
             type: 'submit',

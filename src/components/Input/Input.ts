@@ -3,6 +3,7 @@ import { compile } from 'handlebars';
 import { InputTmpl } from './Input.tmpl';
 import { TInputProps } from 'components/Input/Input.types';
 import './Input.scss';
+import { validatorInstance } from '../../core/services/Validator/Validator';
 
 export default class Input extends Block {
     static helper = 'Input';
@@ -10,16 +11,16 @@ export default class Input extends Block {
     constructor(props: TInputProps) {
         super({
             ...props,
+            touched: false,
             events: {
                 focus: (e: FocusEvent) => {
-                    e.preventDefault();
+                    this.changeInputValue(e?.target?.value ?? '')
                 },
                 input: (e: InputEvent) => {
-                    e.preventDefault();
                     this.changeInputValue(e?.target?.value ?? '')
                 },
                 blur: (e: FocusEvent) => {
-                    e.preventDefault();
+                    this.changeInputValue(e?.target?.value ?? '')
                 },
             }
         });
@@ -27,11 +28,14 @@ export default class Input extends Block {
 
     public changeInputValue(text): any {
         const el = document.querySelector(`[data-input-id="${this.id}"]`)!
-        const inputError = document.querySelector(`[data-input-error-id="${this.id}"]`)! as any
+        const inputError = document.querySelector(`[data-input-error-id="${this.id}"]`)! as any;
 
-        if (text.length <= 3) {
+        const errorResult = validatorInstance.checkCorrect(text, this.props.validation);
+
+        if (errorResult) {
             el.classList.add('input--error')
             inputError.style.display = 'block'
+            inputError.innerHTML = errorResult
         } else {
             el.classList.remove('input--error')
             inputError.style.display = 'none'
