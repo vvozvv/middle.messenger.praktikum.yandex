@@ -15,7 +15,9 @@
     "start": "npm run build && node server.js",
     "dev": "parcel -p 3000 ./index.hbs ./server.js",
     "build": "parcel build ./index.hbs",
-    "format": "eslint --fix --ext .js,.ts"
+    "format": "eslint --fix --ext .js,.ts",
+    "stylelint": "stylelint \"src/**/*.scss\" --custom-syntax",
+    "stylelint:fix": "npm run stylelint --fix"
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
