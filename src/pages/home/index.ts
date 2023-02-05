@@ -10,8 +10,8 @@ export default class HomePage extends Block {
     constructor() {
         super();
     }
-  render() {
-      const template = compile(HomedPageTemplate, this.props);
-      return this.compile(template, this.props);
-  }
+    render() {
+        const template = compile(HomedPageTemplate, this.props);
+        return this.compile(template, this.props);
+    }
 }

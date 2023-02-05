@@ -1,4 +1,5 @@
 import ImageNotFound from '../../assets/image/icon/image-not-found.svg';
+import { PAGE } from '../../modules/router';
 
 const ProfilePageTemplate = `
     <main class="profile">
@@ -37,7 +38,7 @@ const ProfilePageTemplate = `
 				</div>
 				
 				<div class="profile__bottom">
-					<a href="" class="profile__link">Изменить данные</a>
+					<a href="${PAGE.PROFILE_EDIT}" class="profile__link">Изменить данные</a>
 					<a href="" class="profile__link">Изменить пароль</a>
 					<a href="" class="profile__link profile__link--danger">Выйти</a>
 				</div>

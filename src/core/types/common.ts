@@ -17,3 +17,13 @@ export type ValidationProps = {
     /** name поля input, для сравнения */
     isRetryPassword?: string;
 }
+
+
+export type ProfileResponse = {
+    first_name: string,
+    second_name: string,
+    login: string,
+    email: string,
+    phone: string,
+    password: string,
+}

@@ -18,7 +18,7 @@ export default class Block {
   protected _element: HTMLElement | null = null;
   private _eventBus: () => EventBus;
 
-  constructor(props: object = {}) {
+    constructor(props: object = {}) {
     const eventBus = new EventBus();
     this.children = this._getChildren(props);
     this.props = this._makePropsProxy(props);

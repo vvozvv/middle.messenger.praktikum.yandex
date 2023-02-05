@@ -13,6 +13,7 @@ export const InputTmpl = `
       name={{name}}
       placeholder={{placeholder}}
       required={{validation.required}}
+      value={{value}}
     >
     <p class="input-box__error" data-input-error-id={{id}}>Ошибка</p>
   </div>

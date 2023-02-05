@@ -1,13 +1,15 @@
 import HomePage from './src/pages/home/index';
 import Error404 from './src/pages/404/index';
 import Authorization from './src/pages/authorization';
-import ProfilePage from './src/pages/profile';
+import ProfilePage from './src/pages/profile/index';
 import Error500 from './src/pages/500/index';
 import ChatsPage from './src/pages/chats/index';
 import Registration from './src/pages/registration';
 import registerComponent from './src/utils/hb';
 import ChatItems from './src/components/ChatItems/ChatItems';
 import Message from './src/components/Message/Message';
+import ProfileEditPage from './src/pages/profile/edit/profile.edit';
+import { PAGE } from './src/modules/router';
 
 registerComponent(ChatItems);
 registerComponent(Message);
@@ -18,21 +20,21 @@ const app = document.getElementById('root');
 
 const getContentPage = (url) => {
   switch (url) {
-    case '':
+    case PAGE.MAIN:
       return new HomePage();
-    case 'single-chat':
-      return new ChatsPage();
-    case 'authorization':
+    case PAGE.LOGIN:
       return new Authorization();
-    case 'registration':
+    case PAGE.REGISTRATION:
       return new Registration();
-    case 'chat':
+    case PAGE.CHATS:
       return new ChatsPage();
-    case 'profile':
+    case PAGE.PROFILE:
       return new ProfilePage();
-    case '404':
+    case PAGE.PROFILE_EDIT:
+      return new ProfileEditPage();
+    case PAGE.NOT_FOUND:
       return new Error404();
-    case '500':
+    case PAGE.ERROR:
       return new Error500();
     default:
       return new Error404();
