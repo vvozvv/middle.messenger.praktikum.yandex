@@ -1,4 +1,4 @@
-import { FormData } from '../core/types/common';
+import { FormData } from '../../core/types/common';
 
 /**
  * Функция для обрезания текста

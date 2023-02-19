@@ -4,7 +4,7 @@ import Authorization from './src/pages/authorization';
 import Error500 from './src/pages/500/index';
 import ChatsPage from './src/pages/chats/index';
 import Registration from './src/pages/registration';
-import registerComponent from './src/utils/hb';
+import registerComponent from './src/utils/helpers/hb';
 import ChatItems from './src/components/ChatItems/ChatItems';
 import Message from './src/components/Message/Message';
 import { PAGE } from './src/modules/router';
@@ -13,44 +13,26 @@ import {
     ProfileEditPage,
     ProfilePage
 } from './src/pages/profile';
+import {Router} from './src/core/router/Router';
 
 registerComponent(ChatItems);
 registerComponent(Message);
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
 
-const app = document.getElementById('root');
+const router = new Router("#root");
 
-const getContentPage = (url) => {
-  switch (url) {
-    case PAGE.MAIN:
-      return new HomePage();
-    case PAGE.LOGIN:
-      return new Authorization();
-    case PAGE.REGISTRATION:
-      return new Registration();
-    case PAGE.CHATS:
-      return new ChatsPage();
-    case PAGE.PROFILE:
-      return new ProfilePage();
-    case PAGE.PROFILE_EDIT:
-      return new ProfileEditPage();
-    case PAGE.PROFILE_PASSWORD_EDIT:
-      return new ProfileEditPasswordEditPage();
-    case PAGE.NOT_FOUND:
-      return new Error404();
-    case PAGE.ERROR:
-      return new Error500();
-    default:
-      return new Error404();
-  }
-};
+router
+    .use(PAGE.MAIN, HomePage)
+    .use(PAGE.REGISTRATION, Registration)
+    .use(PAGE.LOGIN, Authorization)
+    .use(PAGE.CHATS, ChatsPage)
+    .use(PAGE.PROFILE, ProfilePage)
+    .use(PAGE.PROFILE_EDIT, ProfileEditPage)
+    .use(PAGE.PROFILE_PASSWORD_EDIT, ProfileEditPasswordEditPage)
+    .use(PAGE.NOT_FOUND, Error404)
+    .use(PAGE.ERROR, Error500)
+    .start();
 
-const renderPage = () => {
-  const url = getPageFromUrl();
-  app.append(getContentPage(url).getContent());
-};
+router.go(getPageFromUrl());
 
-renderPage();
-
-window.addEventListener('hashchange', renderPage);

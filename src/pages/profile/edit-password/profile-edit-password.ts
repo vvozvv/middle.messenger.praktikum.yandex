@@ -3,7 +3,7 @@ import Block from '../../../core/Block';
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import { FormData } from '../../../core/types/common';
-import { formArrayToObjectRequest } from '../../../utils/functions';
+import { formArrayToObjectRequest } from '../../../utils/helpers/functions';
 import {ProfileEditPageTemplate} from "./profile-edit-password.tmpl";
 
 /**

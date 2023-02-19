@@ -2,10 +2,11 @@ import { compile } from "handlebars";
 import {AuthorizationPageTemplate} from "./authorization.tmpl";
 import './authorization.style.scss';
 import Block from '../../core/Block';
-import { FormData } from '../../core/types/common';
+import {FormData, TAuthUser} from '../../core/types/common';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import { formArrayToObjectRequest } from '../../utils/functions';
+import { formArrayToObjectRequest } from '../../utils/helpers/functions';
+import AuthController from "../../api/auth/auth-controller";
 
 /**
  * Главная "Авторизация"
@@ -14,7 +15,7 @@ export default class Authorization extends Block {
     constructor() {
         super({
             events: {
-                submit: (e: MouseEvent) => {
+                submit: async (e: MouseEvent) => {
                     e.preventDefault();
                     const form = document.getElementById('authorization-form');
                     const inputs = form?.querySelectorAll('input');
@@ -30,7 +31,9 @@ export default class Authorization extends Block {
 
                     const objForm = formArrayToObjectRequest(formData);
 
-                    console.log(objForm);
+                    await AuthController.signIn(objForm as TAuthUser);
+                    const user = await AuthController.getUser();
+                    console.log(JSON.parse(user?.response))
                 },
             },
         });

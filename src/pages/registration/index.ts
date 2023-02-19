@@ -2,10 +2,11 @@ import { compile } from "handlebars";
 import {RegistrationPageTemplate} from "./registration.templ";
 import './registration.style.scss';
 import Block from '../../core/Block';
-import { FormData } from '../../core/types/common';
+import {FormData, ProfileResponse} from '../../core/types/common';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import { formArrayToObjectRequest } from '../../utils/functions';
+import { formArrayToObjectRequest } from '../../utils/helpers/functions';
+import AuthController from "../../api/auth/auth-controller";
 
 /**
  * Страница "Регистрация"
@@ -14,7 +15,7 @@ export default class Registration extends Block {
     constructor() {
         super({
             events: {
-                submit: (e: MouseEvent) => {
+                submit: async (e: MouseEvent) => {
                     e.preventDefault();
                     const form = document.getElementById('registration-form');
                     const inputs = form?.querySelectorAll('input');
@@ -26,6 +27,8 @@ export default class Registration extends Block {
 
                     const dataWithoutRetryPassword = formData.filter(item => item.name !== 'passwordSecond');
                     const resultObj = formArrayToObjectRequest(dataWithoutRetryPassword);
+
+                    await AuthController.signUp(resultObj as ProfileResponse);
 
                     console.log(resultObj);
                 },

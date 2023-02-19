@@ -3,7 +3,7 @@ import ChatPageTemplate from "./chats.tmpl";
 import './chat.style.scss';
 import Block from '../../core/Block';
 import { FormData } from '../../core/types/common';
-import { formArrayToObjectRequest } from '../../utils/functions';
+import { formArrayToObjectRequest } from '../../utils/helpers/functions';
 import Message from '../../components/Message/Message';
 import { formatDate, getTime } from '../../utils/data';
 import ChatItems from '../../components/ChatItems/ChatItems';

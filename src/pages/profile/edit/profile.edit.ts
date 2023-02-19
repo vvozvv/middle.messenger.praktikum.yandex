@@ -5,7 +5,7 @@ import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import { profileMockData } from '../mock/profile.mock';
 import { FormData } from '../../../core/types/common';
-import { formArrayToObjectRequest } from '../../../utils/functions';
+import { formArrayToObjectRequest } from '../../../utils/helpers/functions';
 
 /**
  * Страница "Профиль"
