@@ -11,11 +11,12 @@ const ProfileEditPageTemplate = `
 				</div>
 				<form id='profile-edit-form' class="profile__table">
 				    {{{inputEmail}}}
-            {{{inputLogin}}}
-            {{{inputName}}}
-            {{{inputSurname}}}
-            {{{inputPhone}}}
-            {{{buttonSubmit}}}
+                    {{{inputLogin}}}
+                    {{{inputName}}}
+                    {{{inputSurname}}}
+                    {{{displayName}}}
+                    {{{inputPhone}}}
+                    {{{buttonSubmit}}}
 				</form>
 			</div>
     </main>

@@ -68,7 +68,7 @@ class Validator {
         if (RULES.includes('isRetryPassword') && option['isRetryPassword']) {
             const password = document.getElementsByName(option['isRetryPassword'])[0];
 
-            if (value !== password['value']) {
+            if (password && value !== password['value']) {
                 return `Пароли не совпадают`;
             }
         }

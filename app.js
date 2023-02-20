@@ -14,13 +14,13 @@ import {
     ProfilePage
 } from './src/pages/profile';
 import router from './src/core/router/Router';
+import AuthController from "./src/api/auth/auth-controller";
+import store from './src/store/Store';
 
 registerComponent(ChatItems);
 registerComponent(Message);
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
-
-console.log('load')
 
 router
     .use(PAGE.MAIN, HomePage)
@@ -34,5 +34,16 @@ router
     .use(PAGE.ERROR, Error500)
     .start();
 
-router.go(getPageFromUrl());
+AuthController.getUser().then((res) => {
+    const {status, response} = res;
+
+    if (status === 200) {
+        router.go(getPageFromUrl());
+        store.set('currentUser', JSON.parse(response))
+    } else {
+        router.go(PAGE.LOGIN)
+    }
+})
+
+
 

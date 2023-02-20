@@ -3,19 +3,21 @@ import {ProfileEditPageTemplate} from "./profile.edit.tmpl";
 import Block from '../../../core/Block';
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
-import { profileMockData } from '../mock/profile.mock';
 import { FormData } from '../../../core/types/common';
 import { formArrayToObjectRequest } from '../../../utils/helpers/functions';
+import store, {StoreEvents} from '../../../store/Store';
+import {UserController} from "../../../api/user";
 
 /**
  * Страница "Профиль"
  */
 export default class ProfileEditPage extends Block {
-    constructor(props) {
+    constructor(props: any) {
         super({
             ...props,
+            currentUser: store.getState()['currentUser'],
             events: {
-                submit: (e: MouseEvent) => {
+                submit: async (e: MouseEvent) => {
                     e.preventDefault();
                     const form = document.getElementById('profile-edit-form');
                     const inputs = form?.querySelectorAll('input');
@@ -27,9 +29,14 @@ export default class ProfileEditPage extends Block {
 
                     const resultObj = formArrayToObjectRequest(formData);
 
-                    console.log(resultObj);
+                    await UserController.updateProfile(resultObj);
                 },
             },
+        });
+
+        store.on(StoreEvents.Updated, () => {
+            // вызываем обновление компонента, передав данные из хранилища
+            this.setProps(store.getState());
         });
     }
 
@@ -39,7 +46,7 @@ export default class ProfileEditPage extends Block {
             label: 'Почта',
             placeholder: 'Введите почту',
             type: 'email',
-            value: profileMockData.email,
+            value: this.props?.currentUser?.email,
             validation: {
                 required: true,
                 isEmail: true
@@ -50,7 +57,7 @@ export default class ProfileEditPage extends Block {
             label: 'Логин',
             placeholder: 'Введите логин',
             type: 'text',
-            value: profileMockData.login,
+            value: this.props?.currentUser?.login,
             validation: {
                 required: true,
                 min: 4,
@@ -62,7 +69,7 @@ export default class ProfileEditPage extends Block {
             label: 'Имя',
             placeholder: 'Введите имя',
             type: 'text',
-            value: profileMockData.first_name,
+            value: this.props?.currentUser?.first_name,
             validation: {
                 required: true,
             }
@@ -72,7 +79,7 @@ export default class ProfileEditPage extends Block {
             label: 'Фамилия',
             placeholder: 'Введите фамилию',
             type: 'text',
-            value: profileMockData.second_name,
+            value: this.props?.currentUser?.second_name,
             validation: {
                 required: true,
             }
@@ -82,10 +89,20 @@ export default class ProfileEditPage extends Block {
             label: 'Телефон',
             placeholder: 'Введите телефон',
             type: 'tel',
-            value: profileMockData.phone,
+            value: this.props?.currentUser?.phone,
             validation: {
                 required: true,
                 isPhone: true
+            }
+        });
+        this.children.displayName = new Input({
+            name: 'display_name',
+            label: 'Имя в чате',
+            placeholder: 'Введите имя',
+            type: 'text',
+            value: this.props?.currentUser?.display_name,
+            validation: {
+                required: true,
             }
         });
         this.children.buttonSubmit = new Button({

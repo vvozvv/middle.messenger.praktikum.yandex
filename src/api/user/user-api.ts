@@ -6,15 +6,17 @@ export class UserApi extends BaseAPI {
         super('user/');
     }
 
-    public getUpdateProfile() {
-        return this.http.put('profile', {})
+    public updateProfile(updatedUserInfo: any): Promise<XMLHttpRequestResponseType>  {
+        return this.http.put('profile', {
+            data: updatedUserInfo
+        })
     }
 
     public getUpdateAvatar() {
         return this.http.put('profile/avatar', {})
     }
 
-    public getUpdatePassword(passwordObj: TChangePassword) {
+    public updatePassword(passwordObj: TChangePassword) {
         return this.http.put('password', {
             data: passwordObj
         })

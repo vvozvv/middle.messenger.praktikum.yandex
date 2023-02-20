@@ -16,23 +16,23 @@ export class HTTPTransport {
         return `${HTTPTransport.API_URL}${this.prefix}${url}`;
     }
 
-    public get = (url: string, options: HTTPOptionTypes = {}) => {
+    public get = (url: string, options: HTTPOptionTypes = {}): Promise<XMLHttpRequestResponseType>  => {
         return this.request(url, {...options, method: METHODS.GET}, options.timeout);
     };
 
-    public post = (url: string, options: HTTPOptionTypes = {}) => {
+    public post = (url: string, options: HTTPOptionTypes = {}): Promise<XMLHttpRequestResponseType>  => {
         return this.request(url, {...options, method: METHODS.POST}, options.timeout);
     };
 
-    public put = (url: string, options: HTTPOptionTypes = {}) => {
+    public put = (url: string, options: HTTPOptionTypes = {}): Promise<XMLHttpRequestResponseType>  => {
         return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
     };
 
-    public delete = (url: string, options: HTTPOptionTypes = {}) => {
+    public delete = (url: string, options: HTTPOptionTypes = {}): Promise<XMLHttpRequestResponseType>  => {
         return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
     };
 
-    private request = (url: string, options: HTTPOptionTypes = {}, timeout = 5000) => {
+    private request = (url: string, options: HTTPOptionTypes = {}, timeout = 5000): Promise<XMLHttpRequestResponseType>  => {
         const self = this;
         const {headers = {}, method, data} = options;
 

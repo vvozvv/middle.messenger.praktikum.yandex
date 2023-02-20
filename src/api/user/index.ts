@@ -1,2 +1,7 @@
-export * from './user-controller';
-export * from './user-api';
+import UserController from './user-controller';
+import { UserApi } from './user-api';
+
+export {
+    UserApi,
+    UserController
+}
