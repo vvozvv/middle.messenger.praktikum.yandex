@@ -29,8 +29,6 @@ export default class Registration extends Block {
                     const resultObj = formArrayToObjectRequest(dataWithoutRetryPassword);
 
                     await AuthController.signUp(resultObj as ProfileResponse);
-
-                    console.log(resultObj);
                 },
             },
         });

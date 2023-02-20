@@ -7,6 +7,8 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { formArrayToObjectRequest } from '../../utils/helpers/functions';
 import AuthController from "../../api/auth/auth-controller";
+import store from '../../store/Store';
+import router from '../../core/router/Router';
 
 /**
  * Главная "Авторизация"
@@ -33,11 +35,21 @@ export default class Authorization extends Block {
 
                     await AuthController.signIn(objForm as TAuthUser);
                     const user = await AuthController.getUser();
-                    console.log(JSON.parse(user?.response))
+                    console.log(JSON.parse((user as any)?.response))
+
+                    store.on('updated', () => {
+                        // вызываем обновление компонента, передав данные из хранилища
+                        this.setProps(store.getState());
+                    });
+
                 },
             },
         });
 
+        store.on('', () => {
+            // вызываем обновление компонента, передав данные из хранилища
+            this.setProps(store.getState());
+        });
     }
     render() {
         this.children.inputLogin = new Input({
@@ -64,6 +76,12 @@ export default class Authorization extends Block {
             type: 'submit',
             page: 'login',
             title: 'Log in',
+            events: {
+                click: (e: any) => {
+                    e.preventDefault()
+                    router.go('/chat')
+                }
+            }
         })
 
         const template = compile(AuthorizationPageTemplate);

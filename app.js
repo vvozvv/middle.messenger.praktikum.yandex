@@ -13,14 +13,14 @@ import {
     ProfileEditPage,
     ProfilePage
 } from './src/pages/profile';
-import {Router} from './src/core/router/Router';
+import router from './src/core/router/Router';
 
 registerComponent(ChatItems);
 registerComponent(Message);
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
 
-const router = new Router("#root");
+console.log('load')
 
 router
     .use(PAGE.MAIN, HomePage)

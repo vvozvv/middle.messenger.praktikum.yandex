@@ -14,6 +14,10 @@ export class AuthApi extends BaseAPI {
         return this.http.post('signIn', { data: user })
     }
 
+    public logout() {
+        return this.http.post('logout');
+    }
+
     public getUser() {
         return this.http.get('user')
     }

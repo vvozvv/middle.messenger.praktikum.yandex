@@ -23,7 +23,7 @@ export class Route {
 
     leave() {
         if (this._block) {
-            // this._block.hide();
+            this._block.hide();
         }
     }
 
@@ -34,11 +34,10 @@ export class Route {
     render() {
         if (!this._block) {
             this._block = new this._blockClass();
-            renderDOM(this._props.rootQuery, this._block!);
-            return;
         }
 
-        this._block.getContent();
+        renderDOM(this._props.rootQuery, this._block!);
+        this._block?.getContent();
     }
 }
 

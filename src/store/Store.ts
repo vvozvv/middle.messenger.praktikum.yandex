@@ -1,6 +1,6 @@
-import { set } from "utils/helpers/set";
 import {EventBus} from "../core/EventBus";
 import {Indexed} from "../core/types/common";
+import { set as setStore } from "../utils/helpers/set";
 
 export class Store extends EventBus {
     private state: Indexed = {};
@@ -10,10 +10,10 @@ export class Store extends EventBus {
     }
 
     public set(path: string, value: unknown) {
-        set(this.state, path, value);
+        setStore(this.state, path, value);
+        console.log(path, value)
+        this.emit('updated');
     };
 }
 
-const store = new Store();
-
-export default store;
+export default new Store();

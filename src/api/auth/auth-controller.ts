@@ -16,7 +16,7 @@ class AuthController {
     }
 
     public logout() {
-        return 'logout'
+        return this.api.logout();
     }
 
     public getUser() {

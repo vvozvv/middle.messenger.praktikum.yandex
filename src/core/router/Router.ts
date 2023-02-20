@@ -1,7 +1,7 @@
 import {Route} from "./Route";
 import Block from "../Block";
 
-export class Router {
+class Router {
     private static __instance: any;
     private routes: any[];
     private _currentRoute: Route | null;
@@ -23,9 +23,7 @@ export class Router {
 
     use(pathname: string, block: Block) {
         const route = new Route(pathname, block, {rootQuery: this._rootQuery});
-
         this.routes.push(route);
-
         return this;
     }
 
@@ -39,9 +37,7 @@ export class Router {
 
     _onRoute(pathname: string) {
         const route = this.getRoute(pathname);
-
         if (!route) {
-            // this.go('404')
             return;
         }
 
@@ -70,3 +66,5 @@ export class Router {
         return this.routes.find(route => route.match(pathname));
     }
 }
+
+export default new Router("#root");
