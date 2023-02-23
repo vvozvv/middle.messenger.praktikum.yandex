@@ -12,7 +12,7 @@ class UserController {
     }
 
     public async updateProfile(updatedUserInfo: any) {
-       await checkErrorRequest(this.api.updateProfile(updatedUserInfo), PAGE.PROFILE_PASSWORD_EDIT)
+       await checkErrorRequest(this.api.updateProfile(updatedUserInfo), PAGE.PROFILE)
     }
 
     public updateAvatar(data: any) {
