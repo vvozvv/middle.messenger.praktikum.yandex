@@ -8,11 +8,6 @@ export default class Button extends Block {
     constructor(props: ButtonTypes) {
         super({
             ...props,
-            // events: {
-            //     click: () => {
-            //         console.log('this')
-            //     }
-            // }
         });
     }
 

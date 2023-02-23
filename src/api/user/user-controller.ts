@@ -15,8 +15,8 @@ class UserController {
        await checkErrorRequest(this.api.updateProfile(updatedUserInfo), PAGE.PROFILE_PASSWORD_EDIT)
     }
 
-    public getUpdateAvatar() {
-        return this.api.getUpdateAvatar();
+    public updateAvatar(data: any) {
+        return this.api.updateAvatar(data);
     }
 
     public async updatePassword(passwordObj: TChangePassword) {

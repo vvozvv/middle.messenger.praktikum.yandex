@@ -7,7 +7,7 @@ import Registration from './src/pages/registration';
 import registerComponent from './src/utils/helpers/hb';
 import ChatItems from './src/components/ChatItems/ChatItems';
 import Message from './src/components/Message/Message';
-import { PAGE } from './src/modules/router';
+import {AllowedWithoutToken, PAGE} from './src/modules/router';
 import {
     ProfileEditPasswordEditPage,
     ProfileEditPage,
@@ -40,6 +40,8 @@ AuthController.getUser().then((res) => {
     if (status === 200) {
         router.go(getPageFromUrl());
         store.set('currentUser', JSON.parse(response))
+    } else if (AllowedWithoutToken.includes(getPageFromUrl())) {
+        router.go(getPageFromUrl());
     } else {
         router.go(PAGE.LOGIN)
     }

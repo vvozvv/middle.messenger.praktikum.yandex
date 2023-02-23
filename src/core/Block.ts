@@ -1,7 +1,7 @@
 import { v4 as makeUUID } from 'uuid';
 import { EventBus } from './EventBus';
 
-export default class Block {
+export default abstract class Block {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -18,7 +18,7 @@ export default class Block {
   protected _element: HTMLElement | null = null;
   private _eventBus: () => EventBus;
 
-    constructor(props: object = {}) {
+  constructor(props: object = {}) {
     const eventBus = new EventBus();
     this.children = this._getChildren(props);
     this.props = this._makePropsProxy(props);

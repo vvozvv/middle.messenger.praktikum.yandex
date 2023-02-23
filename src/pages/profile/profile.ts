@@ -7,6 +7,8 @@ import {Link} from "../../components/Link";
 import router from "../../core/router/Router";
 import {PAGE} from "../../modules/router";
 import AuthController from "../../api/auth/auth-controller";
+import {ProfileImage} from "../../components/ProfileImage";
+import {PopupUploadImage} from "../../components/Popup/PupupUploadImage/PopupUploadImage";
 
 /**
  * Страница "Профиль"
@@ -18,7 +20,6 @@ export default class ProfilePage extends Block {
         });
 
         store.on(StoreEvents.Updated, () => {
-            // вызываем обновление компонента, передав данные из хранилища
             this.setProps(store.getState());
         });
     }
@@ -27,7 +28,7 @@ export default class ProfilePage extends Block {
         this.children.linkResetPassword = new Link({
             text: 'Изменить данные',
             events: {
-                click: (e) => {
+                click: (e: Event) => {
                     e.preventDefault()
                     router.go(PAGE.PROFILE_EDIT)
                 }
@@ -53,7 +54,18 @@ export default class ProfilePage extends Block {
                     await AuthController.logout();
                 }
             }
-        })
+        });
+
+        this.children.popup = new PopupUploadImage({});
+
+        this.children.imageLoader = new ProfileImage({
+            events: {
+                click: (e: Event) => {
+                    e.preventDefault()
+                    this.children.popup.toggleClass()
+                }
+            }
+        });
 
         const template = compile(ProfilePageTemplate);
         return this.compile(template, {

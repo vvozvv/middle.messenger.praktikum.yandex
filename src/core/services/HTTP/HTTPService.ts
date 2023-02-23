@@ -1,8 +1,8 @@
 import { METHODS } from './HTTP.constants';
-import { HTTPOptionTypes } from './HTTP.types';
 import { queryStringify } from './HTTP.helpers';
-import {BASE_API_PATH} from "../../../api/constants";
 import {isPlainObject} from "../../../utils/helpers/isPlain";
+import {BASE_API_PATH} from "../../../constants/app";
+import {HTTPMethod} from "./HTTP.types";
 
 export class HTTPTransport {
     static API_URL = BASE_API_PATH;
@@ -16,23 +16,23 @@ export class HTTPTransport {
         return `${HTTPTransport.API_URL}${this.prefix}${url}`;
     }
 
-    public get = (url: string, options: HTTPOptionTypes = {}): Promise<XMLHttpRequestResponseType>  => {
+    public get: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: METHODS.GET}, options.timeout);
     };
 
-    public post = (url: string, options: HTTPOptionTypes = {}): Promise<XMLHttpRequestResponseType>  => {
+    public post: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: METHODS.POST}, options.timeout);
     };
 
-    public put = (url: string, options: HTTPOptionTypes = {}): Promise<XMLHttpRequestResponseType>  => {
+    public put: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
     };
 
-    public delete = (url: string, options: HTTPOptionTypes = {}): Promise<XMLHttpRequestResponseType>  => {
+    public delete: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
     };
 
-    private request = (url: string, options: HTTPOptionTypes = {}, timeout = 5000): Promise<XMLHttpRequestResponseType>  => {
+    private request: HTTPMethod = (url, options = {}, timeout = 5000) => {
         const self = this;
         const {headers = {}, method, data} = options;
 
@@ -62,6 +62,7 @@ export class HTTPTransport {
             }
 
             xhr.onload = function() {
+                // @ts-ignore
                 resolve(xhr);
             };
 

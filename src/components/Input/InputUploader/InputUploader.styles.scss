@@ -1,0 +1,12 @@
+.input-upload-box {
+    text-align: center;
+    margin: 40px 0;
+    &__label {
+        color: var(--primary-color);
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    &__input {
+        display: none;
+    }
+}

@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "start": "npm run build && node server.js",
-    "dev": "parcel -p 3000 ./index.hbs ./server.js",
+    "dev": "parcel -p 3000 ./index.hbs ./server.js --open",
     "build": "parcel build ./index.hbs",
     "format": "eslint --fix --ext .js,.ts",
     "stylelint": "stylelint \"src/**/*.scss\"",

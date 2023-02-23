@@ -4,7 +4,7 @@ import {LinkTmpl} from "./Link.tmpl";
 
 type TLinkProps = {
     text: string;
-    events: any;
+    events?: any;
     classList?: string;
 }
 

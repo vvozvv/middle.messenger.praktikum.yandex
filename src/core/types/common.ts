@@ -29,6 +29,8 @@ export type ProfileResponse = {
     email: string,
     phone: string,
     password: string,
+    avatar: string,
+    display_name: string,
 }
 
 export type TAuthUser = {

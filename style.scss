@@ -19,6 +19,10 @@
   font-family: Inter, sans-serif;
 }
 
+#root {
+    position: relative;
+}
+
 .link {
   text-decoration: none;
   color: var(--primary-color);

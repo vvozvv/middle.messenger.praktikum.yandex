@@ -12,8 +12,10 @@ export class UserApi extends BaseAPI {
         })
     }
 
-    public getUpdateAvatar() {
-        return this.http.put('profile/avatar', {})
+    public updateAvatar(data: any) {
+        return this.http.put('profile/avatar', {
+            data
+        })
     }
 
     public updatePassword(passwordObj: TChangePassword) {

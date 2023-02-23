@@ -10,6 +10,13 @@ enum PAGE {
     ERROR = '500',
 }
 
+export const AllowedWithoutToken = [
+    PAGE.LOGIN,
+    PAGE.REGISTRATION,
+    PAGE.NOT_FOUND,
+    PAGE.ERROR,
+]
+
 
 const pagesList: Array<{ path: PAGE, name: string }> = [
     { path: PAGE.MAIN, name: 'Главная страница' },

@@ -1,0 +1,61 @@
+.profile-image-block {
+    margin-bottom: 30px;
+    text-align: center;
+
+    &__name {
+        margin-top: 15px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    &__image {
+        width: 150px;
+        height: 150px;
+        background: var(--gray-hover-color);
+        border-radius: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+        }
+
+        &::after {
+            background: rgba(#000, 0.4);
+            content: "";
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        &::before {
+            content: "Поменять аватарку";
+            color: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            opacity: 0;
+            z-index: 3;
+        }
+
+        &:hover {
+            &::after {
+                opacity: 1;
+            }
+
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+}
