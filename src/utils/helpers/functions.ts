@@ -23,3 +23,13 @@ export const formArrayToObjectRequest = (array: Array<FormData>): Record<string,
         return {...obj, [item.name]: item.value}
     }, {})
 }
+
+/**
+ * Сортировка сообщений
+ * */
+export const sortMessages = (a: any, b: any) => {
+    if (!b.last_message?.time) {
+        return -1
+    }
+    return Date.parse(b.last_message?.time) - Date.parse(a.last_message?.time);
+};

@@ -13,10 +13,6 @@ class ChatList extends Block {
             },
         });
         ChatsController.getChatMessages();
-
-        // store.on(StoreEvents.Updated, () => {
-        //     this.setProps(store.getState());
-        // });
     }
 
     protected async connection(e: any) {

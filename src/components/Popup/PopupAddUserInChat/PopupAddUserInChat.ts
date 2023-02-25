@@ -6,7 +6,6 @@ import Button from "../../../components/Button/Button";
 import ChatsController from "../../../api/chats/chats-controller";
 import {withActiveChat} from "../../../hoc/withActiveChat";
 import {UserController} from "../../../api/user";
-import store from "../../../store/Store";
 
 class PopupAddUserInChat extends Popup {
     protected render(): DocumentFragment {
@@ -18,10 +17,11 @@ class PopupAddUserInChat extends Popup {
             type: 'text',
             events: {
                 input: (e: Event) => {
-                    const string = (e.target as HTMLInputElement).value;
-                    UserController.searchUser(string).then(res => {
-                        store.set('userfind', JSON.parse(res?.response))
-                    })
+                    // const string = (e.target as HTMLInputElement).value;
+                    // UserController.searchUser(string).then(res => {
+                    //     const { response } = res as any;
+                    //     store.set('userfind', JSON.parse(response))
+                    // })
                 },
             }
         });
@@ -36,12 +36,14 @@ class PopupAddUserInChat extends Popup {
                     const form = document.getElementById('add-user-popup');
                     const value = form?.querySelector('input')?.value;
 
-                    console.log(value)
+                    const data = await UserController.searchUser(value ?? '');
+                    const { response } = data as any;
 
                     await ChatsController.addUserInChat({
-                        users: [value ?? ''],
-                        chatId: Number(this.props.activeChat.id)
+                        users: [JSON.parse(response)[0]?.id],
+                        chatId: Number(this.props.activeChat?.id)
                     });
+                    this.toggleClass();
                 }
             }
         });

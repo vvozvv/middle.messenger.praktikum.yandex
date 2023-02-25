@@ -33,6 +33,10 @@ class ChatsController {
         }
     }
 
+    deleteChatUsers(usersChatPayload: any) {
+        return this.api.deleteUserInChat(usersChatPayload);
+    }
+
     deleteChat(id: number) {
         return this.api.deleteChat(id);
     }
@@ -57,10 +61,19 @@ class ChatsController {
         return this.api.addUserInChat(usersChatPayload);
     }
 
+    deleteUsers(usersChatPayload: any) {
+        return this.api.deleteUserInChat(usersChatPayload);
+    }
+
+    getUserChats(id: number) {
+        return this.api.getUserChats(id);
+    }
+
     async setSocketConnection(userId: string, chatId: string) {
         const data = (await this.api.getToken(chatId)) as unknown as Record<string, unknown>;
+        const { response } = data as any;
 
-        const endpoint = `${userId}/${chatId}/${JSON.parse(data?.response)?.token}`;
+        const endpoint = `${userId}/${chatId}/${JSON.parse(response)?.token}`;
 
         this.socket = new SocketConnection(endpoint);
     }

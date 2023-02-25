@@ -29,10 +29,10 @@ class PopupDeleteChat extends Popup {
                         const chatId = this.props?.activeChat?.id;
                         await ChatsController.deleteChat(Number(chatId));
                         await ChatsController.getChatMessages();
-
-                        this.toggleClass();
                     } catch (e) {
                         alert(e);
+                    } finally {
+                        this.toggleClass();
                     }
                 }
             }

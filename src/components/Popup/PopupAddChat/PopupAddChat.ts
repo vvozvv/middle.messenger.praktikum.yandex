@@ -23,14 +23,17 @@ class PopupAddChat extends Popup {
             page: 'Создать',
             title: 'Создать чат',
             events: {
-                click: (e: Event) => {
+                click: async (e: Event) => {
                     e.preventDefault();
                     const form = document.getElementById('add-chat-popup');
                     const value = form?.querySelector('input')?.value;
 
-                    ChatsController.createChats({
+                    await ChatsController.createChats({
                         title: value ?? ''
                     });
+                    await ChatsController.getChatMessages();
+
+                    this.toggleClass();
                 }
             }
         })

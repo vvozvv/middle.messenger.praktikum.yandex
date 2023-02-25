@@ -1,7 +1,7 @@
 import {BaseAPI} from "../base-api";
 import {TCreateChats} from "../../core/types/chat.types";
 import {Indexed} from "../../core/types/common";
-import * as queryString from "querystring";
+import {queryString} from "../../utils/helpers/queryString";
 
 class ChatAPI extends BaseAPI {
     constructor() {
@@ -51,8 +51,10 @@ class ChatAPI extends BaseAPI {
     /**
      * Удалить пользователей из чата;
      */
-    deleteUserInChat() {
-        return this.http.delete('users')
+    deleteUserInChat(usersChatPayload: any) {
+        return this.http.delete('users', {
+            data: usersChatPayload
+        })
     }
 
     getChatsArchiveById(id: number) {
@@ -88,6 +90,11 @@ class ChatAPI extends BaseAPI {
     getChats(query: Indexed) {
         return this.http.get(queryString(query));
     }
+
+    getUserChats(id: number) {
+        return this.http.get(`${id}/users`, {})
+    }
+
 }
 
 export default ChatAPI;

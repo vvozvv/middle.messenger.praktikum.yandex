@@ -1,0 +1,48 @@
+.delete-user-popup {
+    width: 550px;
+    &__title {
+        margin-bottom: 30px;
+        display: block;
+    }
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        height: auto;
+        margin: 40px 0;
+    }
+
+    .form-control {
+        $self: &;
+        label {
+            padding: 15px;
+            border: 1px solid var(--gray-hover-color);
+            border-radius: 5px;
+            cursor: pointer;
+            height: 50px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        input {
+            display: none;
+            &:checked + label {
+                background: var(--error-color);
+                color: #fff;
+            }
+        }
+    }
+
+    //input[type="checkbox"] {
+    //    appearance: none;
+    //    background-color: #fff;
+    //    margin: 0;
+    //    font: inherit;
+    //    color: currentColor;
+    //    width: 1.15em;
+    //    height: 1.15em;
+    //    border: 0.15em solid currentColor;
+    //    border-radius: 50%;
+    //    transform: translateY(-0.075em);
+    //}
+}

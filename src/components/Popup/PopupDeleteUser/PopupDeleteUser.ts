@@ -2,13 +2,65 @@ import Popup from "../Popup";
 import {compile} from "handlebars";
 import PopupDeleteUserTmpl from "./PopupDeleteUser.tmpl";
 import {withActiveChatConnect} from "../../../hoc/withActiveChat";
-import {UserController} from "../../../api/user";
 import store from "../../../store/Store";
+import ChatsController from "../../../api/chats/chats-controller";
+import './PopupDeleteUser.styles.scss';
+import Button from "../../../components/Button/Button";
 
 class PopupDeleteUser extends Popup {
-    protected render(): DocumentFragment {
+    constructor(props: any) {
+        super(props);
+        this.loadUsers()
+    }
+
+    loadUsers() {
         const id = store.getState().active?.activeChat?.id;
-        UserController.getUserChats(id)
+
+        ChatsController.getUserChats(id).then(res => {
+            const { status, response } = res as any;
+
+            if (status === 200) {
+                this.setProps({
+                    user: JSON.parse(response)
+                })
+            }
+
+        })
+    }
+
+    protected render(): DocumentFragment {
+        this.children.deleteButton = new Button({
+            type: 'button',
+            page: 'Удалить',
+            title: 'Удалить',
+            events: {
+                click: async (e: Event) => {
+                    e.preventDefault();
+                    const id = store.getState().active?.activeChat?.id;
+                    const form = document.getElementById('delete-user-popup-form');
+                    const inputs = form?.querySelectorAll('input');
+
+                    const formData: number[] = [];
+                    inputs?.forEach((input) => {
+                        if (input.checked) {
+                            formData.push(Number(input.value));
+                        }
+                    });
+
+                    const obj = {
+                        users: formData,
+                        chatId: Number(id)
+                    }
+
+                    try {
+                        await ChatsController.deleteChatUsers(obj);
+                        this.children.addChatPopup.toggleClass();
+                    } catch (e) {
+                        alert('Ошибка удаления')
+                    }
+                }
+            }
+        });
 
         const tmpl = compile(this.getTemplate(PopupDeleteUserTmpl));
         return this.compile(tmpl, this.props);
