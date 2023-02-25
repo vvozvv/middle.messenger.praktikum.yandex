@@ -6,9 +6,9 @@
   &__info {
     padding: 20px;
     border-right: 1px solid var(--gray-main-color);
-      display: grid;
-      grid-template-rows: 60px auto 1fr;
-      max-height: 100vh;
+    display: grid;
+    grid-template-rows: 60px auto 1fr;
+    max-height: 100vh;
   }
 
   &__profile {
@@ -19,22 +19,20 @@
   &__header {
     border-bottom: 1px solid var(--gray-main-color);
   }
+
   &__chat-list {
-    margin: 0 0 20px 0;
-      overflow-y: scroll;
+    margin: 0 0 20px;
+    overflow-y: scroll;
   }
 
   &__main {
     height: 100vh;
     display: grid;
-      grid-template-rows: 80px 1fr 80px;
+    grid-template-rows: 80px 1fr 80px;
   }
 }
 
 .chat-header {
-  //display: flex;
-  //align-items: center;
-  //justify-content: space-between;
   padding: 15px 30px;
 
   &__user {
@@ -54,28 +52,30 @@
     border-radius: 100%;
     background: var(--gray-main-color);
   }
-    &__row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
 
-    &__button {
-        outline: none;
-        background: transparent;
-        border: none;
-        width: 40px;
-        height: 40px;
-    }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    &__actions {
-        display: flex;
-        align-items: center;
-    }
+  &__button {
+    outline: none;
+    background: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .chat-content {
   $self: &;
+
   padding: 20px;
   display: grid;
   height: 100%;

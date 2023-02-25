@@ -1,26 +1,31 @@
 .avatar-uploader {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 400px;
-    &__title {
-        font-size: 26px;
-        text-align: center;
-        font-weight: bold;
-    }
-    &__block {
-        margin: 40px 0;
-        text-align: center;
-    }
-    &__input {
-        display: none;
-    }
-    &__label {
-        cursor: pointer;
-        color: var(--primary-color);
-    }
-    &__button {
-        width: fit-content;
-        padding: 15px 30px;
-        margin: auto;
-    }
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 400px;
+
+  &__title {
+    font-size: 26px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__block {
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    cursor: pointer;
+    color: var(--primary-color);
+  }
+
+  &__button {
+    width: fit-content;
+    padding: 15px 30px;
+    margin: auto;
+  }
 }

@@ -9,7 +9,7 @@
   cursor: pointer;
 
   &:hover {
-      background: var(--gray-hover-color);
+    background: var(--gray-hover-color);
   }
 
   &__image {
@@ -34,7 +34,7 @@
   &__name {
     font-weight: 600;
     font-size: 18px;
-      margin-bottom: 5px;
+    margin-bottom: 5px;
   }
 
   &__date {
@@ -58,13 +58,13 @@
     gap: 10px;
   }
 
-    &__settings {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        justify-content: center;
-        align-items: end;
-    }
+  &__settings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: end;
+  }
 
   &__setting-icon-image {
     width: 12px;
