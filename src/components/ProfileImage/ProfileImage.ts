@@ -7,7 +7,7 @@ import {ProfileResponse} from "../../core/types/common";
 import './ProfileImage.styles.scss';
 
 export class ProfileImage extends Block {
-    constructor(props) {
+    constructor(props: any) {
         super({
             ...props,
             avatarLink: getImagePath((store.getState()?.currentUser as ProfileResponse)?.avatar),

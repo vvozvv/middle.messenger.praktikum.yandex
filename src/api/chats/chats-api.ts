@@ -1,5 +1,7 @@
 import {BaseAPI} from "../base-api";
 import {TCreateChats} from "../../core/types/chat.types";
+import {Indexed} from "../../core/types/common";
+import * as queryString from "querystring";
 
 class ChatAPI extends BaseAPI {
     constructor() {
@@ -9,14 +11,14 @@ class ChatAPI extends BaseAPI {
     /**
      * Получить сообщения чата;
      */
-    public getChatMessages() {
+    getChatMessages() {
         return this.http.get('', {})
     }
 
     /**
      * Создать чат;
      */
-    public createChats(createObj: TCreateChats) {
+    createChats(createObj: TCreateChats) {
         return this.http.post('', {
             data: createObj
         })
@@ -25,7 +27,7 @@ class ChatAPI extends BaseAPI {
     /**
      * Удалить чат;
      */
-    public deleteChat(id: number) {
+    deleteChat(id: number) {
         return this.http.delete('', {
             data: {
                 chatId: id
@@ -33,25 +35,27 @@ class ChatAPI extends BaseAPI {
         })
     }
 
-    public getChatsArchive() {
+    getChatsArchive() {
         return this.http.get('archive')
     }
 
     /**
      * Добавить пользователей в чат;
      */
-    public addUserInChat() {
-        return this.http.put('users')
+    addUserInChat(usersChatPayload: any) {
+        return this.http.put('users', {
+            data: usersChatPayload
+        })
     }
 
     /**
      * Удалить пользователей из чата;
      */
-    public deleteUserInChat() {
+    deleteUserInChat() {
         return this.http.delete('users')
     }
 
-    public getChatsArchiveById(id: number) {
+    getChatsArchiveById(id: number) {
         return this.http.post('archive', {
             data: {
                 chatId: id
@@ -62,19 +66,27 @@ class ChatAPI extends BaseAPI {
     /**
      * получить количество новых сообщений в указанном чате;
      */
-    public getNewMessage(id: number) {
+    getNewMessage(id: number) {
         return this.http.get(`new/${id}`)
     }
 
     /**
      * Получить пользователей чата по ID;
      */
-    public getUserInChat(id: number) {
+    getUserInChat(id: number) {
         return this.http.get(`${id}/users`)
     }
 
-    public setChatAvatar() {
+    setChatAvatar() {
         return this.http.put('avatar')
+    }
+
+    getToken(id: string) {
+        return this.http.post(`/token/${id}`);
+    }
+
+    getChats(query: Indexed) {
+        return this.http.get(queryString(query));
     }
 }
 

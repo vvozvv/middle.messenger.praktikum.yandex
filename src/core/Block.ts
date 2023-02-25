@@ -1,7 +1,7 @@
 import { v4 as makeUUID } from 'uuid';
 import { EventBus } from './EventBus';
 
-export default abstract class Block {
+abstract class Block {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -190,3 +190,5 @@ export default abstract class Block {
     }
   }
 }
+
+export default Block;

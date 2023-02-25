@@ -30,6 +30,10 @@ class UserController {
     public searchUser(login: string) {
         return this.api.searchUser(login);
     }
+
+    public getUserChats(id: number) {
+        return this.api.getUserChats(id);
+    }
 }
 
 export default new UserController();

@@ -35,4 +35,8 @@ export class UserApi extends BaseAPI {
             }
         })
     }
+
+    public getUserChats(id: number) {
+        return this.http.get(`${id}/users`, {})
+    }
 }

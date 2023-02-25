@@ -16,6 +16,7 @@ export default class Input extends Block {
                 focus: (e: FocusEvent) => this.changeInputValue(e),
                 input: (e: InputEvent) => this.changeInputValue(e),
                 blur: (e: FocusEvent) => this.changeInputValue(e),
+                ...props.events,
             }
         });
     }

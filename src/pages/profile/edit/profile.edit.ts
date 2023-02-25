@@ -8,7 +8,7 @@ import { formArrayToObjectRequest } from '../../../utils/helpers/functions';
 import store, {StoreEvents} from '../../../store/Store';
 import {UserController} from "../../../api/user";
 import {ProfileImage} from "../../../components/ProfileImage";
-import {PopupUploadImage} from "../../../components/Popup/PupupUploadImage/PopupUploadImage";
+import {PopupUploadImage} from "../../../components/Popup";
 
 /**
  * Страница "Профиль"

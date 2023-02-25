@@ -1,4 +1,4 @@
-type AppearanceButton = 'primary' | 'ghost';
+type AppearanceButton = 'primary' | 'ghost' | 'bordered';
 
 export type ButtonTypes = {
     id?: string;
@@ -6,4 +6,5 @@ export type ButtonTypes = {
     title: string;
     type: 'submit' | 'reset' | 'button';
     appearance?: AppearanceButton;
+    events?: Record<string, any>;
 }

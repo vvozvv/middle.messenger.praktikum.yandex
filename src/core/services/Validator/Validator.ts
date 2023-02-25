@@ -38,7 +38,7 @@ class Validator {
         return value === "";
     }
 
-    checkCorrect(value: string, option: ValidationProps): string {
+    checkCorrect(value: string, option: ValidationProps = {}): string {
         const RULES = Object.keys(option);
 
         if (RULES.includes('required') && this.isEmpty(value)) {
@@ -66,7 +66,7 @@ class Validator {
         }
 
         if (RULES.includes('isRetryPassword') && option['isRetryPassword']) {
-            const password = document.getElementsByName(option['isRetryPassword'])[0];
+            const password = document.getElementsByName(option['isRetryPassword'])[0] as HTMLInputElement;
 
             if (password && value !== password['value']) {
                 return `Пароли не совпадают`;

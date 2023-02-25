@@ -1,4 +1,4 @@
-import {Popup} from "../Popup";
+import Popup from "../Popup";
 import {compile} from "handlebars";
 import PopupTemplate from "../PupupUploadImage/PupupUploadImage.tmpl";
 import UserController from "../../../api/user/user-controller";
@@ -6,7 +6,7 @@ import store from "../../../store/Store";
 import './PopupUploadImage.styles.scss'
 import {InputUploader} from "../../Input";
 
-export class PopupUploadImage extends Popup {
+class PopupUploadImage extends Popup {
     constructor(props: any) {
         super(props);
         // @ts-ignore
@@ -38,3 +38,5 @@ export class PopupUploadImage extends Popup {
         return this.compile(template, this.props);
     }
 }
+
+export default PopupUploadImage;

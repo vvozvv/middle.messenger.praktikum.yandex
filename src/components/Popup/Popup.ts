@@ -4,11 +4,11 @@ import PopupTemplate from './Popup.tmpl';
 import './Popup.styles.scss';
 import CloseIcon from '../../assets/image/icon/close.svg'
 
-export class Popup extends Block {
+class Popup extends Block {
     constructor(props: any) {
         super({
             ...props,
-            active: false,
+            activePopup: false,
             events: {
                 mouseup: (event: MouseEvent) => this.closePopup(event),
             }
@@ -16,7 +16,7 @@ export class Popup extends Block {
     }
 
     toggleClass() {
-        this.setProps({ ...this.props, active: !this.props.active})
+        this.setProps({ ...this.props, activePopup: !this.props.activePopup})
     }
 
     private closePopup(event: MouseEvent) {
@@ -30,8 +30,7 @@ export class Popup extends Block {
 
     protected getTemplate(template: any) {
         return `
-            <div>
-                <div class="popup {{#if active}}popup--active{{/if}}">
+            <div class="popup {{#if activePopup}}popup--active{{/if}}">
                     <div class="popup__content">
                         <div class="popup__close">
                             <img src="${CloseIcon}" alt="Закрыть" width="20" height="20" class="popup__close-image" />
@@ -39,7 +38,6 @@ export class Popup extends Block {
                         ${template}
                     </div>
                 </div>
-            </div>
         `
     }
 
@@ -48,3 +46,5 @@ export class Popup extends Block {
         return this.compile(template, this.props);
     }
 }
+
+export default Popup;

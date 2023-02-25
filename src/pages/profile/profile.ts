@@ -2,28 +2,18 @@ import { compile } from "handlebars";
 import {ProfilePageTemplate} from "./profile.tmpl";
 import './profile.style.scss';
 import Block from '../../core/Block';
-import store, {StoreEvents} from "../../store/Store";
 import {Link} from "../../components/Link";
 import router from "../../core/router/Router";
 import {PAGE} from "../../modules/router";
 import AuthController from "../../api/auth/auth-controller";
 import {ProfileImage} from "../../components/ProfileImage";
-import {PopupUploadImage} from "../../components/Popup/PupupUploadImage/PopupUploadImage";
+import {PopupUploadImage} from "../../components/Popup";
+import {withUser} from "../../hoc/withUser";
 
 /**
  * Страница "Профиль"
  */
-export default class ProfilePage extends Block {
-    constructor() {
-        super({
-            currentUser: store.getState()['currentUser'],
-        });
-
-        store.on(StoreEvents.Updated, () => {
-            this.setProps(store.getState());
-        });
-    }
-
+class ProfilePage extends Block {
     render() {
         this.children.linkResetPassword = new Link({
             text: 'Изменить данные',
@@ -68,9 +58,8 @@ export default class ProfilePage extends Block {
         });
 
         const template = compile(ProfilePageTemplate);
-        return this.compile(template, {
-            ...this.props,
-            ...this.props?.currentUser
-        });
+        return this.compile(template, this.props);
     }
 }
+
+export default withUser(ProfilePage);

@@ -49,3 +49,7 @@ export interface IPage {
     block: typeof Block;
     props?: Record<string, unknown>;
 }
+
+export type TBlock = {
+    events?: Record<string, (e: any) => void>
+}
