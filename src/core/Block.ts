@@ -116,7 +116,7 @@ abstract class Block {
   public hide() {
     const el = this.getContent();
 
-    if (el) el.style.display = 'none';
+    // if (el) el.style.display = 'none';
   }
 
   public compile(template: (context: any) => string, context: Record<string, any>) {

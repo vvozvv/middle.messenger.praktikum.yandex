@@ -4,6 +4,7 @@ import ChatsListTmpl from "./ChatsList.tmpl";
 import ChatsController from "../../../../api/chats/chats-controller";
 import store from "../../../../store/Store";
 import {withChatsConnect} from "../../../../hoc/withChats";
+import {TChat} from "../../../../core/types/chat.types";
 
 class ChatList extends Block {
     constructor() {
@@ -21,7 +22,7 @@ class ChatList extends Block {
 
       if (selectChatId) {
           try {
-                const chat = (store.getState().chat ?? []) as Array<any>;
+                const chat = (store.getState().chat ?? []) as Array<TChat>;
                 const userId = store.getState().currentUser?.id;
                 await ChatsController.setSocketConnection(userId, selectChatId);
                 const selectChat = chat.find(item => Number(item.id) === Number(selectChatId));

@@ -1,13 +1,13 @@
 enum PAGE {
-    MAIN = '',
-    LOGIN = 'authorization',
-    REGISTRATION = 'registration',
-    CHATS = 'chat',
-    PROFILE = 'profile',
-    PROFILE_EDIT = 'profile-edit',
-    PROFILE_PASSWORD_EDIT = 'profile-edit-password',
-    NOT_FOUND = '404',
-    ERROR = '500',
+    MAIN = '/',
+    LOGIN = '/authorization',
+    REGISTRATION = '/registration',
+    CHATS = '/chat',
+    PROFILE = '/profile',
+    PROFILE_EDIT = '/profile-edit',
+    PROFILE_PASSWORD_EDIT = '/profile-edit-password',
+    NOT_FOUND = '/404',
+    ERROR = '/500',
 }
 
 export const AllowedWithoutToken = [
