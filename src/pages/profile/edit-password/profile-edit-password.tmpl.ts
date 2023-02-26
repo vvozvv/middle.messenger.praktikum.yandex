@@ -3,9 +3,10 @@ const ProfileEditPageTemplate = `
     	<div class="profile__container">
 				<form id='profile-edit-password-form' class="profile__table">
 				    {{{inputOldPassword}}}
-                    {{{inputPassword}}}
-                    {{{inputPasswordSecond}}}
-                    {{{buttonSubmit}}}
+            {{{inputPassword}}}
+            {{{inputPasswordSecond}}}
+            {{{buttonSubmit}}}
+            {{{buttonBack}}}
 				</form>
 			</div>
     </main>

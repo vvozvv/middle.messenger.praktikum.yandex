@@ -6,6 +6,9 @@ import './PopupDeleteChat.styles.scss';
 import ChatsController from "../../../api/chats/chats-controller";
 import {withActiveChat} from "../../../hoc/withActiveChat";
 
+/**
+ * Модальное окно "Удалить чат"
+ */
 class PopupDeleteChat extends Popup {
     protected render(): DocumentFragment {
         this.children.closeButton = new Button({

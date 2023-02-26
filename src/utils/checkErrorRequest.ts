@@ -12,14 +12,13 @@ export const checkErrorRequest = async (request: Promise<any>, goTo?: PAGE) => {
         const res = await request;
         const {status} = res as any;
 
-        if (status !== 200) {
-            throw new Error(res)
-        }
-
-        if (goTo) {
-            router.go(goTo);
+        if (status === 200 || status === 401) {
+          if (goTo) router.go(goTo);
+        } else {
+          throw new Error(res)
         }
     } catch (e) {
+        console.error('Ошибка', e)
         alert(e)
     }
 

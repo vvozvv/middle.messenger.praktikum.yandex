@@ -7,6 +7,9 @@ import ChatsController from "../../../api/chats/chats-controller";
 import './PopupDeleteUser.styles.scss';
 import Button from "../../../components/Button/Button";
 
+/**
+ * Модальное окно "Удалить пользователя из чата"
+ */
 class PopupDeleteUser extends Popup {
     constructor(props: any) {
         super(props);

@@ -7,6 +7,8 @@ import { formArrayToObjectRequest } from '../../../utils/helpers/functions';
 import {ProfileEditPageTemplate} from "./profile-edit-password.tmpl";
 import {UserController} from "../../../api/user";
 import {TFormPassword} from "../../../core/types/user.types";
+import router from "../../../core/router/Router";
+import {PAGE} from "../../../modules/router";
 
 /**
  * Страница "Профиль"
@@ -75,6 +77,19 @@ export default class ProfileEditPasswordEditPage extends Block {
             page: 'profile-edit',
             title: 'Сохранить',
         });
+
+      this.children.buttonBack = new Button({
+        type: 'button',
+        page: 'profile-edit',
+        appearance: 'ghost',
+        title: 'Назад',
+        events: {
+          click: (e: Event) => {
+            e.preventDefault();
+            router.go(PAGE.CHATS)
+          }
+        }
+      });
 
         const template = compile(ProfileEditPageTemplate);
         return this.compile(template, this.props);

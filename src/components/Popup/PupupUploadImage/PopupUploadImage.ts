@@ -6,6 +6,9 @@ import store from "../../../store/Store";
 import './PopupUploadImage.styles.scss'
 import {InputUploader} from "../../Input";
 
+/**
+ * Модальное окно "Загрузить аватар"
+ */
 class PopupUploadImage extends Popup {
     constructor(props: any) {
         super(props);

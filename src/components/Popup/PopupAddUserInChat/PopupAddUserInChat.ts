@@ -7,6 +7,9 @@ import ChatsController from "../../../api/chats/chats-controller";
 import {withActiveChat} from "../../../hoc/withActiveChat";
 import {UserController} from "../../../api/user";
 
+/**
+ * Модальное окно "Добавить пользователя в чат"
+ */
 class PopupAddUserInChat extends Popup {
     protected render(): DocumentFragment {
 
@@ -15,15 +18,6 @@ class PopupAddUserInChat extends Popup {
             label: '',
             placeholder: 'Логин пользователя',
             type: 'text',
-            events: {
-                input: (e: Event) => {
-                    // const string = (e.target as HTMLInputElement).value;
-                    // UserController.searchUser(string).then(res => {
-                    //     const { response } = res as any;
-                    //     store.set('userfind', JSON.parse(response))
-                    // })
-                },
-            }
         });
 
         this.children.buttonCreate = new Button({

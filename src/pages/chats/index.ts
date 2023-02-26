@@ -2,39 +2,21 @@ import { compile } from "handlebars";
 import ChatPageTemplate from "./chats.tmpl";
 import './chat.style.scss';
 import Block from '../../core/Block';
-import { FormData } from '../../core/types/common';
-import { formArrayToObjectRequest } from '../../utils/helpers/functions';
-import ChatsController from "../../api/chats/chats-controller";
 import Button from "../../components/Button/Button";
 import ProfileHeader from "./components/ProfileHeader/ProfileHeader";
-import ChatHeader from "./components/ChatHeader/ChatHeader";
-import ChatMessages from "./components/ChatMessages/ChatMessages";
-import ChatBottomPanel from "./components/ChatBottomPanel/ChatBottomPanel";
 import ChatList from "./components/ChatList/ChatList";
 import Input from "../../components/Input/Input";
 import {PopupAddChat} from "../../components/Popup";
+import ChatMessageContent from "./components/ChatMessageContent/ChatMessageContent";
+import router from "../../core/router/Router";
 
 /**
  * Главная "Чаты"
  */
 class ChatsPage extends Block {
-    constructor() {
-        super();
-    }
-    private sendMessage(e: MouseEvent) {
-        e.preventDefault();
-        const form = document.getElementById('chat-message');
-        const inputs = form?.querySelectorAll('input');
-
-        const formData: FormData[] = [];
-        inputs?.forEach((input) => {
-            formData.push({ name: input.name, value: input.value, type: input.type });
-        });
-
-        const objForm = formArrayToObjectRequest(formData);
-
-        ChatsController.sendMessage(objForm?.message);
-    }
+  constructor() {
+    super();
+  }
 
     render(): DocumentFragment {
         this.children.newChatButton = new Button({
@@ -50,13 +32,7 @@ class ChatsPage extends Block {
         });
 
         this.children.profileHeader = new ProfileHeader();
-        this.children.chatHeader = new ChatHeader();
-        this.children.content = new ChatMessages();
-        this.children.bottomPanel = new ChatBottomPanel({
-            events: {
-                submit: (e: MouseEvent) => this.sendMessage(e),
-            }
-        });
+
         this.children.chatList = new ChatList({});
         this.children.inputSearch = new Input({
             name: 'search',
@@ -66,6 +42,20 @@ class ChatsPage extends Block {
             validation: {},
         });
         this.children.addChatPopup = new PopupAddChat({});
+        this.children.messageContent = new ChatMessageContent({});
+
+      this.children.buttonBack = new Button({
+        type: 'button',
+        page: 'profile-edit',
+        appearance: 'ghost',
+        title: 'Назад',
+        events: {
+          click: (e: Event) => {
+            e.preventDefault();
+            router.back()
+          }
+        }
+      });
 
         const template = compile(ChatPageTemplate);
         return this.compile(template, this.props)

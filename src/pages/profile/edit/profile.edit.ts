@@ -3,7 +3,7 @@ import {ProfileEditPageTemplate} from "./profile.edit.tmpl";
 import Block from '../../../core/Block';
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
-import { FormData } from '../../../core/types/common';
+import {FormData, ProfileResponse} from '../../../core/types/common';
 import { formArrayToObjectRequest } from '../../../utils/helpers/functions';
 import store, {StoreEvents} from '../../../store/Store';
 import {UserController} from "../../../api/user";
@@ -29,7 +29,7 @@ export default class ProfileEditPage extends Block {
                         formData.push({ name: input.name, value: input.value, type: input.type });
                     });
 
-                    const resultObj = formArrayToObjectRequest(formData);
+                    const resultObj = formArrayToObjectRequest(formData) as ProfileResponse;
 
                     await UserController.updateProfile(resultObj);
                 },

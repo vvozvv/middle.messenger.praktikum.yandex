@@ -3,6 +3,12 @@
   grid-template-columns: 440px 1fr;
   height: 100vh;
 
+  &--content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__info {
     padding: 20px;
     border-right: 1px solid var(--gray-main-color);
@@ -25,10 +31,19 @@
     overflow-y: scroll;
   }
 
+  &__empty-text {
+    color: var(--gray-text-color);
+  }
+
   &__main {
     height: 100vh;
     display: grid;
-    grid-template-rows: 80px 1fr 80px;
+    align-items: center;
+    justify-items: center;
+    &--content {
+      place-items: normal;
+      grid-template-rows: 80px 1fr 80px;
+    }
   }
 }
 

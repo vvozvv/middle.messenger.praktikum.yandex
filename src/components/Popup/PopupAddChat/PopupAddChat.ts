@@ -6,6 +6,9 @@ import './PopupAddChat.styles.scss';
 import Button from "../../../components/Button/Button";
 import ChatsController from "../../../api/chats/chats-controller";
 
+/**
+ * Модальное окно "Добавить чат"
+ */
 class PopupAddChat extends Popup {
     protected render() {
         this.children.input = new Input({

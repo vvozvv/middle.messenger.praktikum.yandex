@@ -37,7 +37,7 @@ router
 AuthController.getUser().then((res) => {
     const {status, response} = res;
 
-    if (status === 200) {
+    if (status === 200 || status === 400) {
         router.go(getPageFromUrl());
         store.set('currentUser', JSON.parse(response))
     } else if (AllowedWithoutToken.includes(getPageFromUrl())) {

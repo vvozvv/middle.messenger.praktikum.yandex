@@ -28,11 +28,10 @@ class Router {
     }
 
     start() {
-        window.onpopstate = (() => {
-            this._onRoute(window.location.pathname);
-        }).bind(this);
-
+      window.onpopstate = () => {
         this._onRoute(window.location.pathname);
+      };
+      this._onRoute(window.location.pathname);
     }
 
     _onRoute(pathname: string) {
@@ -50,8 +49,11 @@ class Router {
     }
 
     go(pathname: string) {
+
+      if (pathname) {
         this.history.pushState({}, '', pathname);
         this._onRoute(pathname);
+      }
     }
 
     back() {
