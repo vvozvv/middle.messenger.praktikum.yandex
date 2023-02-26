@@ -16,21 +16,25 @@ class ChatList extends Block {
     }
 
     protected async connection(e: any) {
-        if (e.target.dataset.chatId) {
-            try {
-                const selectChatId = e.target.dataset.chatId;
+      const parentDiv = e.target.closest('.chat-item');
+      const selectChatId = parentDiv.dataset.chatId;
+
+      if (selectChatId) {
+          try {
+                const chat = (store.getState().chat ?? []) as Array<any>;
                 const userId = store.getState().currentUser?.id;
                 await ChatsController.setSocketConnection(userId, selectChatId);
-                const selectChat = store.getState().chat.find(item => Number(item.id) === Number(selectChatId));
-                const newChat = store.getState()?.chat.map(item => {
-                    return {...item, active: Number(item.id) === Number(selectChatId)}
-                })
+                const selectChat = chat.find(item => Number(item.id) === Number(selectChatId));
+                const newChat = chat.map(item => ({
+                  ...item,
+                  active: Number(item.id) === Number(selectChatId)
+                }))
 
                 store.set('chat', newChat)
                 store.set('active.activeChat', {
-                    id: e.target.dataset.chatId,
+                    id: selectChatId,
                     title: selectChat?.title,
-                    chat: e.target.dataset.chatId,
+                    chat: selectChatId,
                     messages: []
                 });
             } catch (e) {

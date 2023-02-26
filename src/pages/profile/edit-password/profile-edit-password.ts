@@ -8,7 +8,6 @@ import {ProfileEditPageTemplate} from "./profile-edit-password.tmpl";
 import {UserController} from "../../../api/user";
 import {TFormPassword} from "../../../core/types/user.types";
 import router from "../../../core/router/Router";
-import {PAGE} from "../../../modules/router";
 
 /**
  * Страница "Профиль"
@@ -86,7 +85,7 @@ export default class ProfileEditPasswordEditPage extends Block {
         events: {
           click: (e: Event) => {
             e.preventDefault();
-            router.go(PAGE.CHATS)
+            router.back()
           }
         }
       });
