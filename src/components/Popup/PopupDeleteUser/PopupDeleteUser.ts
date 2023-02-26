@@ -10,7 +10,7 @@ import Button from "../../../components/Button/Button";
 class PopupDeleteUser extends Popup {
     constructor(props: any) {
         super(props);
-        this.loadUsers()
+          this.loadUsers()
     }
 
     loadUsers() {
@@ -54,8 +54,9 @@ class PopupDeleteUser extends Popup {
 
                     try {
                         await ChatsController.deleteChatUsers(obj);
-                        this.children.addChatPopup.toggleClass();
+                        this.toggleClass();
                     } catch (e) {
+                      console.log(e)
                         alert('Ошибка удаления')
                     }
                 }

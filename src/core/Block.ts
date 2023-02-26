@@ -1,5 +1,5 @@
-import { v4 as makeUUID } from 'uuid';
-import { EventBus } from './EventBus';
+import {v4 as makeUUID} from 'uuid';
+import {EventBus} from './EventBus';
 
 abstract class Block {
   static EVENTS = {
@@ -43,19 +43,19 @@ abstract class Block {
     return true;
   }
 
-  _getChildren(propsAndChildren) {
-        const children = {};
-        const props = {};
+  _getChildren(propsAndChildren: Record<string, any>) {
+    const children: Record<string, any> = {};
+    const props: Record<string, any> = {};
 
-        Object.entries(propsAndChildren).forEach(([key, value]) => {
-            if (value instanceof Block) {
-                children[key] = value;
-            } else {
-                props[key] = value;
-            }
-        });
-      // console.log(children, props);
-        return { children, props };
+    Object.entries(propsAndChildren).forEach(([key, value]) => {
+      if (value instanceof Block) {
+        children[key] = value;
+      } else {
+        props[key] = value;
+      }
+    });
+    // console.log(children, props);
+    return {children, props};
   }
 
   private _componentDidMount() {
@@ -88,6 +88,7 @@ abstract class Block {
 
     Object.assign(this.props, nextProps);
   };
+
   //   TODO: заменить
   protected render(): any {
     return new DocumentFragment();
@@ -118,31 +119,31 @@ abstract class Block {
     if (el) el.style.display = 'none';
   }
 
-    public compile(template: (context: any) => string, context: Record<string, any>) {
-        const propsAndStubs = { ...context };
+  public compile(template: (context: any) => string, context: Record<string, any>) {
+    const propsAndStubs = {...context};
 
-        Object.entries(this.children).forEach(([key, child]) => {
-            propsAndStubs[key] = `<div data-id="${(child as any).id}"></div>`
-        });
+    Object.entries(this.children).forEach(([key, child]) => {
+      propsAndStubs[key] = `<div data-id="${(child as any).id}"></div>`
+    });
 
-        const fragment = document.createElement('template');
+    const fragment = document.createElement('template');
 
-        fragment.innerHTML = template(propsAndStubs);
+    fragment.innerHTML = template(propsAndStubs);
 
-        Object.entries(this.children).forEach(([_, component]) => {
-            const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
+    Object.entries(this.children).forEach(([_, component]) => {
+      const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
 
-            if (!stub) {
-                return;
-            }
+      if (!stub) {
+        return;
+      }
 
-            const content = component.getContent()!;
+      const content = component.getContent()!;
 
-            stub.replaceWith(content);
-        });
+      stub.replaceWith(content);
+    });
 
-        return fragment.content;
-    }
+    return fragment.content;
+  }
 
   private get element(): HTMLElement | null {
     return this._element;
@@ -157,7 +158,7 @@ abstract class Block {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: Record<string, any>, p: string, value) {
-        const oldProps = { ...target };
+        const oldProps = {...target};
         target[p] = value;
 
         self._eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, target);
@@ -170,7 +171,7 @@ abstract class Block {
   }
 
   private addEvents() {
-    const { events = {} } = this.props;
+    const {events = {}} = this.props;
     this.events = events;
 
     Object.keys(events).forEach((eventName) => {

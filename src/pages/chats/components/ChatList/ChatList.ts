@@ -34,7 +34,6 @@ class ChatList extends Block {
                     messages: []
                 });
             } catch (e) {
-                console.log(e)
                 alert('Произошла ошибка')
             }
         }
