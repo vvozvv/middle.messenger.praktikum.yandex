@@ -17,7 +17,8 @@ export class HTTPTransport {
     }
 
     public get: HTTPMethod = (url, options = {}) => {
-        return this.request(url, {...options, method: METHODS.GET}, options.timeout);
+        const { data, ...otherOptions } = options;
+        return this.request(`${url}${queryStringify(data)}`, {...otherOptions, method: METHODS.GET}, options.timeout);
     };
 
     public post: HTTPMethod = (url, options = {}) => {

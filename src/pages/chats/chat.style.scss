@@ -143,5 +143,11 @@
   &__send {
     display: flex;
     justify-content: center;
+    border: none;
+
+    & > button {
+      cursor: pointer;
+      border: none;
+    }
   }
 }

@@ -1,5 +1,6 @@
 import {getTime} from "../data";
 import {truncateText} from "./functions";
+import {getImagePath} from "./links";
 
 /**
  * Трансформирует ответ по сообщением в формат для отображения
@@ -21,6 +22,7 @@ export const transformMessageToDisplay = (obj: any, currentUserId: string) => {
 export const transformChatsToDisplay = (obj: any) => {
     return {
         ...obj,
+        avatar: getImagePath(obj.avatar),
         last_message: {
             ...obj.last_message,
             content: obj.last_message ? truncateText(obj.last_message?.content, 25) : 'Чат создан',

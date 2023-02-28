@@ -25,7 +25,7 @@ export default class SocketConnection {
         });
 
         this.socket.addEventListener('close', event => {
-            console.log(event)
+
             if (event.wasClean) {
                 console.log('Соединение закрыто чисто');
             } else {
@@ -36,24 +36,26 @@ export default class SocketConnection {
         });
 
         this.socket.addEventListener('message', event => {
-            const data = JSON.parse(event.data);
-            const currentUserId = store.getState().currentUser?.id;
+            try {
+              const data = JSON.parse(event.data);
+              const currentUserId = store.getState().currentUser?.id;
 
-            if (data && data.type !== 'error' && data.type !== 'pong' && data.type !== 'user connected') {
-
-
+              if (data && data.type !== 'error' && data.type !== 'pong' && data.type !== 'user connected') {
                 if (Array.isArray(data)) {
-                    console.log(data)
-                    const messageObj = data
-                        .sort((a, b) => new Date(a.time).valueOf() - new Date(b.time).valueOf())
-                        .map(item => transformMessageToDisplay(item, currentUserId));
-                    store.set('active.messages', messageObj);
+                  console.log(data)
+                  const messageObj = data
+                    .sort((a, b) => new Date(a.time).valueOf() - new Date(b.time).valueOf())
+                    .map(item => transformMessageToDisplay(item, currentUserId));
+                  store.set('active.messages', messageObj);
                 } else {
-                    store.set('active.messages', [
-                        ...store.getState()?.active?.messages,
-                        transformMessageToDisplay(data, currentUserId)
-                    ]);
+                  store.set('active.messages', [
+                    ...store.getState()?.active?.messages,
+                    transformMessageToDisplay(data, currentUserId)
+                  ]);
                 }
+              }
+            } catch (e) {
+              alert('Произошла ошибка')
             }
         });
 

@@ -23,3 +23,12 @@ export type TChat = {
     title: string;
     unread_count: number;
 }
+
+export type TCreateChat = {
+  title: string;
+}
+
+export type TOperationChat = {
+  users: Array<number>,
+  chatId: number;
+}

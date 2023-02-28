@@ -1,7 +1,7 @@
 import {v4 as makeUUID} from 'uuid';
 import {EventBus} from './EventBus';
 
-abstract class Block {
+abstract class Block<Props extends Record<string, any> = {}> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -18,7 +18,7 @@ abstract class Block {
   protected _element: HTMLElement | null = null;
   private _eventBus: () => EventBus;
 
-  constructor(props: object = {}) {
+  constructor(props: Props = {} as Props) {
     const eventBus = new EventBus();
     this.children = this._getChildren(props);
     this.props = this._makePropsProxy(props);
@@ -47,14 +47,17 @@ abstract class Block {
     const children: Record<string, any> = {};
     const props: Record<string, any> = {};
 
-    Object.entries(propsAndChildren).forEach(([key, value]) => {
-      if (value instanceof Block) {
-        children[key] = value;
-      } else {
-        props[key] = value;
-      }
-    });
-    // console.log(children, props);
+    if (propsAndChildren) {
+      Object.entries(propsAndChildren).forEach(([key, value]) => {
+        if (value instanceof Block) {
+          children[key] = value;
+        } else {
+          props[key] = value;
+        }
+      });
+      // console.log(children, props);
+    }
+
     return {children, props};
   }
 

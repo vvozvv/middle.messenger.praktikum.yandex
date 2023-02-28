@@ -21,7 +21,7 @@ export const formArrayToObjectRequest = (array: Array<FormData>): Record<string,
     }
 
     return array.reduce((obj, item) => {
-        return {...obj, [item.name]: item.value}
+        return {...obj, [item.name]: item.value.trim()}
     }, {})
 }
 

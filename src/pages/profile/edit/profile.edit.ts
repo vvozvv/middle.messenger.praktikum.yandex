@@ -9,6 +9,10 @@ import store, {StoreEvents} from '../../../store/Store';
 import {UserController} from "../../../api/user";
 import {ProfileImage} from "../../../components/ProfileImage";
 import {PopupUploadImage} from "../../../components/Popup";
+import IconButton from "../../../components/IconButton/IconButton";
+import BackIcon from "../../../assets/image/icon/back-square-svgrepo-com.svg";
+import router from "../../../core/router/Router";
+import {PAGE} from "../../../modules/router";
 
 /**
  * Страница "Профиль"
@@ -122,6 +126,16 @@ export default class ProfileEditPage extends Block {
                     this.children.popup.toggleClass()
                 }
             }
+        });
+
+        this.children.goMessagerButton = new IconButton({
+          icon: BackIcon,
+          title: 'Вернуться к чатам',
+          events: {
+            click: () => {
+              router.go(PAGE.CHATS)
+            }
+          }
         });
 
         const template = compile(ProfileEditPageTemplate);

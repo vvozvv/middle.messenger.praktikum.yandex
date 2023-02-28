@@ -1,7 +1,7 @@
 /**
  * Функция трансформации параметров GET запроса в одну строку
  * */
-export function queryStringify(data): string {
+export function queryStringify(data = {}): string {
     if (typeof data !== 'object') {
         throw new Error('Data must be object');
     }

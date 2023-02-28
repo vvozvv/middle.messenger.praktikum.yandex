@@ -9,6 +9,8 @@ import AuthController from "../../api/auth/auth-controller";
 import {ProfileImage} from "../../components/ProfileImage";
 import {PopupUploadImage} from "../../components/Popup";
 import {withUser} from "../../hoc/withUser";
+import IconButton from "../../components/IconButton/IconButton";
+import BackIcon from "../../assets/image/icon/back-square-svgrepo-com.svg";
 
 /**
  * Страница "Профиль"
@@ -56,6 +58,17 @@ class ProfilePage extends Block {
                 }
             }
         });
+
+      this.children.goMessagerButton = new IconButton({
+        icon: BackIcon,
+        title: 'Вернуться к чатам',
+        events: {
+          click: () => {
+            router.go(PAGE.CHATS)
+          }
+        }
+      });
+
 
         const template = compile(ProfilePageTemplate);
         return this.compile(template, this.props);

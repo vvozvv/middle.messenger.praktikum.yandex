@@ -1,5 +1,5 @@
 import ChatAPI from "./chats-api";
-import {TChat, TCreateChats} from "../../core/types/chat.types";
+import {TChat, TCreateChats, TOperationChat} from "../../core/types/chat.types";
 import SocketConnection from "../soket/SocketConnection";
 import store from "../../store/Store";
 import {transformChatsToDisplay} from "../../utils/helpers/api";
@@ -15,13 +15,17 @@ class ChatsController {
     }
 
     async getChatMessages() {
-        const data = await this.api.getChatMessages();
-        const content = JSON.parse((data as any)?.response ?? []) as TChat[];
-        const transformData = content
+        try {
+          const data = await this.api.getChatMessages();
+          const content = JSON.parse((data as any)?.response ?? []) as TChat[];
+          const transformData = content
             .sort(sortMessages)
             .map(item => transformChatsToDisplay(item));
 
-        store.set('chat', transformData);
+          store.set('chat', transformData);
+        } catch (e) {
+          console.log(e)
+        }
     }
 
     async createChats(createObj: TCreateChats) {
@@ -33,7 +37,7 @@ class ChatsController {
         }
     }
 
-    deleteChatUsers(usersChatPayload: any) {
+    deleteChatUsers(usersChatPayload: TOperationChat) {
         return this.api.deleteUserInChat(usersChatPayload);
     }
 
@@ -57,11 +61,11 @@ class ChatsController {
         return this.socket?.sendMessage(message)
     }
 
-    addUserInChat(usersChatPayload: any) {
+    addUserInChat(usersChatPayload: TOperationChat) {
         return this.api.addUserInChat(usersChatPayload);
     }
 
-    deleteUsers(usersChatPayload: any) {
+    deleteUsers(usersChatPayload: TOperationChat) {
         return this.api.deleteUserInChat(usersChatPayload);
     }
 

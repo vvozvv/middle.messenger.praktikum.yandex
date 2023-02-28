@@ -1,5 +1,5 @@
 import {BaseAPI} from "../base-api";
-import {TCreateChats} from "../../core/types/chat.types";
+import {TCreateChat, TOperationChat} from "../../core/types/chat.types";
 import {Indexed} from "../../core/types/common";
 import {queryString} from "../../utils/helpers/queryString";
 
@@ -18,7 +18,7 @@ class ChatAPI extends BaseAPI {
     /**
      * Создать чат;
      */
-    createChats(createObj: TCreateChats) {
+    createChats(createObj: TCreateChat) {
         return this.http.post('', {
             data: createObj
         })
@@ -42,7 +42,7 @@ class ChatAPI extends BaseAPI {
     /**
      * Добавить пользователей в чат;
      */
-    addUserInChat(usersChatPayload: any) {
+    addUserInChat(usersChatPayload: TOperationChat) {
         return this.http.put('users', {
             data: usersChatPayload
         })
@@ -51,7 +51,7 @@ class ChatAPI extends BaseAPI {
     /**
      * Удалить пользователей из чата;
      */
-    deleteUserInChat(usersChatPayload: any) {
+    deleteUserInChat(usersChatPayload: TOperationChat) {
         return this.http.delete('users', {
             data: usersChatPayload
         })

@@ -10,4 +10,5 @@ export type TInputProps = {
     onBlur?: () => void;
     onFocus?: () => void;
     validation?: ValidationProps;
+    showErrorMessage?: boolean;
 } & TBlock;

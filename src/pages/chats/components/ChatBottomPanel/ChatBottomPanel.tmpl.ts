@@ -8,7 +8,8 @@ export default `
                 <img src="${FileIcon}" alt="Добавить файл" class="chat-content__icon chat-content__file-icon">
             </div>
             <div class="chat-content__input-box">
-	            <input type="text" name="message" placeholder="Введите сообщение" class="chat-content__input">
+            {{{inputSearch}}}
+<!--	            <input type="text" name="message" placeholder="Введите сообщение" class="chat-content__input" required />-->
             </div>
             <div class="chat-content__send">
                 <button type='submit'>

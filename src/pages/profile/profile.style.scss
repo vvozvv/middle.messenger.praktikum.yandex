@@ -1,9 +1,22 @@
 .profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-gap: 20px;
   width: 100vw;
   height: 100vh;
+
+  &__back-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--gray-main-color);
+  }
+
+  &__container-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &__container {
     max-width: 500px;

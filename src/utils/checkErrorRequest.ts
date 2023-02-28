@@ -22,5 +22,4 @@ export const checkErrorRequest = async (request: Promise<any>, goTo?: PAGE) => {
         console.error('Произошла ошибка', error )
         alert(error)
     }
-
 }

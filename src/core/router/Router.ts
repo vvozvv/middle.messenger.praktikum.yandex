@@ -50,7 +50,6 @@ class Router {
   }
 
   go(pathname: string) {
-
     if (pathname) {
       this.history.pushState({}, '', pathname);
       this._onRoute(pathname);

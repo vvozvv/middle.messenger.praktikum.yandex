@@ -1,12 +1,13 @@
 import {BaseAPI} from "../base-api";
 import {TChangePassword} from "../../core/types/user.types";
+import {ProfileResponse} from "../../core/types/common";
 
 export class UserApi extends BaseAPI {
     constructor() {
         super('user/');
     }
 
-    public updateProfile(updatedUserInfo: any): Promise<XMLHttpRequestResponseType>  {
+    public updateProfile(updatedUserInfo: ProfileResponse): Promise<XMLHttpRequestResponseType>  {
         return this.http.put('profile', {
             data: updatedUserInfo
         })
