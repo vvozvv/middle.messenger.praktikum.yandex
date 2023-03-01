@@ -19,13 +19,24 @@
   font-family: Inter, sans-serif;
 }
 
+#root {
+  position: relative;
+}
+
 .link {
   text-decoration: none;
   color: var(--primary-color);
   display: block;
+  padding: 10px 0;
+  font-weight: 600;
+  cursor: pointer;
 
   &--center {
     text-align: center;
+  }
+
+  &--danger {
+    color: var(--error-color);
   }
 
   &:hover {
@@ -48,6 +59,11 @@
 
   &--error {
     border: 1px solid var(--error-color);
+  }
+
+  &--transparent {
+    background: transparent;
+    border: none;
   }
 }
 

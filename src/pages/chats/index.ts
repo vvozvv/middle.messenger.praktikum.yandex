@@ -2,60 +2,64 @@ import { compile } from "handlebars";
 import ChatPageTemplate from "./chats.tmpl";
 import './chat.style.scss';
 import Block from '../../core/Block';
-import { FormData } from '../../core/types/common';
-import { formArrayToObjectRequest } from '../../utils/functions';
-import Message from '../../components/Message/Message';
-import { formatDate, getTime } from '../../utils/data';
-import ChatItems from '../../components/ChatItems/ChatItems';
+import Button from "../../components/Button/Button";
+import ProfileHeader from "./components/ProfileHeader/ProfileHeader";
+import ChatList from "./components/ChatList/ChatList";
+import Input from "../../components/Input/Input";
+import {PopupAddChat} from "../../components/Popup";
+import ChatMessageContent from "./components/ChatMessageContent/ChatMessageContent";
+import router from "../../core/router/Router";
 
 /**
  * Главная "Чаты"
  */
-export default class ChatsPage extends Block {
-    constructor() {
-        super({
-            chats: [
-                { name: 'name', time: '22:00', text: 'text text text', count: 10, active: true },
-                { name: 'Человечек  ', time: '12:00', text: 'Новое время', count: 2 }
-            ],
-            messages: [
-                { date: '19:00', text: 'Hello', me: false },
-                { date: '21:00', text: 'Привет', time: '12:00', me: true},
-                { date: '21:00', text: 'Как дела?', time: '12:00', me: true}
-            ],
-            events: {
-                submit: (e: MouseEvent) => {
-                    e.preventDefault();
-                    const form = document.getElementById('chat-message');
-                    const inputs = form?.querySelectorAll('input');
-
-                    const formData: FormData[] = [];
-                    inputs?.forEach((input) => {
-                        formData.push({ name: input.name, value: input.value, type: input.type });
-                    });
-
-                    const objForm = formArrayToObjectRequest(formData);
-
-                    console.log(objForm);
-                },
-            },
-        });
-    }
+class ChatsPage extends Block {
+  constructor() {
+    super();
+  }
 
     render(): DocumentFragment {
-        this.children.message = new Message({
-            me: true, text: 'Теперь мое сообщение', date: formatDate(new Date()),
+        this.children.newChatButton = new Button({
+            type: 'button',
+            page: 'Добавить чат',
+            title: 'Добавить чат',
+            events: {
+                click: (e: Event) => {
+                    e.preventDefault()
+                    this.children.addChatPopup.toggleClass();
+                }
+            }
         });
-        this.children.messageMore = new Message({
-            me: false, text: 'Не мое сообщение', date: formatDate(new Date()),
+
+        this.children.profileHeader = new ProfileHeader();
+
+        this.children.chatList = new ChatList({});
+        this.children.inputSearch = new Input({
+            name: 'search',
+            label: '',
+            placeholder: 'Поиск',
+            type: 'text',
+            validation: {},
         });
-        this.children.chatOne = new ChatItems({
-            name: 'Alexey', text: 'Не мое сообщение', time: getTime(new Date()), count: 10,
-        });
-        this.children.chatTwo = new ChatItems({
-            name: 'Alexey', active: true, text: 'Не мое сообщение', time: getTime(new Date()), count: 0
-        });
+        this.children.addChatPopup = new PopupAddChat({});
+        this.children.messageContent = new ChatMessageContent({});
+
+      this.children.buttonBack = new Button({
+        type: 'button',
+        page: 'profile-edit',
+        appearance: 'ghost',
+        title: 'Назад',
+        events: {
+          click: (e: Event) => {
+            e.preventDefault();
+            router.back()
+          }
+        }
+      });
+
         const template = compile(ChatPageTemplate);
         return this.compile(template, this.props)
     }
 }
+
+export default ChatsPage;

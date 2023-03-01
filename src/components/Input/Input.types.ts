@@ -1,4 +1,4 @@
-import { InputType, ValidationProps } from '../../core/types/common';
+import {InputType, TBlock, ValidationProps} from '../../core/types/common';
 
 export type TInputProps = {
     name: string;
@@ -10,4 +10,5 @@ export type TInputProps = {
     onBlur?: () => void;
     onFocus?: () => void;
     validation?: ValidationProps;
-}
+    showErrorMessage?: boolean;
+} & TBlock;

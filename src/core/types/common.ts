@@ -1,3 +1,6 @@
+import {PAGE} from "../../modules/router";
+import Block from "../Block";
+
 export type FormData = {
     name: string;
     value: string;
@@ -26,4 +29,27 @@ export type ProfileResponse = {
     email: string,
     phone: string,
     password: string,
+    avatar: string,
+    display_name: string,
+}
+
+export type TAuthUser = {
+    login: string;
+    password: string,
+}
+
+export type TEvents = Record<string, (e: Event) => void>;
+
+export type Indexed<T = unknown> = {
+    [key in string]: T;
+};
+
+export interface IPage {
+    path: PAGE | PAGE[];
+    block: typeof Block;
+    props?: Record<string, unknown>;
+}
+
+export type TBlock = {
+    events?: Record<string, (e: any) => void>
 }

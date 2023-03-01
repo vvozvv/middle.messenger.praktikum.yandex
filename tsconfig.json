@@ -21,6 +21,7 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "preserveConstEnums": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "components/*": ["./components/*"]
     }

@@ -3,18 +3,21 @@ import Block from '../../../core/Block';
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import { FormData } from '../../../core/types/common';
-import { formArrayToObjectRequest } from '../../../utils/functions';
+import { formArrayToObjectRequest } from '../../../utils/helpers/functions';
 import {ProfileEditPageTemplate} from "./profile-edit-password.tmpl";
+import {UserController} from "../../../api/user";
+import {TFormPassword} from "../../../core/types/user.types";
+import router from "../../../core/router/Router";
 
 /**
  * Страница "Профиль"
  */
 export default class ProfileEditPasswordEditPage extends Block {
-    constructor(props) {
+    constructor(props: any) {
         super({
             ...props,
             events: {
-                submit: (e: MouseEvent) => {
+                submit: async (e: MouseEvent) => {
                     e.preventDefault();
                     const form = document.getElementById('profile-edit-password-form');
                     const inputs = form?.querySelectorAll('input');
@@ -24,9 +27,10 @@ export default class ProfileEditPasswordEditPage extends Block {
                         formData.push({ name: input.name, value: input.value, type: input.type });
                     });
 
-                    const resultObj = formArrayToObjectRequest(formData);
+                    const resultObj = formArrayToObjectRequest(formData) as TFormPassword;
+                    const { passwordSecond, ...rest } = resultObj;
 
-                    console.log(resultObj);
+                    await UserController.updatePassword(rest);
                 },
             },
         });
@@ -46,7 +50,7 @@ export default class ProfileEditPasswordEditPage extends Block {
         });
 
         this.children.inputPassword = new Input({
-            name: 'password',
+            name: 'newPassword',
             label: 'Новый пароль',
             placeholder: 'Введите новый пароль',
             type: 'password',
@@ -72,6 +76,19 @@ export default class ProfileEditPasswordEditPage extends Block {
             page: 'profile-edit',
             title: 'Сохранить',
         });
+
+      this.children.buttonBack = new Button({
+        type: 'button',
+        page: 'profile-edit',
+        appearance: 'ghost',
+        title: 'Назад',
+        events: {
+          click: (e: Event) => {
+            e.preventDefault();
+            router.back()
+          }
+        }
+      });
 
         const template = compile(ProfileEditPageTemplate);
         return this.compile(template, this.props);

@@ -10,13 +10,15 @@ export default class Input extends Block {
 
     constructor(props: TInputProps) {
         super({
-            ...props,
             touched: false,
+            showErrorMessage: true,
             events: {
                 focus: (e: FocusEvent) => this.changeInputValue(e),
                 input: (e: InputEvent) => this.changeInputValue(e),
                 blur: (e: FocusEvent) => this.changeInputValue(e),
-            }
+                ...props.events,
+            },
+            ...props,
         });
     }
 
@@ -28,12 +30,18 @@ export default class Input extends Block {
         const errorResult = validatorInstance.checkCorrect(text, this.props.validation);
 
         if (errorResult) {
-            el.classList.add('input--error')
-            inputError.style.display = 'block'
-            inputError.innerHTML = errorResult
+            el.classList.add('input--error');
+
+            if (inputError) {
+              inputError.style.display = 'block';
+              inputError.innerHTML = errorResult;
+            }
         } else {
-            el.classList.remove('input--error')
-            inputError.style.display = 'none'
+            el.classList.remove('input--error');
+
+            if (inputError) {
+              inputError.style.display = 'none';
+            }
         }
     }
 

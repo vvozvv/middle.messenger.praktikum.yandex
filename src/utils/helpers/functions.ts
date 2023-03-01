@@ -1,4 +1,5 @@
-import { FormData } from '../core/types/common';
+import { FormData } from '../../core/types/common';
+import {TChat} from "../../core/types/chat.types";
 
 /**
  * Функция для обрезания текста
@@ -20,6 +21,16 @@ export const formArrayToObjectRequest = (array: Array<FormData>): Record<string,
     }
 
     return array.reduce((obj, item) => {
-        return {...obj, [item.name]: item.value}
+        return {...obj, [item.name]: item.value.trim()}
     }, {})
 }
+
+/**
+ * Сортировка сообщений
+ * */
+export const sortMessages = (a: TChat, b: TChat) => {
+    if (!b.last_message?.time) {
+        return -1
+    }
+    return Date.parse(b?.last_message?.time.toString()) - Date.parse(a?.last_message?.time.toString());
+};

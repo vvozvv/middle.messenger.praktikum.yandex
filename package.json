@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "start": "npm run build && node server.js",
-    "dev": "parcel -p 3000 ./index.hbs ./server.js",
+    "dev": "parcel -p 3000 ./index.hbs ./server.js --open",
     "build": "parcel build ./index.hbs",
     "format": "eslint --fix --ext .js,.ts",
     "stylelint": "stylelint \"src/**/*.scss\"",
@@ -22,11 +22,13 @@
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
     "@parcel/transformer-typescript-tsc": "^2.8.3",
+    "@types/uuid": "^9.0.1",
     "assert": "2.0.0",
     "browserify-zlib": "0.2.0",
     "buffer": "5.7.1",
     "crypto-browserify": "3.12.0",
     "eslint": "^8.33.0",
+    "eslint-config-airbnb": "^19.0.4",
     "events": "3.3.0",
     "parcel": "2.8.3",
     "path-browserify": "1.0.1",

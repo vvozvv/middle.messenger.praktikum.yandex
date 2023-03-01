@@ -1,7 +1,7 @@
-import { v4 as makeUUID } from 'uuid';
-import { EventBus } from './EventBus';
+import {v4 as makeUUID} from 'uuid';
+import {EventBus} from './EventBus';
 
-export default class Block {
+abstract class Block<Props extends Record<string, any> = {}> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -18,7 +18,7 @@ export default class Block {
   protected _element: HTMLElement | null = null;
   private _eventBus: () => EventBus;
 
-    constructor(props: object = {}) {
+  constructor(props: Props = {} as Props) {
     const eventBus = new EventBus();
     this.children = this._getChildren(props);
     this.props = this._makePropsProxy(props);
@@ -43,19 +43,22 @@ export default class Block {
     return true;
   }
 
-  _getChildren(propsAndChildren) {
-        const children = {};
-        const props = {};
+  _getChildren(propsAndChildren: Record<string, any>) {
+    const children: Record<string, any> = {};
+    const props: Record<string, any> = {};
 
-        Object.entries(propsAndChildren).forEach(([key, value]) => {
-            if (value instanceof Block) {
-                children[key] = value;
-            } else {
-                props[key] = value;
-            }
-        });
+    if (propsAndChildren) {
+      Object.entries(propsAndChildren).forEach(([key, value]) => {
+        if (value instanceof Block) {
+          children[key] = value;
+        } else {
+          props[key] = value;
+        }
+      });
       // console.log(children, props);
-        return { children, props };
+    }
+
+    return {children, props};
   }
 
   private _componentDidMount() {
@@ -88,6 +91,7 @@ export default class Block {
 
     Object.assign(this.props, nextProps);
   };
+
   //   TODO: заменить
   protected render(): any {
     return new DocumentFragment();
@@ -112,31 +116,37 @@ export default class Block {
     this.addEvents();
   }
 
-    public compile(template: (context: any) => string, context: Record<string, any>) {
-        const propsAndStubs = { ...context };
+  public hide() {
+    const el = this.getContent();
 
-        Object.entries(this.children).forEach(([key, child]) => {
-            propsAndStubs[key] = `<div data-id="${(child as any).id}"></div>`
-        });
+    // if (el) el.style.display = 'none';
+  }
 
-        const fragment = document.createElement('template');
+  public compile(template: (context: any) => string, context: Record<string, any>) {
+    const propsAndStubs = {...context};
 
-        fragment.innerHTML = template(propsAndStubs);
+    Object.entries(this.children).forEach(([key, child]) => {
+      propsAndStubs[key] = `<div data-id="${(child as any).id}"></div>`
+    });
 
-        Object.entries(this.children).forEach(([_, component]) => {
-            const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
+    const fragment = document.createElement('template');
 
-            if (!stub) {
-                return;
-            }
+    fragment.innerHTML = template(propsAndStubs);
 
-            const content = component.getContent()!;
+    Object.entries(this.children).forEach(([_, component]) => {
+      const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
 
-            stub.replaceWith(content);
-        });
+      if (!stub) {
+        return;
+      }
 
-        return fragment.content;
-    }
+      const content = component.getContent()!;
+
+      stub.replaceWith(content);
+    });
+
+    return fragment.content;
+  }
 
   private get element(): HTMLElement | null {
     return this._element;
@@ -151,7 +161,7 @@ export default class Block {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: Record<string, any>, p: string, value) {
-        const oldProps = { ...target };
+        const oldProps = {...target};
         target[p] = value;
 
         self._eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, target);
@@ -164,7 +174,7 @@ export default class Block {
   }
 
   private addEvents() {
-    const { events = {} } = this.props;
+    const {events = {}} = this.props;
     this.events = events;
 
     Object.keys(events).forEach((eventName) => {
@@ -184,3 +194,5 @@ export default class Block {
     }
   }
 }
+
+export default Block;

@@ -6,7 +6,9 @@ import './Button.scss';
 
 export default class Button extends Block {
     constructor(props: ButtonTypes) {
-        super(props);
+        super({
+            ...props,
+        });
     }
 
     protected render() {

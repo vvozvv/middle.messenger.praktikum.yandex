@@ -2,7 +2,9 @@
   "extends": "stylelint-config-standard-scss",
   "rules": {
     "color-hex-case": "lower",
-    "color-no-invalid-hex": true
+    "color-no-invalid-hex": true,
+    "no-eol-whitespace": [],
+    "color-function-notation": null
   },
   "ignoreFiles": [
     "build/*",
