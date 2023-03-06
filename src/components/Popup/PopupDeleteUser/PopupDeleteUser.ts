@@ -17,7 +17,8 @@ class PopupDeleteUser extends Popup {
     }
 
     loadUsers() {
-        const id = store.getState().active?.activeChat?.id;
+        // TODO поправить тип
+        const id = (store.getState().active as any)?.activeChat?.id;
 
         ChatsController.getUserChats(id).then(res => {
             const { status, response } = res as any;
@@ -39,7 +40,8 @@ class PopupDeleteUser extends Popup {
             events: {
                 click: async (e: Event) => {
                     e.preventDefault();
-                    const id = store.getState().active?.activeChat?.id;
+                    // TODO: опправить тип
+                    const id = (store.getState() as Record<string, any>).active?.activeChat?.id;
                     const form = document.getElementById('delete-user-popup-form');
                     const inputs = form?.querySelectorAll('input');
 

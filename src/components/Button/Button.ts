@@ -4,7 +4,7 @@ import { compile } from 'handlebars';
 import { ButtonTypes } from './Button.types';
 import './Button.scss';
 
-export default class Button extends Block {
+class Button extends Block {
     constructor(props: ButtonTypes) {
         super({
             ...props,
@@ -16,3 +16,5 @@ export default class Button extends Block {
         return this.compile(template, this.props);
     }
 }
+
+export default Button;

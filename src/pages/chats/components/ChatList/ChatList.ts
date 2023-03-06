@@ -23,7 +23,8 @@ class ChatList extends Block {
       if (selectChatId) {
           try {
                 const chat = (store.getState().chat ?? []) as Array<TChat>;
-                const userId = store.getState().currentUser?.id;
+                // TODO: поправить тип
+                const userId = (store.getState().currentUser as any)?.id;
                 await ChatsController.setSocketConnection(userId, selectChatId);
                 const selectChat = chat.find(item => Number(item.id) === Number(selectChatId));
                 const newChat = chat.map(item => ({

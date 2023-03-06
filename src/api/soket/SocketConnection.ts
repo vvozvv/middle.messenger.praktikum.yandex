@@ -4,7 +4,7 @@ import {transformMessageToDisplay} from "../../utils/helpers/api";
 
 export default class SocketConnection {
     protected socket;
-    protected timerId?: number;
+    protected timerId?: any;
 
     constructor(endpoint: string) {
         this.socket = new WebSocket(`${BASE_SOCKET_PATH}/${endpoint}`);
@@ -38,7 +38,8 @@ export default class SocketConnection {
         this.socket.addEventListener('message', event => {
             try {
               const data = JSON.parse(event.data);
-              const currentUserId = store.getState().currentUser?.id;
+              // TODO: переделать тип
+              const currentUserId = (store.getState().currentUser as Record<string, string>)?.id;
 
               if (data && data.type !== 'error' && data.type !== 'pong' && data.type !== 'user connected') {
                 if (Array.isArray(data)) {
@@ -49,7 +50,8 @@ export default class SocketConnection {
                   store.set('active.messages', messageObj);
                 } else {
                   store.set('active.messages', [
-                    ...store.getState()?.active?.messages,
+                    // TODO: переделать тип
+                    ...(store.getState()?.active as any)?.messages,
                     transformMessageToDisplay(data, currentUserId)
                   ]);
                 }

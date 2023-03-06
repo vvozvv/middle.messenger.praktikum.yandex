@@ -9,7 +9,7 @@
     "target": "es5",
     "skipLibCheck": true,
     "noImplicitReturns": true,
-    "noEmit": true,
+    "noEmit": false,
     "strict": true,
     "removeComments": true,
     "resolveJsonModule": true,

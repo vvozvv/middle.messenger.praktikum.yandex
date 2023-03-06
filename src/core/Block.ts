@@ -30,7 +30,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
   private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    // eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     eventBus.on(Block.EVENTS.FLOW_ADD_EVENTS, this.addEvents.bind(this));
   }
@@ -78,11 +78,11 @@ abstract class Block<Props extends Record<string, any> = {}> {
     return JSON.stringify(oldProps) === JSON.stringify(newProps);
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
-    if (!this.componentDidUpdate(oldProps, newProps)) {
-      this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
-    }
-  }
+  // private _componentDidUpdate(oldProps: any, newProps: any) {
+  //   if (!this.componentDidUpdate(oldProps, newProps)) {
+  //     this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
+  //   }
+  // }
 
   setProps = (nextProps: any) => {
     if (!nextProps) {
@@ -116,11 +116,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
     this.addEvents();
   }
 
-  public hide() {
-    const el = this.getContent();
-
-    // if (el) el.style.display = 'none';
-  }
+  public hide() {}
 
   public compile(template: (context: any) => string, context: Record<string, any>) {
     const propsAndStubs = {...context};
@@ -134,13 +130,13 @@ abstract class Block<Props extends Record<string, any> = {}> {
     fragment.innerHTML = template(propsAndStubs);
 
     Object.entries(this.children).forEach(([_, component]) => {
-      const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
+      const stub = fragment.content.querySelector(`[data-id="${(component as Block).id}"]`);
 
       if (!stub) {
         return;
       }
 
-      const content = component.getContent()!;
+      const content = (component as Block).getContent()!;
 
       stub.replaceWith(content);
     });
