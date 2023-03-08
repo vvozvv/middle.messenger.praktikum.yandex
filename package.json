@@ -19,6 +19,14 @@
     "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "npm run stylelint --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(js|jsx)": ["npm run format", "npm run stylelint", "git add"]
+  },
   "devDependencies": {
     "@types/node": "^18.14.6",
     "@types/uuid": "^9.0.1",
@@ -31,6 +39,7 @@
     "eslint-config-airbnb": "19.0.4",
     "events": "3.3.0",
     "husky": "8.0.3",
+    "lint-staged": "^13.1.2",
     "node-sass": "8.0.0",
     "path-browserify": "1.0.1",
     "process": "0.11.10",
