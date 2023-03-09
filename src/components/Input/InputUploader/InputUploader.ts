@@ -1,4 +1,4 @@
-import Block from "../../../core/Block";
+import Block from "../../../core/block/Block";
 import {compile} from "handlebars";
 import InputUploaderImpl from "../InputUploader/InputUploader.tmpl";
 import './InputUploader.styles.scss';

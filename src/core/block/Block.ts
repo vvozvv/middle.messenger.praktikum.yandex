@@ -1,5 +1,5 @@
 import {v4 as makeUUID} from 'uuid';
-import {EventBus} from './EventBus';
+import {EventBus} from '../EventBus';
 
 abstract class Block<Props extends Record<string, any> = {}> {
   static EVENTS = {
@@ -30,7 +30,8 @@ abstract class Block<Props extends Record<string, any> = {}> {
   private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    // eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    // @ts-ignore
+    eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     eventBus.on(Block.EVENTS.FLOW_ADD_EVENTS, this.addEvents.bind(this));
   }
@@ -78,11 +79,11 @@ abstract class Block<Props extends Record<string, any> = {}> {
     return JSON.stringify(oldProps) === JSON.stringify(newProps);
   }
 
-  // private _componentDidUpdate(oldProps: any, newProps: any) {
-  //   if (!this.componentDidUpdate(oldProps, newProps)) {
-  //     this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
-  //   }
-  // }
+  private _componentDidUpdate(oldProps: any, newProps: any) {
+    if (!this.componentDidUpdate(oldProps, newProps)) {
+      this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    }
+  }
 
   setProps = (nextProps: any) => {
     if (!nextProps) {

@@ -7,7 +7,7 @@ import Registration from './src/pages/registration';
 import registerComponent from './src/utils/helpers/hb';
 import ChatItems from './src/components/ChatItems/ChatItems';
 import Message from './src/components/Message/Message';
-import {AllowedWithoutToken, PAGE} from './src/modules/router';
+import {AllowedWithoutToken, PAGE} from 'src/modules/router';
 import {
     ProfileEditPasswordEditPage,
     ProfileEditPage,
@@ -16,11 +16,19 @@ import {
 import router from './src/core/router/Router';
 import AuthController from "./src/api/auth/auth-controller";
 import store from './src/store/Store';
+import {HTTPTransport} from "src/core/services/HTTP/HTTPService";
+import './style.scss';
 
 registerComponent(ChatItems);
 registerComponent(Message);
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
+
+const res = new HTTPTransport('');
+console.log('dfd')
+res.get('https://jsonplaceholder.typicode.com/todos').then(res => {
+  console.log(res)
+})
 
 router
     .use(PAGE.MAIN, HomePage)

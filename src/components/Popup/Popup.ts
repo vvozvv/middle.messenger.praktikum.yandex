@@ -1,4 +1,4 @@
-import Block from "../../core/Block";
+import Block from "../../core/block/Block";
 import {compile} from "handlebars";
 import PopupTemplate from './Popup.tmpl';
 import './Popup.styles.scss';

@@ -1,5 +1,5 @@
 import {PAGE} from "../../modules/router";
-import Block from "../Block";
+import Block from "../block/Block";
 
 export type FormData = {
     name: string;

@@ -1,6 +1,6 @@
 import store, {StoreEvents} from "../store/Store";
 import isEqual from "../utils/helpers/isEqual";
-import Block from "../core/Block";
+import Block from "../core/block/Block";
 import {Indexed} from "../core/types/common";
 
 export default function connect(mapStateToProps: (state: Indexed) => Indexed) {

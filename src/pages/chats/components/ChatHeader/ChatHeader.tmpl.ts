@@ -7,6 +7,7 @@ export default `
             <div class="chat-header__image"></div>
             <p class="chat-header__username">{{activeChat.title}}</p>
         </div>
+        
         <div class="chat-header__actions">
             {{{buttonAdd}}}
             {{{buttonDeleteProfile}}}

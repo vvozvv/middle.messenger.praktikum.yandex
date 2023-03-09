@@ -1,5 +1,5 @@
 import {Route} from "./Route";
-import Block from "../Block";
+import Block from "../block/Block";
 
 class Router {
   private static __instance: any;
@@ -70,8 +70,12 @@ class Router {
     return this.routes.find(route => route.match(pathname));
   }
 
-  public getLocationPathname() {
+  getLocationPathname() {
     return window.location.pathname;
+  }
+
+  getHistoryLength() {
+    return this.history.length
   }
 }
 

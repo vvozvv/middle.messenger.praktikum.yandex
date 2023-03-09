@@ -1,4 +1,4 @@
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 import { compile } from 'handlebars';
 import { LabelTmpl } from './Label.tmpl';
 

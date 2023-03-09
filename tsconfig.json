@@ -1,5 +1,12 @@
 {
   "exclude": ["node_modules"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"],
+    "compilerOptions": {
+      "module": "commonjs",
+    },
+    "files": true,
+  },
   "compilerOptions": {
     "lib": [
       "es2017",
@@ -22,6 +29,8 @@
     "strictNullChecks": true,
     "preserveConstEnums": true,
     "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "typeRoots": [ "src/core/types", "./node_modules/@types"],
     "paths": {
       "components/*": ["./components/*"]
     }

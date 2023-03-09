@@ -1,17 +1,17 @@
-import Block from "../../../../core/Block";
 import {compile} from "handlebars";
+import Block from "core/block/Block";
+import DeleteProfileIcon from "assets/image/icon/delete-profile.svg";
+import AddSquareIcon from "assets/image/icon/add-square.svg";
+import DeleteIcon from "assets/image/icon/delete.svg";
+import IconButton from "components/IconButton/IconButton";
+import {PopupAddUser, PopupDeleteChat, PopupDeleteUser} from "components/Popup";
+import {withActiveChat} from "hoc/withActiveChat";
 import ChatHeaderTmpl from "./ChatHeader.tmpl";
-import DeleteProfileIcon from "../../../../assets/image/icon/delete-profile.svg";
-import AddSquareIcon from "../../../../assets/image/icon/add-square.svg";
-import DeleteIcon from "../../../../assets/image/icon/delete.svg";
-import IconButton from "../../../../components/IconButton/IconButton";
-import {PopupAddUser, PopupDeleteChat, PopupDeleteUser} from "../../../../components/Popup";
-import {withActiveChat} from "../../../../hoc/withActiveChat";
 
 class ChatHeader extends Block {
     protected render(): any {
         this.children.buttonDeleteProfile = new IconButton({
-            icon: DeleteProfileIcon,
+            iconId: DeleteProfileIcon.id,
             title: 'Удалить пользователя',
             events: {
                 click: () => {
@@ -20,7 +20,7 @@ class ChatHeader extends Block {
             }
         });
         this.children.buttonAdd = new IconButton({
-            icon: AddSquareIcon,
+          iconId: AddSquareIcon.id,
             title: 'Добавить пользователя',
             events: {
                 click: () => {
@@ -29,7 +29,7 @@ class ChatHeader extends Block {
             }
         });
         this.children.buttonDelete = new IconButton({
-            icon: DeleteIcon,
+            iconId: DeleteIcon.id,
             title: 'Удалить чат',
             events: {
                 click: () => {

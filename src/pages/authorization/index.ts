@@ -1,7 +1,7 @@
 import { compile } from "handlebars";
 import {AuthorizationPageTemplate} from "./authorization.tmpl";
 import './authorization.style.scss';
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 import {FormData, TAuthUser} from '../../core/types/common';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';

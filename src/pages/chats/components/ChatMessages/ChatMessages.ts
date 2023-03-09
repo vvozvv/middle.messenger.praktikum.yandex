@@ -1,4 +1,4 @@
-import Block from "../../../../core/Block";
+import Block from "../../../../core/block/Block";
 import {compile} from "handlebars";
 import ChatMessagesTmpl from "./ChatMessages.tmpl";
 import {withActiveChat} from "../../../../hoc/withActiveChat";

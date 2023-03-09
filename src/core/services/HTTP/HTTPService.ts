@@ -47,12 +47,7 @@ export class HTTPTransport {
             const isGet = method === METHODS.GET;
             xhr.withCredentials = true;
 
-            xhr.open(
-                method,
-                isGet && !!data
-                    ? self.getPath(`${url}${queryStringify(data)}`)
-                    : self.getPath(url),
-            )
+            xhr.open(method, self.getPath(url));
 
             Object.keys(headers).forEach(key => {
                 xhr.setRequestHeader(key, headers[key]);

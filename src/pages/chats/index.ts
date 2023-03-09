@@ -1,7 +1,7 @@
 import { compile } from "handlebars";
 import ChatPageTemplate from "./chats.tmpl";
 import './chat.style.scss';
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 import Button from "../../components/Button/Button";
 import ProfileHeader from "./components/ProfileHeader/ProfileHeader";
 import ChatList from "./components/ChatList/ChatList";

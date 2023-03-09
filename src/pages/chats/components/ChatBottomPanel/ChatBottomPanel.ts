@@ -1,4 +1,4 @@
-import Block from "../../../../core/Block";
+import Block from "../../../../core/block/Block";
 import {compile} from "handlebars";
 import ChatBottomPanelTmpl from "./ChatBottomPanel.tmpl";
 import Input from "../../../../components/Input/Input";

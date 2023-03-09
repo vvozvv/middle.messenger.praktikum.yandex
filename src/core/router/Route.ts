@@ -1,4 +1,4 @@
-import Block from "../Block";
+import Block from "../block/Block";
 import isEqual from "../../utils/helpers/isEqual";
 
 export class Route {
