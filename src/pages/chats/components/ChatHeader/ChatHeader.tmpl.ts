@@ -1,10 +1,11 @@
 export default `
     <div class="chat-header__row">
+        {{{uploadImage}}}
         {{{popupAddUser}}}
         {{{popupDeleteChat}}}
         {{{popupDeleteUser}}}
         <div class="chat-header__user">
-            <div class="chat-header__image"></div>
+            {{{imageChange}}}
             <p class="chat-header__username">{{activeChat.title}}</p>
         </div>
         

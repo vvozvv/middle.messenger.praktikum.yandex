@@ -14,7 +14,6 @@ class Icon extends Block {
   }
 
   render() {
-    console.log(this.props)
     const template = compile(iconTemplate);
     return this.compile(template, this.props);
   }

@@ -16,19 +16,12 @@ import {
 import router from './src/core/router/Router';
 import AuthController from "./src/api/auth/auth-controller";
 import store from './src/store/Store';
-import {HTTPTransport} from "src/core/services/HTTP/HTTPService";
 import './style.scss';
 
 registerComponent(ChatItems);
 registerComponent(Message);
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
-
-const res = new HTTPTransport('');
-console.log('dfd')
-res.get('https://jsonplaceholder.typicode.com/todos').then(res => {
-  console.log(res)
-})
 
 router
     .use(PAGE.MAIN, HomePage)

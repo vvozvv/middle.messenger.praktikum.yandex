@@ -45,8 +45,8 @@ class ChatsController {
         return this.api.deleteChat(id);
     }
 
-    setChatAvatar() {
-        return this.api.setChatAvatar();
+    setChatAvatar(form: unknown) {
+        return this.api.setChatAvatar(form);
     }
 
     getToken(id: string) {

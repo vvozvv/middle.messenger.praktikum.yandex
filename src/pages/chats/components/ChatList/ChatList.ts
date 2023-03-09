@@ -36,6 +36,7 @@ class ChatList extends Block {
                 store.set('active.activeChat', {
                     id: selectChatId,
                     title: selectChat?.title,
+                    avatar: selectChat?.avatar,
                     chat: selectChatId,
                     messages: []
                 });
@@ -46,6 +47,7 @@ class ChatList extends Block {
     };
 
     protected render(): any {
+      console.log(this.props)
         const template = compile(ChatsListTmpl);
         return this.compile(template, this.props)
     }

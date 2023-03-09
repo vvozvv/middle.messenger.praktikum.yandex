@@ -5,6 +5,9 @@ import Input from "../../../../components/Input/Input";
 import {FormData} from "../../../../core/types/common";
 import {formArrayToObjectRequest} from "../../../../utils/helpers/functions";
 import ChatsController from "../../../../api/chats/chats-controller";
+import FileIcon from 'assets/image/icon/file.svg';
+import SendIcon from 'assets/image/icon/send.svg';
+import {Icon} from "components/Icon";
 
 class ChatBottomPanel extends Block {
   constructor() {
@@ -51,6 +54,18 @@ class ChatBottomPanel extends Block {
           required: true
         },
       });
+
+      this.children.fileIcon = new Icon({
+        id: FileIcon.id,
+        width: 35,
+        height: 35
+      });
+
+      this.children.sendFile = new Icon({
+        id: SendIcon.id,
+        width: 35,
+        height: 35
+      })
 
       const tmpl = compile(ChatBottomPanelTmpl);
       return this.compile(tmpl, this.props);

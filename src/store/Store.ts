@@ -1,13 +1,19 @@
-import {EventBus} from "../core/EventBus";
-import {Indexed} from "../core/types/common";
-import { set as setStore } from "../utils/helpers/set";
+import {EventBus} from "core/EventBus";
+import { set as setStore } from "utils/helpers/set";
+import {TStore} from "./Store.types";
 
 export enum StoreEvents {
     Updated = 'updated',
 }
 
+const initStore: TStore = {
+  currentUser: undefined,
+  active: undefined,
+  chat: []
+}
+
 export class Store extends EventBus {
-    private state: Indexed = {};
+    private state: TStore = initStore;
 
     public getState() {
         return this.state;

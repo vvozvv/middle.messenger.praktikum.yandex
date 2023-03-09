@@ -1,9 +1,10 @@
-import store, {StoreEvents} from "../store/Store";
-import isEqual from "../utils/helpers/isEqual";
-import Block from "../core/block/Block";
-import {Indexed} from "../core/types/common";
+import Block from "core/block/Block";
+import store, {StoreEvents} from "store/Store";
+import isEqual from "utils/helpers/isEqual";
+import {Indexed} from "core/types/common";
+import {TStore} from "../store/Store.types";
 
-export default function connect(mapStateToProps: (state: Indexed) => Indexed) {
+export default function connect(mapStateToProps: (state: TStore) => Indexed) {
     return function(Component: typeof Block) {
         return class extends Component {
             constructor(props: any) {

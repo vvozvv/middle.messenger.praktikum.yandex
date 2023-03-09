@@ -79,8 +79,10 @@ class ChatAPI extends BaseAPI {
         return this.http.get(`${id}/users`)
     }
 
-    setChatAvatar() {
-        return this.http.put('avatar')
+    setChatAvatar(form: unknown) {
+        return this.http.put('avatar', {
+          data: form
+        })
     }
 
     getToken(id: string) {
