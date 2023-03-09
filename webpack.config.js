@@ -23,6 +23,7 @@ module.exports = {
       hoc: path.resolve(__dirname, 'src/hoc'),
       core: path.resolve(__dirname, 'src/core'),
       api: path.resolve(__dirname, 'src/api'),
+      modules: path.resolve(__dirname, 'src/modules'),
     }
   },
   devServer: {

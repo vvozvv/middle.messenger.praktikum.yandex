@@ -11,8 +11,8 @@ import {ProfileImage} from "components/ProfileImage";
 import {PopupUploadImage} from "components/Popup";
 import IconButton from "components/IconButton/IconButton";
 import BackIcon from "assets/image/icon/back-square-svgrepo-com.svg";
-import {PAGE} from "modules/router";
 import {ProfileEditPageTemplate} from "./profile.edit.tmpl";
+import {PAGE} from "modules/router";
 
 /**
  * Страница "Профиль"
