@@ -10,9 +10,9 @@ class PopupUploadChatImage extends PopupUploadImage {
     this.events?.['submit'] = async (e: any) => {
       e.preventDefault();
 
-      const storeContent = store.getState() as any;
+      const storeContent = store.getState();
       const form = new FormData(e.target);
-      form.append('chatId', storeContent?.active?.activeChat.id);
+      form.append('chatId', storeContent?.active?.id.toString() ?? '');
 
       try {
         const data = await ChatsController.setChatAvatar(form);
@@ -21,7 +21,7 @@ class PopupUploadChatImage extends PopupUploadImage {
         const newAvatar = getImagePath(JSON.parse(response)?.avatar);
 
         const mapChat = storeContent?.chat.map((item: any) => {
-          if (item?.id === Number(storeContent?.active?.activeChat?.id)) {
+          if (item?.id === Number(storeContent?.active?.id)) {
             return {
               ...item,
               avatar: newAvatar
@@ -31,7 +31,7 @@ class PopupUploadChatImage extends PopupUploadImage {
           return item;
         });
 
-        store.set('active.activeChat', { ...storeContent?.activeChat, avatar: newAvatar })
+        store.set('active', { ...storeContent?.active, avatar: newAvatar })
         store.set('chat', mapChat)
 
         this.toggleClass();

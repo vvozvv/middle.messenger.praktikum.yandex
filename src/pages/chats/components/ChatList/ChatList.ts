@@ -34,7 +34,7 @@ class ChatList extends Block {
         }))
 
         store.set('chat', newChat)
-        store.set('active.activeChat', {
+        store.set('active', {
           id: selectChatId,
           title: selectChat?.title,
           avatar: selectChat?.avatar,

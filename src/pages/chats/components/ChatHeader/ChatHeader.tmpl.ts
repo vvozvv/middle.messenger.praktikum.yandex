@@ -6,7 +6,7 @@ export default `
         {{{popupDeleteUser}}}
         <div class="chat-header__user">
             {{{imageChange}}}
-            <p class="chat-header__username">{{activeChat.title}}</p>
+            <p class="chat-header__username">{{active.title}}</p>
         </div>
         
         <div class="chat-header__actions">

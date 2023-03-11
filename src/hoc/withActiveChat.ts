@@ -3,7 +3,7 @@ import connect from "./connect";
 import {TStore} from "../store/Store.types";
 
 export const withActiveChat = withStore((state: TStore) => ({
-  ...state.active,
+  active: state.active,
   isLoadingUser: state.isLoadingUser,
   isLoadingChat: state.isLoadingChat,
 }));

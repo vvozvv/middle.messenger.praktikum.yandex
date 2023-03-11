@@ -43,7 +43,7 @@ class ChatHeader extends Block {
     });
 
     this.children.imageChange = new ImageChange({
-      avatar: this.props?.activeChat?.avatar,
+      avatar: this.props?.active?.avatar,
       events: {
         click: () => {
           this.children.uploadImage.toggleClass()

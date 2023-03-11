@@ -35,7 +35,7 @@ class PopupAddUserInChat extends Popup {
 
                     await ChatsController.addUserInChat({
                         users: [JSON.parse(response)[0]?.id],
-                        chatId: Number(this.props.activeChat?.id)
+                        chatId: Number(this.props.active?.id)
                     });
                     this.toggleClass();
                 }

@@ -1,6 +1,6 @@
 const ChatPageTemplate = `
     <main class="chat">
-    {{{uploadImage}}}
+        {{{uploadImage}}}
         {{{addChatPopup}}}
         <div class="chat__info">
           {{{profileHeader}}}
