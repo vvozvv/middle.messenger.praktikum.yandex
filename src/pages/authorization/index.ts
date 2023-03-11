@@ -1,13 +1,15 @@
 import { compile } from "handlebars";
+import Block from 'core/block/Block';
+import {FormData, TAuthUser} from 'core/types/common';
+import Input from 'components/Input/Input';
+import Button from 'components/Button/Button';
+import { formArrayToObjectRequest } from 'utils/helpers/functions';
+import AuthController from "api/auth/auth-controller";
+import store from 'store/Store';
+import router from "core/router/Router";
+import {PAGE} from "modules/router";
 import {AuthorizationPageTemplate} from "./authorization.tmpl";
 import './authorization.style.scss';
-import Block from '../../core/block/Block';
-import {FormData, TAuthUser} from '../../core/types/common';
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
-import { formArrayToObjectRequest } from '../../utils/helpers/functions';
-import AuthController from "../../api/auth/auth-controller";
-import store from '../../store/Store';
 
 /**
  * Главная "Авторизация"
@@ -33,6 +35,20 @@ export default class Authorization extends Block {
                     const objForm = formArrayToObjectRequest(formData);
 
                     await AuthController.signIn(objForm as TAuthUser);
+
+                    try {
+                      const user = await AuthController.getUser();
+                      const { status, response } = user as any;
+
+                      if (status === 200 || status === 400) {
+                        store.set('currentUser', JSON.parse(response))
+                        router.go(PAGE.CHATS)
+                      } else {
+                        throw new Error('Ошибка получения пользователя')
+                      }
+                    } catch (e) {
+                      alert(e)
+                    }
                 },
             },
         });
