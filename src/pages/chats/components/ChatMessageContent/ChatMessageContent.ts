@@ -14,7 +14,7 @@ class ChatMessageContent extends Block {
       events: {
         load: () => {
           if (store.getState().active?.messages?.length) {
-            // document.getElementsByClassName('chat-content__scroll')[0].scrollIntoView(false);
+            document.getElementsByClassName('chat-content__scroll')[0].scrollIntoView(false);
           }
         }
       }
