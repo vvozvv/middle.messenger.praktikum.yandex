@@ -7,7 +7,7 @@ import {getImagePath} from "./links";
  * @param {string} obj Сообщение
  * @param {string} currentUserId ID аторизованного пользователя
  * */
-export const transformMessageToDisplay = (obj: any, currentUserId: string) => {
+export const transformMessageToDisplay = (obj: any, currentUserId: number) => {
     return {
         ...obj,
         time: getTime(obj.time),

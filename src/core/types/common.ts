@@ -31,6 +31,7 @@ export type ProfileResponse = {
     password: string,
     avatar: string,
     display_name: string,
+    id: number | string
 }
 
 export type TAuthUser = {

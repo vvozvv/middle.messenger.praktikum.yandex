@@ -5,7 +5,7 @@ export default `
                 {{{fileIcon}}}
             </div>
             <div class="chat-content__input-box">
-            {{{inputSearch}}}
+                {{{inputSearch}}}
             </div>
             <div class="chat-content__send">
                 <button type='submit'>

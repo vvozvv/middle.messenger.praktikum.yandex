@@ -61,7 +61,6 @@ class PopupDeleteUser extends Popup {
                         await ChatsController.deleteChatUsers(obj);
                         this.toggleClass();
                     } catch (e) {
-                      console.log(e)
                         alert('Ошибка удаления')
                     }
                 }

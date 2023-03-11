@@ -73,7 +73,7 @@ class ChatsController {
         return this.api.getUserChats(id);
     }
 
-    async setSocketConnection(userId: string, chatId: string) {
+    async setSocketConnection(userId: number, chatId: string) {
         const data = (await this.api.getToken(chatId)) as unknown as Record<string, unknown>;
         const { response } = data as any;
 

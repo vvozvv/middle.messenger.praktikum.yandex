@@ -9,7 +9,10 @@ export enum StoreEvents {
 const initStore: TStore = {
   currentUser: undefined,
   active: undefined,
-  chat: []
+  chat: [],
+  isLoadingUser: true,
+  isLoadingChat: false,
+  isLoadingAuth: false,
 }
 
 export class Store extends EventBus {

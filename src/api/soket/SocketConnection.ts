@@ -19,6 +19,7 @@ export default class SocketConnection {
     private setListeners() {
         this.socket.addEventListener('open', () => {
             console.log('Соединение установлено');
+            store.set('isLoadingChat', false)
 
             this.setPing();
             this.getPrevMessages('0');
@@ -38,21 +39,18 @@ export default class SocketConnection {
         this.socket.addEventListener('message', event => {
             try {
               const data = JSON.parse(event.data);
-              // TODO: переделать тип
-              const currentUserId = (store.getState().currentUser as Record<string, string>)?.id;
+              const currentUserId = store.getState().currentUser!.id;
 
               if (data && data.type !== 'error' && data.type !== 'pong' && data.type !== 'user connected') {
                 if (Array.isArray(data)) {
-                  console.log(data)
                   const messageObj = data
                     .sort((a, b) => new Date(a.time).valueOf() - new Date(b.time).valueOf())
-                    .map(item => transformMessageToDisplay(item, currentUserId));
+                    .map(item => transformMessageToDisplay(item, Number(currentUserId)));
                   store.set('active.messages', messageObj);
                 } else {
                   store.set('active.messages', [
-                    // TODO: переделать тип
-                    ...(store.getState()?.active as any)?.messages,
-                    transformMessageToDisplay(data, currentUserId)
+                    ...store.getState()?.active?.messages ?? [],
+                    transformMessageToDisplay(data, Number(currentUserId))
                   ]);
                 }
               }
@@ -67,7 +65,6 @@ export default class SocketConnection {
     }
 
     public sendMessage(message: string) {
-        console.log(this.socket)
         this.socket.send(
             JSON.stringify({
                 content: message,

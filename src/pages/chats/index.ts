@@ -1,14 +1,14 @@
 import {compile} from "handlebars";
-import ChatPageTemplate from "./chats.tmpl";
-import './chat.style.scss';
-import Block from '../../core/block/Block';
-import Button from "../../components/Button/Button";
+import router from "core/router/Router";
+import Block from 'core/block/Block';
+import Button from "components/Button/Button";
 import ProfileHeader from "./components/ProfileHeader/ProfileHeader";
 import ChatList from "./components/ChatList/ChatList";
-import Input from "../../components/Input/Input";
-import {PopupAddChat} from "../../components/Popup";
+import Input from "components/Input/Input";
+import {PopupAddChat} from "components/Popup";
 import ChatMessageContent from "./components/ChatMessageContent/ChatMessageContent";
-import router from "../../core/router/Router";
+import ChatPageTemplate from "./chats.tmpl";
+import './chat.style.scss';
 
 /**
  * Главная "Чаты"

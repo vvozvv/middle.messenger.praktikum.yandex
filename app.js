@@ -46,7 +46,7 @@ AuthController.getUser().then((res) => {
     } else {
         router.go(PAGE.LOGIN)
     }
-})
+}).finally(() => store.set('isLoadingUser', false))
 
 
 
