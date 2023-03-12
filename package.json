@@ -12,10 +12,11 @@
     "src/custom.d.ts"
   ],
   "scripts": {
-    "start": "webpack && node server.js",
+    "start": "npm i && webpack && node server.js",
     "serve": "webpack serve --open",
     "dev": "npm run build && npm run serve",
     "build": "webpack",
+    "build:container": "docker build -t messenger .",
     "format": "eslint --fix --ext .js,.ts",
     "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "npm run stylelint --fix",
