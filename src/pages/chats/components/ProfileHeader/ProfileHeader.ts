@@ -28,7 +28,7 @@ export default class ProfileHeader extends Block {
     });
   }
 
-  protected render(): any {
+  protected render() {
     const template = compile(ProfileHeaderTmpl);
     return this.compile(template, this.props)
   }

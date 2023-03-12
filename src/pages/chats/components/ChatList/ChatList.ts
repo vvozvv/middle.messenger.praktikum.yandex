@@ -15,8 +15,9 @@ class ChatList extends Block {
     ChatsController.getChatMessages();
   }
 
-  protected async connection(e: any) {
-    const parentDiv = e.target.closest('.chat-item');
+  protected async connection(event: Event) {
+    const target = event.target as HTMLElement;
+    const parentDiv = target.closest('.chat-item') as HTMLElement;
     const selectChatId = parentDiv.dataset.chatId;
 
     if (selectChatId) {
@@ -47,7 +48,7 @@ class ChatList extends Block {
     }
   };
 
-  protected render(): any {
+  protected render() {
     const template = compile(ChatsListTmpl);
     return this.compile(template, this.props)
   }

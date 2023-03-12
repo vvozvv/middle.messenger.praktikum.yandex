@@ -1,4 +1,4 @@
-import {EventBus} from "core/EventBus";
+import {EventBus} from "core/event-bus/EventBus";
 import { set as setStore } from "utils/helpers/set";
 import {TStore} from "./Store.types";
 

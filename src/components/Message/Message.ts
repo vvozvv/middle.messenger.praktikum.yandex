@@ -16,7 +16,7 @@ export default class Message extends Block {
         super(props);
     }
 
-    protected render(): any {
+    protected render() {
         return this.compile(compile(template), this.props);
     }
 }

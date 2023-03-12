@@ -35,7 +35,7 @@ class Popup extends Block {
         }
     }
 
-    protected getTemplate(template: any) {
+    protected getTemplate(template: string) {
         return `
             <div class="popup {{#if activePopup}}popup--active{{/if}}">
                 <div class="popup__content">

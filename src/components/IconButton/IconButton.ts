@@ -5,9 +5,9 @@ import './IconButton.styled.scss';
 import IconButtonTmpl from "./IconButton.tmpl";
 
 type TIconButton = {
-    iconId: any;
+    iconId: string | number;
     title: string;
-    events?: any;
+    events?: Record<string, any>;
 }
 
 class IconButton extends Block {

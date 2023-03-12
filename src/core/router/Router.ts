@@ -3,10 +3,10 @@ import Block from "../block/Block";
 
 class Router {
   private static __instance: any;
-  private routes: any[];
+  public routes: any[];
   private _currentRoute: Route | null;
   private _rootQuery: string;
-  private history: History;
+  public history: History;
 
   constructor(rootQuery: string) {
     if (Router.__instance) {

@@ -2,7 +2,7 @@ import { METHODS } from './HTTP.constants';
 import { queryStringify } from './HTTP.helpers';
 import {isPlainObject} from "../../../utils/helpers/isPlain";
 import {BASE_API_PATH} from "../../../constants/app";
-import {HTTPMethod} from "./HTTP.types";
+import {HTTPMethod, HTTPMethodRequest} from "./HTTP.types";
 
 export class HTTPTransport {
     static API_URL = BASE_API_PATH;
@@ -33,9 +33,17 @@ export class HTTPTransport {
         return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
     };
 
-    private request: HTTPMethod = (url, options = {}, timeout = 5000) => {
+    public publicRequest: HTTPMethod = (url, options = {}) => {
+      return this.request(url, {...options, method: options.method}, options.timeout, false);
+    }
+
+    private request: HTTPMethodRequest = (url, options = {}, timeout = 5000, withBaseUrl = true) => {
         const self = this;
-        const {headers = {}, method, data} = options;
+        const {
+          headers = {},
+          method,
+          data
+        } = options;
 
         return new Promise(function(resolve, reject) {
             if (!method) {
@@ -47,7 +55,13 @@ export class HTTPTransport {
             const isGet = method === METHODS.GET;
             xhr.withCredentials = true;
 
-            xhr.open(method, self.getPath(url));
+            if (withBaseUrl) {
+              xhr.open(method, self.getPath(url));
+            } else {
+              xhr.open(method, url);
+            }
+
+
 
             Object.keys(headers).forEach(key => {
                 xhr.setRequestHeader(key, headers[key]);

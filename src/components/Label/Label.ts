@@ -6,15 +6,17 @@ type LabelProps = {
     name: string;
 }
 
-export default class Label extends Block {
+class Label extends Block {
     static helper = 'Label';
 
     constructor(props: LabelProps) {
         super(props);
     }
 
-    protected render(): any {
+    protected render() {
         const template = compile(LabelTmpl)
         return this.compile(template, this.props);
     }
 }
+
+export default Label;

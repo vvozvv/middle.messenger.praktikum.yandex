@@ -39,7 +39,7 @@ class Authorization extends Block {
 
           try {
             const user = await AuthController.getUser();
-            const {status, response} = user as any;
+            const { status, response } = user;
 
             if (status === 200 || status === 400) {
               store.set('currentUser', JSON.parse(response));

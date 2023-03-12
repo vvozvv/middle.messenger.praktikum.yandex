@@ -11,13 +11,14 @@ export class InputUploader extends Block {
             ...props,
             events: {
                 change: (e: Event) => {
+                  const target = e.target as HTMLInputElement;
                     this.setProps({
                         ...this.props,
-                        fileName: (e.target as any)?.files[0]?.name
+                        fileName: target?.files?.[0]?.name
                     });
 
                     const el = document.getElementById(this.id) as HTMLInputElement;
-                    el.files = (e.target as any)?.files
+                    el.files = target?.files
                 },
             }
         });

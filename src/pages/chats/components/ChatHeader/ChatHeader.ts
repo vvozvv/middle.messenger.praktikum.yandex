@@ -11,7 +11,7 @@ import PopupUploadChatImage from "components/Popup/PupupUploadImage/PopupUploadC
 import ImageChange from "components/ImageChange/ImageChange";
 
 class ChatHeader extends Block {
-  protected render(): any {
+  protected render() {
     this.children.buttonDeleteProfile = new IconButton({
       iconId: DeleteProfileIcon.id,
       title: 'Удалить пользователя',

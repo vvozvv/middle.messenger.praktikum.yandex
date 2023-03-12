@@ -13,7 +13,7 @@ class PopupUploadUserAvatar extends PopupUploadImage {
 
       try {
         const data = await UserController.updateAvatar(form);
-        const { response } = data as any;
+        const { response } = data;
         store.set('currentUser', JSON.parse(response))
         this.toggleClass();
       } catch (e) {

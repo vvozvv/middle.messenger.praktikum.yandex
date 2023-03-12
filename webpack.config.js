@@ -24,6 +24,7 @@ module.exports = {
       core: path.resolve(__dirname, 'src/core'),
       api: path.resolve(__dirname, 'src/api'),
       modules: path.resolve(__dirname, 'src/modules'),
+      types: path.resolve(__dirname, 'src/core/types'),
     }
   },
   devServer: {

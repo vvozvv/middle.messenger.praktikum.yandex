@@ -21,7 +21,7 @@ class PopupDeleteUser extends Popup {
 
     if (id) {
       ChatsController.getUserChats(id).then(res => {
-        const {status, response} = res as any;
+        const { status, response } = res;
 
         if (status === 200) {
           this.setProps({

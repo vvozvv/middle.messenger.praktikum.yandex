@@ -1,5 +1,5 @@
 import {v4 as makeUUID} from 'uuid';
-import {EventBus} from '../EventBus';
+import {EventBus} from '../event-bus/EventBus';
 
 abstract class Block<Props extends Record<string, any> = {}> {
   static EVENTS = {
@@ -11,11 +11,11 @@ abstract class Block<Props extends Record<string, any> = {}> {
   };
 
   public id = makeUUID();
-  public children: any = {};
+  public children: Record<string, any> = {};
   public refs: Record<string, Block> = {};
   public props: Record<string, any>;
   public events: { [key: string]: (a: Event) => void; } | undefined;
-  protected _element: HTMLElement | null = null;
+  protected _element: HTMLElement;
   private _eventBus: () => EventBus;
 
   constructor(props: Props = {} as Props) {
@@ -85,7 +85,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
     }
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Record<string, any>) => {
     if (!nextProps) {
       return;
     }
@@ -93,8 +93,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
     Object.assign(this.props, nextProps);
   };
 
-  //   TODO: заменить
-  protected render(): any {
+  protected render() {
     return new DocumentFragment();
   }
 
@@ -145,7 +144,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
     return fragment.content;
   }
 
-  private get element(): HTMLElement | null {
+  get element(): HTMLElement {
     return this._element;
   }
 

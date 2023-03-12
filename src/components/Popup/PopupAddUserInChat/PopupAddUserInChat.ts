@@ -31,7 +31,7 @@ class PopupAddUserInChat extends Popup {
                     const value = form?.querySelector('input')?.value;
 
                     const data = await UserController.searchUser(value ?? '');
-                    const { response } = data as any;
+                    const { response } = data;
 
                     await ChatsController.addUserInChat({
                         users: [JSON.parse(response)[0]?.id],

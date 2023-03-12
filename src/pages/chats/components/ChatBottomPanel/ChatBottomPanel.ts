@@ -42,7 +42,7 @@ class ChatBottomPanel extends Block {
     }
   }
 
-    protected render(): any {
+    protected render() {
       this.children.inputSearch = new Input({
         name: 'message',
         label: '',

@@ -2,6 +2,7 @@ import {PopupUploadImage} from "components/Popup";
 import store from "store/Store";
 import ChatsController from "api/chats/chats-controller";
 import {getImagePath} from "../../../utils/helpers/links";
+import {TChat} from "../../../core/types/chat.types";
 
 class PopupUploadChatImage extends PopupUploadImage {
   constructor(props: any) {
@@ -16,11 +17,11 @@ class PopupUploadChatImage extends PopupUploadImage {
 
       try {
         const data = await ChatsController.setChatAvatar(form);
-        const { response } = data as any;
+        const { response } = data;
 
         const newAvatar = getImagePath(JSON.parse(response)?.avatar);
 
-        const mapChat = storeContent?.chat.map((item: any) => {
+        const mapChat = storeContent?.chat.map((item: TChat) => {
           if (item?.id === Number(storeContent?.active?.id)) {
             return {
               ...item,

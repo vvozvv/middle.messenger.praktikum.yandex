@@ -4,7 +4,7 @@ import {transformMessageToDisplay} from "../../utils/helpers/api";
 
 export default class SocketConnection {
     protected socket;
-    protected timerId?: any;
+    protected timerId?: ReturnType<typeof setInterval>;
 
     constructor(endpoint: string) {
         this.socket = new WebSocket(`${BASE_SOCKET_PATH}/${endpoint}`);

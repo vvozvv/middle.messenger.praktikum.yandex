@@ -1,9 +1,9 @@
-import Block from '../../core/block/Block';
+import Block from 'core/block/Block';
 import { compile } from 'handlebars';
 import { InputTmpl } from './Input.tmpl';
 import { TInputProps } from 'components/Input/Input.types';
+import { validatorInstance } from 'core/services/Validator/Validator';
 import './Input.scss';
-import { validatorInstance } from '../../core/services/Validator/Validator';
 
 export default class Input extends Block {
     static helper = 'Input';
@@ -25,7 +25,7 @@ export default class Input extends Block {
     public changeInputValue(e: Event): void {
         const text = (e.target as HTMLTextAreaElement).value ?? '';
         const el = document.querySelector(`[data-input-id="${this.id}"]`)!
-        const inputError = document.querySelector(`[data-input-error-id="${this.id}"]`)! as any;
+        const inputError = document.querySelector(`[data-input-error-id="${this.id}"]`)! as HTMLElement;
 
         const errorResult = validatorInstance.checkCorrect(text, this.props.validation);
 
@@ -45,7 +45,7 @@ export default class Input extends Block {
         }
     }
 
-    public render(): any {
+    public render() {
         const template = compile(InputTmpl)
         return this.compile(template, {
             ...this.props,
