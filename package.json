@@ -12,7 +12,7 @@
     "src/custom.d.ts"
   ],
   "scripts": {
-    "start": "npm i && webpack && node server.js",
+    "start": "webpack && node server.js",
     "serve": "webpack serve --open",
     "dev": "npm run build && npm run serve",
     "build": "webpack",
