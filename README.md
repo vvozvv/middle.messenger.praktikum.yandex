@@ -37,4 +37,4 @@ npm run test
 
 ## PR
 #### Ссылка на [Pull Request #3](https://github.com/vvozvv/middle.messenger.praktikum.yandex/pull/4)
-#### Ссылка на [Pull Request #4]()
+#### Ссылка на [Pull Request #4](https://github.com/vvozvv/middle.messenger.praktikum.yandex/pull/5)
