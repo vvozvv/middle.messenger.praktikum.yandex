@@ -1,19 +1,19 @@
-import HomePage from './src/pages/home/index';
-import Error404 from './src/pages/404/index';
-import Authorization from './src/pages/authorization';
-import Error500 from './src/pages/500/index';
-import ChatsPage from './src/pages/chats/index';
-import Registration from './src/pages/registration';
-import {AllowedWithoutToken, PAGE} from 'src/modules/router';
+import HomePage from './pages/home';
+import Error404 from './pages/404';
+import Authorization from './pages/authorization';
+import Error500 from './pages/500';
+import ChatsPage from './pages/chats';
+import Registration from './pages/registration';
+import {AllowedWithoutToken, PAGE} from 'modules/router';
 import {
     ProfileEditPasswordEditPage,
     ProfileEditPage,
     ProfilePage
-} from './src/pages/profile';
-import router from './src/core/router/Router';
-import AuthController from "./src/api/auth/auth-controller";
-import store from './src/store/Store';
-import './style.scss';
+} from './pages/profile';
+import router from './core/router/Router';
+import AuthController from "./api/auth/auth-controller";
+import store from './store/Store';
+import '../style.scss';
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
 

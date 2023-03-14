@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: '../app.js',
+  entry: './app.js',
   context: path.resolve(__dirname, '../src'),
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -72,6 +72,10 @@ module.exports = {
         exclude: /(node_modules)/,
       },
     ]
+  },
+  performance: {
+    maxEntrypointSize: 612000,
+    maxAssetSize: 612000
   },
   plugins: [
     new HtmlWebpackPlugin({
