@@ -13,8 +13,8 @@
   ],
   "scripts": {
     "start": "webpack --config config/webpack.prod.js && node server.js ",
-    "dev": "webpack serve --config config/webpack.dev.js",
-    "build": "webpack --config config/webpack.prod.js",
+    "dev": "webpack serve --config config/webpack.dev.js && npm run build",
+    "build": "webpack",
     "build:container": "docker build -t messenger .",
     "format": "eslint --fix --ext .js,.ts",
     "stylelint": "stylelint \"src/**/*.scss\"",

@@ -14,6 +14,12 @@ import router from './core/router/Router';
 import AuthController from "./api/auth/auth-controller";
 import store from './store/Store';
 import '../style.scss';
+import ChatItems from "components/ChatItems/ChatItems";
+import Message from "components/Message/Message";
+import registerComponent from "./utils/helpers/hb";
+
+registerComponent(ChatItems);
+registerComponent(Message);
 
 const getPageFromUrl = () => window.location.pathname.split('/')[1];
 

@@ -4,6 +4,7 @@ import ChatsListTmpl from "./ChatsList.tmpl";
 import ChatsController from "api/chats/chats-controller";
 import store from "store/Store";
 import {withChatsConnect} from "hoc/withChats";
+import '../../chat.style.scss';
 
 class ChatList extends Block {
   constructor() {
