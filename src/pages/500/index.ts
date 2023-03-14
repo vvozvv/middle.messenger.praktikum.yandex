@@ -1,5 +1,5 @@
 import { compile } from 'handlebars';
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 import { notFoundPageTemplate } from './500.tmpl';
 
 /**

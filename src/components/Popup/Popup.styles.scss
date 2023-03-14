@@ -31,5 +31,10 @@
     top: 15px;
     right: 15px;
     cursor: pointer;
+    z-index: 11;
+
+    svg {
+      pointer-events: none;
+    }
   }
 }

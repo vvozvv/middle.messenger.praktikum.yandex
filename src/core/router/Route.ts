@@ -1,13 +1,17 @@
-import Block from "../Block";
+import Block from "../block/Block";
 import isEqual from "../../utils/helpers/isEqual";
+
+interface IProps {
+  rootQuery: string,
+}
 
 export class Route {
     private _pathname: any;
     private readonly _blockClass: any;
-    private _block: Block | null;
-    private _props: any;
+    private _block: Block<{}> | null;
+    private _props: IProps;
 
-    constructor(pathname: string, view: Block, props: any) {
+    constructor(pathname: string, view: Block, props: IProps) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
@@ -33,7 +37,7 @@ export class Route {
 
     render() {
         if (!this._block) {
-            this._block = new this._blockClass();
+            this._block = new this._blockClass(this._props);
         }
 
         renderDOM(this._props.rootQuery, this._block!);

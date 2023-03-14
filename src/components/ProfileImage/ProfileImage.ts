@@ -1,4 +1,4 @@
-import Block from "../../core/Block";
+import Block from "../../core/block/Block";
 import {compile} from "handlebars";
 import ProfileImageTemplate from "./ProfileImage.tmpl";
 import store, {StoreEvents} from "../../store/Store";

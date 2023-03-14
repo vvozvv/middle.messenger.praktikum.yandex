@@ -1,7 +1,7 @@
 import { compile } from "handlebars";
 import {RegistrationPageTemplate} from "./registration.templ";
 import './registration.style.scss';
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 import {FormData, ProfileResponse} from '../../core/types/common';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';

@@ -1,6 +1,6 @@
 // @ts-ignore
 import hb, { HelperOptions } from 'handlebars';
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 
 export interface ComponentProps<Props = any> {
     new(props: Props): Block;

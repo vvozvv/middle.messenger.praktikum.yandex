@@ -1,18 +1,18 @@
 import { compile } from "handlebars";
+import router from "core/router/Router";
+import Block from 'core/block/Block';
+import Input from 'components/Input/Input';
+import Button from 'components/Button/Button';
+import {FormData, ProfileResponse} from 'core/types/common';
+import { formArrayToObjectRequest } from 'utils/helpers/functions';
+import store, {StoreEvents} from 'store/Store';
+import {UserController} from "api/user";
+import {ProfileImage} from "components/ProfileImage";
+import {PopupUploadImage} from "components/Popup";
+import IconButton from "components/IconButton/IconButton";
+import BackIcon from "assets/image/icon/back-square-svgrepo-com.svg";
 import {ProfileEditPageTemplate} from "./profile.edit.tmpl";
-import Block from '../../../core/Block';
-import Input from '../../../components/Input/Input';
-import Button from '../../../components/Button/Button';
-import {FormData, ProfileResponse} from '../../../core/types/common';
-import { formArrayToObjectRequest } from '../../../utils/helpers/functions';
-import store, {StoreEvents} from '../../../store/Store';
-import {UserController} from "../../../api/user";
-import {ProfileImage} from "../../../components/ProfileImage";
-import {PopupUploadImage} from "../../../components/Popup";
-import IconButton from "../../../components/IconButton/IconButton";
-import BackIcon from "../../../assets/image/icon/back-square-svgrepo-com.svg";
-import router from "../../../core/router/Router";
-import {PAGE} from "../../../modules/router";
+import {PAGE} from "modules/router";
 
 /**
  * Страница "Профиль"
@@ -129,7 +129,7 @@ export default class ProfileEditPage extends Block {
         });
 
         this.children.goMessagerButton = new IconButton({
-          icon: BackIcon,
+          iconId: BackIcon.id,
           title: 'Вернуться к чатам',
           events: {
             click: () => {

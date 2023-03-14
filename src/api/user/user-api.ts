@@ -7,13 +7,13 @@ export class UserApi extends BaseAPI {
         super('user/');
     }
 
-    public updateProfile(updatedUserInfo: ProfileResponse): Promise<XMLHttpRequestResponseType>  {
+    public updateProfile(updatedUserInfo: ProfileResponse)  {
         return this.http.put('profile', {
             data: updatedUserInfo
         })
     }
 
-    public updateAvatar(data: any) {
+    public updateAvatar(data: FormData) {
         return this.http.put('profile/avatar', {
             data
         })

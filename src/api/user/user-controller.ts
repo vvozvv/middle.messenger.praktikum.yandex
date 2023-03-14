@@ -15,7 +15,7 @@ class UserController {
        await checkErrorRequest(this.api.updateProfile(updatedUserInfo), PAGE.PROFILE)
     }
 
-    public updateAvatar(data: any) {
+    public updateAvatar(data: FormData) {
         return this.api.updateAvatar(data);
     }
 

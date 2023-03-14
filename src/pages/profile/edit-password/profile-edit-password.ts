@@ -1,5 +1,5 @@
 import { compile } from "handlebars";
-import Block from '../../../core/Block';
+import Block from '../../../core/block/Block';
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import { FormData } from '../../../core/types/common';

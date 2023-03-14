@@ -1,5 +1,5 @@
 import { compile } from 'handlebars';
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 import template from './ChatItems.tmpl';
 import './ChatItems.styles.scss';
 import { ChatItemsTypes } from 'components/ChatItems/ChatItems.types';

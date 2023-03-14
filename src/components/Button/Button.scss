@@ -10,6 +10,15 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
 
   &--ghost {
     background: transparent;
@@ -25,5 +34,18 @@
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &__spinner {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__spinner svg {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
   }
 }

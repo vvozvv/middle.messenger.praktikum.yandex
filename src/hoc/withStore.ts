@@ -1,5 +1,5 @@
 import store from '../store/Store';
-import Block from "../core/Block";
+import Block from "../core/block/Block";
 import isEqual from "../utils/helpers/isEqual";
 
 const withStore =
