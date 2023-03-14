@@ -1,11 +1,11 @@
 {
   "exclude": ["node_modules"],
+  "include": ["src/**/*"],
   "ts-node": {
     "require": ["tsconfig-paths/register"],
     "compilerOptions": {
       "module": "commonjs",
     },
-    "files": true,
   },
   "compilerOptions": {
     "lib": [
