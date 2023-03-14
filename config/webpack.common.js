@@ -8,7 +8,7 @@ module.exports = {
   entry: './app.js',
   context: path.resolve(__dirname, '../src'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -78,15 +78,15 @@ module.exports = {
     maxAssetSize: 612000
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "../static/index.html",
-    }),
     new CopyWebpackPlugin({
       patterns: [{
         from: 'assets',
         to: '../dist/assets',
         noErrorOnMissing: true,
       }]
+    }),
+    new HtmlWebpackPlugin({
+      template: "../static/index.html",
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
