@@ -16,7 +16,7 @@ class IconButton extends Block {
     }
     protected render() {
         this.children.icon = new Icon({
-          id: this.props?.iconId,
+          content: this.props?.iconId,
           width: 25,
           height: 25,
         });

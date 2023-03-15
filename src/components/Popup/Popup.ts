@@ -1,8 +1,7 @@
 import {compile} from "handlebars";
 import Block from "core/block/Block";
 import PopupTemplate from './Popup.tmpl';
-import CloseIcon from 'assets/image/icon/close.svg'
-import {Icon} from "components/Icon";
+const CloseIcon = require('assets/image/icon/close.svg');
 import './Popup.styles.scss';
 
 class Popup extends Block {
@@ -13,12 +12,6 @@ class Popup extends Block {
             events: {
                 mouseup: (event: MouseEvent) => this.closePopup(event),
             }
-        });
-
-        this.children.closeIcon = new Icon({
-          id: CloseIcon.id,
-          width: 20,
-          height: 20,
         });
     }
 
@@ -40,7 +33,7 @@ class Popup extends Block {
             <div class="popup {{#if activePopup}}popup--active{{/if}}">
                 <div class="popup__content">
                     <div class="popup__close">
-                        {{{closeIcon}}}
+                        ${CloseIcon}
                     </div>
                     ${template}
                 </div>

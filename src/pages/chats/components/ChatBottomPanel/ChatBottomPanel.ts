@@ -1,12 +1,15 @@
-import Block from "../../../../core/block/Block";
+import Block from "core/block/Block";
 import {compile} from "handlebars";
 import ChatBottomPanelTmpl from "./ChatBottomPanel.tmpl";
-import Input from "../../../../components/Input/Input";
-import {FormData} from "../../../../core/types/common";
-import {formArrayToObjectRequest} from "../../../../utils/helpers/functions";
-import ChatsController from "../../../../api/chats/chats-controller";
-import FileIcon from 'assets/image/icon/file.svg';
-import SendIcon from 'assets/image/icon/send.svg';
+import Input from "components/Input/Input";
+import {FormData} from "core/types/common";
+import {formArrayToObjectRequest} from "utils/helpers/functions";
+import ChatsController from "api/chats/chats-controller";
+// import FileIcon from 'assets/image/icon/file.svg';
+// import SendIcon from 'assets/image/icon/send.svg';
+
+const FileIcon = require('assets/image/icon/file.svg');
+const SendIcon = require('assets/image/icon/send.svg');
 import {Icon} from "components/Icon";
 
 class ChatBottomPanel extends Block {
@@ -56,13 +59,13 @@ class ChatBottomPanel extends Block {
       });
 
       this.children.fileIcon = new Icon({
-        id: FileIcon.id,
+        content: FileIcon,
         width: 35,
         height: 35
       });
 
       this.children.sendFile = new Icon({
-        id: SendIcon.id,
+        content: SendIcon,
         width: 35,
         height: 35
       })

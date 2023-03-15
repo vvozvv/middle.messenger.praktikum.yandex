@@ -1,6 +1,6 @@
 export default `
     <div class="delete-user-popup">
-        <p class="add-chat-popup__title delete-user-popup__title">Удалить пользователя с чата "{{active.activeChat.title}}"</p>
+        <p class="add-chat-popup__title delete-user-popup__title">Удалить пользователя с чата "{{active.title}}"</p>
         <form id="delete-user-popup-form" class="delete-user-popup__row">
             {{#each user}}
                 <div class="form-control">

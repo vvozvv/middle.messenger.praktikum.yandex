@@ -60,7 +60,7 @@ class ProfilePage extends Block {
         });
 
       this.children.goMessagerButton = new IconButton({
-        iconId: BackIcon.id,
+        iconId: BackIcon,
         title: 'Вернуться к чатам',
         events: {
           click: () => {

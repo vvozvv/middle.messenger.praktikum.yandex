@@ -13,7 +13,7 @@ import ImageChange from "components/ImageChange/ImageChange";
 class ChatHeader extends Block {
   protected render() {
     this.children.buttonDeleteProfile = new IconButton({
-      iconId: DeleteProfileIcon.id,
+      iconId: DeleteProfileIcon,
       title: 'Удалить пользователя',
       events: {
         click: () => {
@@ -23,7 +23,7 @@ class ChatHeader extends Block {
     });
 
     this.children.buttonAdd = new IconButton({
-      iconId: AddSquareIcon.id,
+      iconId: AddSquareIcon,
       title: 'Добавить пользователя',
       events: {
         click: () => {
@@ -33,7 +33,7 @@ class ChatHeader extends Block {
     });
 
     this.children.buttonDelete = new IconButton({
-      iconId: DeleteIcon.id,
+      iconId: DeleteIcon,
       title: 'Удалить чат',
       events: {
         click: () => {

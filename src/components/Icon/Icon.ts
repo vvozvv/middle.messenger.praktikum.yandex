@@ -3,7 +3,7 @@ import Block from "core/block/Block";
 import iconTemplate from './Icon.tmpl'
 
 interface IIcon {
-  id: string;
+  content: any;
   width: number;
   height: number;
 }

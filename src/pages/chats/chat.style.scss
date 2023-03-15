@@ -149,11 +149,15 @@
   &__icon {
     width: 40px;
     height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__files {
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 
   &__send {
