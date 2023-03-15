@@ -5,9 +5,6 @@ import Input from "components/Input/Input";
 import {FormData} from "core/types/common";
 import {formArrayToObjectRequest} from "utils/helpers/functions";
 import ChatsController from "api/chats/chats-controller";
-// import FileIcon from 'assets/image/icon/file.svg';
-// import SendIcon from 'assets/image/icon/send.svg';
-
 const FileIcon = require('assets/image/icon/file.svg');
 const SendIcon = require('assets/image/icon/send.svg');
 import {Icon} from "components/Icon";
