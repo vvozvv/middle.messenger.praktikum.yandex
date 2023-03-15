@@ -15,15 +15,15 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, './'),
       handlebars: 'handlebars/dist/handlebars.min.js',
-      components: path.resolve(__dirname, '/components'),
-      assets: path.resolve(__dirname, '/assets'),
-      utils: path.resolve(__dirname, '/utils'),
-      store: path.resolve(__dirname, '/store'),
-      hoc: path.resolve(__dirname, '/hoc'),
-      core: path.resolve(__dirname, '/core'),
-      api: path.resolve(__dirname, '/api'),
-      modules: path.resolve(__dirname, '/modules'),
-      types: path.resolve(__dirname, '/core/types'),
+      components: path.resolve(__dirname, '../src/components'),
+      assets: path.resolve(__dirname, '../src/assets'),
+      utils: path.resolve(__dirname, '../src/utils'),
+      store: path.resolve(__dirname, '../src/store'),
+      hoc: path.resolve(__dirname, '../src/hoc'),
+      core: path.resolve(__dirname, '../src/core'),
+      api: path.resolve(__dirname, '../src/api'),
+      modules: path.resolve(__dirname, '../src/modules'),
+      types: path.resolve(__dirname, '../src/core/types'),
     }
   },
   module: {
@@ -41,7 +41,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-sprite-loader',
+        loader: 'svg-inline-loader'
       },
       {
         test: /\.tsx?$/,
