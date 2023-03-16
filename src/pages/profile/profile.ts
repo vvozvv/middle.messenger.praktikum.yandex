@@ -1,16 +1,16 @@
 import { compile } from "handlebars";
+import Block from 'core/block/Block';
+import {Link} from "components/Link";
+import router from "core/router/Router";
+import {PAGE} from "modules/router";
+import AuthController from "api/auth/auth-controller";
+import {ProfileImage} from "components/ProfileImage";
+import {withUser} from "hoc/withUser";
+import IconButton from "components/IconButton/IconButton";
+import BackIcon from "assets/image/icon/back-square-svgrepo-com.svg";
+import PopupUploadUserAvatar from "components/Popup/PupupUploadImage/PopupUploadUserAvatar";
 import {ProfilePageTemplate} from "./profile.tmpl";
 import './profile.style.scss';
-import Block from '../../core/Block';
-import {Link} from "../../components/Link";
-import router from "../../core/router/Router";
-import {PAGE} from "../../modules/router";
-import AuthController from "../../api/auth/auth-controller";
-import {ProfileImage} from "../../components/ProfileImage";
-import {PopupUploadImage} from "../../components/Popup";
-import {withUser} from "../../hoc/withUser";
-import IconButton from "../../components/IconButton/IconButton";
-import BackIcon from "../../assets/image/icon/back-square-svgrepo-com.svg";
 
 /**
  * Страница "Профиль"
@@ -48,7 +48,7 @@ class ProfilePage extends Block {
             }
         });
 
-        this.children.popup = new PopupUploadImage({});
+        this.children.popup = new PopupUploadUserAvatar({});
 
         this.children.imageLoader = new ProfileImage({
             events: {
@@ -60,7 +60,7 @@ class ProfilePage extends Block {
         });
 
       this.children.goMessagerButton = new IconButton({
-        icon: BackIcon,
+        iconId: BackIcon,
         title: 'Вернуться к чатам',
         events: {
           click: () => {

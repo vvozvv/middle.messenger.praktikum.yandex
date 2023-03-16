@@ -7,4 +7,5 @@ export type ButtonTypes = {
     type: 'submit' | 'reset' | 'button';
     appearance?: AppearanceButton;
     events?: Record<string, any>;
+    isLoading?: boolean;
 }

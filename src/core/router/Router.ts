@@ -1,12 +1,12 @@
 import {Route} from "./Route";
-import Block from "../Block";
+import Block from "../block/Block";
 
 class Router {
   private static __instance: any;
-  private routes: any[];
+  public routes: any[];
   private _currentRoute: Route | null;
   private _rootQuery: string;
-  private history: History;
+  public history: History;
 
   constructor(rootQuery: string) {
     if (Router.__instance) {
@@ -70,8 +70,12 @@ class Router {
     return this.routes.find(route => route.match(pathname));
   }
 
-  public getLocationPathname() {
+  getLocationPathname() {
     return window.location.pathname;
+  }
+
+  getHistoryLength() {
+    return this.history.length
   }
 }
 

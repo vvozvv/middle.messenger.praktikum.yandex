@@ -1,20 +1,29 @@
-import Block from "../../core/Block";
 import {compile} from "handlebars";
-import IconButtonTmpl from "./IconButton.tmpl";
+import Block from "core/block/Block";
+import {Icon} from "components/Icon";
 import './IconButton.styled.scss';
+import IconButtonTmpl from "./IconButton.tmpl";
 
 type TIconButton = {
-    icon: string;
+    iconId: string | number;
     title: string;
-    events?: any;
+    events?: Record<string, any>;
 }
 
-export default class IconButton extends Block {
+class IconButton extends Block {
     constructor(props: TIconButton) {
         super(props);
     }
     protected render() {
+        this.children.icon = new Icon({
+          content: this.props?.iconId,
+          width: 25,
+          height: 25,
+        });
+
         const tmpl = compile(IconButtonTmpl);
         return this.compile(tmpl, this.props)
     }
 }
+
+export default IconButton;

@@ -1,5 +1,5 @@
 import {v4 as makeUUID} from 'uuid';
-import {EventBus} from './EventBus';
+import {EventBus} from '../event-bus/EventBus';
 
 abstract class Block<Props extends Record<string, any> = {}> {
   static EVENTS = {
@@ -11,11 +11,11 @@ abstract class Block<Props extends Record<string, any> = {}> {
   };
 
   public id = makeUUID();
-  public children: any = {};
+  public children: Record<string, any> = {};
   public refs: Record<string, Block> = {};
   public props: Record<string, any>;
   public events: { [key: string]: (a: Event) => void; } | undefined;
-  protected _element: HTMLElement | null = null;
+  protected _element: HTMLElement;
   private _eventBus: () => EventBus;
 
   constructor(props: Props = {} as Props) {
@@ -30,6 +30,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
   private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    // @ts-ignore
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     eventBus.on(Block.EVENTS.FLOW_ADD_EVENTS, this.addEvents.bind(this));
@@ -84,7 +85,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
     }
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Record<string, any>) => {
     if (!nextProps) {
       return;
     }
@@ -92,8 +93,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
     Object.assign(this.props, nextProps);
   };
 
-  //   TODO: заменить
-  protected render(): any {
+  protected render() {
     return new DocumentFragment();
   }
 
@@ -116,11 +116,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
     this.addEvents();
   }
 
-  public hide() {
-    const el = this.getContent();
-
-    // if (el) el.style.display = 'none';
-  }
+  public hide() {}
 
   public compile(template: (context: any) => string, context: Record<string, any>) {
     const propsAndStubs = {...context};
@@ -134,13 +130,13 @@ abstract class Block<Props extends Record<string, any> = {}> {
     fragment.innerHTML = template(propsAndStubs);
 
     Object.entries(this.children).forEach(([_, component]) => {
-      const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
+      const stub = fragment.content.querySelector(`[data-id="${(component as Block).id}"]`);
 
       if (!stub) {
         return;
       }
 
-      const content = component.getContent()!;
+      const content = (component as Block).getContent()!;
 
       stub.replaceWith(content);
     });
@@ -148,7 +144,7 @@ abstract class Block<Props extends Record<string, any> = {}> {
     return fragment.content;
   }
 
-  private get element(): HTMLElement | null {
+  get element(): HTMLElement {
     return this._element;
   }
 

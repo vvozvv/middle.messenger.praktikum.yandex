@@ -10,4 +10,9 @@
   &:hover {
     background: var(--gray-hover-color);
   }
+
+  & > svg {
+    width: 25px;
+    height: 250px;
+  }
 }

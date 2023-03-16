@@ -1,4 +1,4 @@
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 import { compile } from 'handlebars';
 import template from './Message.tmpl';
 import './Message.scss';
@@ -16,7 +16,7 @@ export default class Message extends Block {
         super(props);
     }
 
-    protected render(): any {
+    protected render() {
         return this.compile(compile(template), this.props);
     }
 }

@@ -10,7 +10,7 @@ import router from "../core/router/Router";
 export const checkErrorRequest = async (request: Promise<any>, goTo?: PAGE) => {
     try {
         const res = await request;
-        const {status, response} = res as any;
+        const {status, response} = res;
 
         if (status === 200) {
           if (goTo) router.go(goTo);

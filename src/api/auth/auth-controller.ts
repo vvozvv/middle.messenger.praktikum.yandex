@@ -2,6 +2,7 @@ import {AuthApi} from "./auth-api";
 import {ProfileResponse, TAuthUser} from "../../core/types/common";
 import {PAGE} from "../../modules/router";
 import {checkErrorRequest} from "../../utils/checkErrorRequest";
+import store from "../../store/Store";
 
 class AuthController {
     private api: AuthApi;
@@ -14,15 +15,18 @@ class AuthController {
     }
 
     public async signIn(authUser: TAuthUser) {
-        await checkErrorRequest(this.api.signIn(authUser), PAGE.CHATS)
+      store.set('isLoadingAuth', true);
+      await checkErrorRequest(this.api.signIn(authUser), PAGE.CHATS)
+      store.set('isLoadingAuth', false);
     }
 
     public async logout() {
         await checkErrorRequest(this.api.logout(), PAGE.LOGIN)
     }
 
-    public getUser() {
-        return this.api.getUser()
+    public async getUser() {
+        store.set('isLoadingUser', true);
+        return this.api.getUser();
     }
 }
 

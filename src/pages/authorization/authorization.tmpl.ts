@@ -1,4 +1,4 @@
-import { PAGE } from '../../modules/router';
+import { PAGE } from 'modules/router';
 
 const AuthorizationPageTemplate = `
     <main class="authorization">
@@ -11,7 +11,11 @@ const AuthorizationPageTemplate = `
             {{{inputPassword}}}
             {{{button}}}
         </form>
-        <a href="${PAGE.REGISTRATION}" class="link link--center authorization__link">Sign up</a>
+        
+        <a href="${PAGE.REGISTRATION}" class="link link--center authorization__link">
+          {{{spinner}}}
+          Sign up
+        </a>
       </div>
     </main>
 `;

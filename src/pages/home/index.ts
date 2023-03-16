@@ -1,7 +1,7 @@
 import { compile } from 'handlebars';
 import { HomedPageTemplate } from './home.tmpl';
 import './home.style.scss';
-import Block from '../../core/Block';
+import Block from '../../core/block/Block';
 
 /**
  * Главная страница

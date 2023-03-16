@@ -19,6 +19,7 @@
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "moduleResolution": "node",
+    "types": ["jest", "node"],
     "paths": {
       "@components/*": [
         "./components/*"
